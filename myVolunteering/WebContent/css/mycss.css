@@ -1,0 +1,162 @@
+.btn_signup {
+    color: #fcfcfc;
+    background-color: #78bee3;
+    border-color: #ccc;
+    opacity: 0.5;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.myPara {
+    font-family: monospace;
+    font-variant-caps: all-petite-caps;
+    color: aliceblue;
+}
+.mySpan {
+    font-family: monospace;
+    color: #efa441;
+}
+.my_jumbotron {
+    padding: 30px 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    position: relative;
+    color: inherit;
+    background-color: #eee;
+    text-align: center;
+    line-height: 200%;
+}
+.center {
+    text-align: center;
+    padding-bottom: 55px;
+}
+.center h2,
+h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.center p {
+    font-size: 1.2em;
+    font-family: monospace;
+    margin: 0 100px;
+}
+.center-profile {
+    margin-bottom: 200px;
+}
+.contact_top {
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-bottom: 2em;
+    border-bottom: 2px solid #fff;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(255, 255, 255);
+}
+.carousel-inner {
+	height: 650px;
+}
+
+#main-slider {
+	position: relative;
+	text-align: center;
+}
+
+#main-slider .carousel .item {
+	background-position: 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	left: 0 !important;
+	opacity: 0;
+	top: 0;
+	position: absolute;
+	width: 100%;
+	display: block !important;
+	height: 640px;
+	-webkit-transition: opacity ease-in-out 500ms;
+	-moz-transition: opacity ease-in-out 500ms;
+	-o-transition: opacity ease-in-out 500ms;
+	transition: opacity ease-in-out 500ms;
+}
+#main-slider .carousel .item:first-child {
+	top: auto;
+	position: relative;
+}
+#main-slider .carousel .item.active {
+	opacity: 1;
+	-webkit-transition: opacity ease-in-out 500ms;
+	-moz-transition: opacity ease-in-out 500ms;
+	-o-transition: opacity ease-in-out 500ms;
+	transition: opacity ease-in-out 500ms;
+	z-index: 1;
+}
+#main-slider .carousel .carousel-content {
+	margin-top: 150px;
+}
+#main-slider .prev, #main-slider .next {
+	position: absolute;
+	top: 50%;
+	background-color: #fff;
+	color: #ccc;
+	display: inline-block;
+	margin-top: -25px;
+	height: 40px;
+	line-height: 40px;
+	width: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 4px;
+	z-index: 5;
+	opacity: 0.8;
+}
+#main-slider .prev:hover, #main-slider .next:hover {
+	background-color: #3498db;
+}
+#main-slider .prev {
+	left: 10px;
+}
+#main-slider .next {
+	right: 10px;
+}
+
+.no-margin {
+	margin: 0;
+	padding: 0;
+}
+#main-slider .carousel .logo {
+	font-weight: 600;
+	margin: 20px 0;
+	padding: 0 10px;
+	border-radius: 10px;
+	border: 1px solid #9bcaec;
+	border-bottom: 0;
+	border-right: 0;
+	box-shadow: 6px 3px #ddd;
+}
+#main-slider .carousel .btn-slide {
+	padding: 8px 20px;
+	background: #3498db;
+	color: #fff;
+	border-radius: 4px;
+	margin-top: 25px;
+	display: inline-block;
+}
+
+.table-hover {
+    margin: auto;
+    text-align: center;
+}
+
+.mypanel-default {
+    border-color: #ddd;
+    padding: 20px;
+}
+
+.mycontainer {
+    text-align: center;
+}
+
+.mystrong {
+    font-family: monospace;
+    font-size-adjust: auto;
+    color: #78bee3;
+}
+
