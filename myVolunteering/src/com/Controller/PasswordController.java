@@ -73,7 +73,7 @@ public class PasswordController extends HttpServlet {
 
 		user.setPassword(newPW1);
 
-		UserHandler.updateUser(user);
+		UserHandler.updateUserPW(user);
 
 		session.removeAttribute("user");
 		session.setAttribute("user", user);

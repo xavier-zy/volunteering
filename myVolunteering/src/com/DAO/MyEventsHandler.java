@@ -77,6 +77,7 @@ public class MyEventsHandler {
 	 */
 	@SuppressWarnings("finally")
 	public static int addMyEvent(MyEvents myEvent) {
+		
 		int rowNumber = 0;
 		try {
 			rowNumber = SqlStatement.insertIntoTable(SqlStatement.MYEVENTS, myEvent);
@@ -130,8 +131,8 @@ public class MyEventsHandler {
 	public static Map<Integer, Events> getMyEventsByUserId(int userId) throws SQLException {
 		String sql = " SELECT " + SqlStatement.EVENTS + ".eventId," + SqlStatement.EVENTS + ".eventDate," 
 							   + SqlStatement.EVENTS + ".state," + SqlStatement.EVENTS + ".introduction," 
-							   + SqlStatement.EVENTS + ".title," + SqlStatement.EVENTS + ".index2," 
-							   + SqlStatement.MYEVENTS + ".id"
+							   + SqlStatement.EVENTS + ".title," + SqlStatement.EVENTS + ".index2" 
+						
 				+ " FROM " + SqlStatement.MYEVENTS + "," + SqlStatement.EVENTS 
 				+ " WHERE " + SqlStatement.MYEVENTS + ".userId=" + userId
 				+ " AND " + SqlStatement.EVENTS + ".eventId=" + SqlStatement.MYEVENTS + ".eventId";
@@ -143,7 +144,10 @@ public class MyEventsHandler {
 		Map<Integer, Events> map = new Hashtable<Integer, Events>();
 		ResultSet rs = (ResultSet) ps.executeQuery();
 		
+		int i = 0;
+		
 		while (rs.next()) {
+			i++;
 			Events event = new Events();
 			event.setEventDate(rs.getString("eventDate"));
 			event.setEventId(Integer.parseInt(rs.getString("eventId")));
@@ -152,9 +156,8 @@ public class MyEventsHandler {
 			event.setState(rs.getInt("state"));
 			event.setTitle(rs.getString("title"));
 
-			System.out.println(Integer.parseInt(rs.getString("id")));
 			try {
-				map.put(Integer.parseInt(rs.getString("id")), event);
+				map.put(i, event);
 			} catch (Exception e) {
 				// todo
 			}

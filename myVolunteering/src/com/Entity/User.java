@@ -9,6 +9,7 @@ public class User {
 	private String level;
 	private Date lastLogin;	
 	private String email;
+	private String headImg;
 //	private Integer integer;
 	
 	
@@ -32,6 +33,12 @@ public class User {
 //		this.headImg = null;
 //	}
 	
+	public String getHeadImg() {
+		return headImg;
+	}
+	public void setHeadImg(String headImg) {
+		this.headImg = headImg;
+	}
 	public int getUserId() {
 		return userId;
 	}

@@ -3,6 +3,8 @@
 <%@ page import="com.Entity.*"%>
 <%@ page import="com.DAO.*"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.HashSet"%>
+
 
 <%
 	String path = request.getContextPath();
@@ -23,6 +25,19 @@
 	} else {
 		index = 1;
 		System.out.println(index);
+	}
+	HashSet<Integer> myEvents = new HashSet<Integer>();
+	if (user != null) {
+		ArrayList<MyEvents> myevent = MyEventsHandler.getAllMyEvents(user.getUserId());
+
+		if (myevent != null) {
+			int number = myevent.size();
+
+			for (int i = 0; i < number; i++) {
+				myEvents.add(myevent.get(i).getEventId());
+			}
+		}
+
 	}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -88,27 +103,25 @@
 							<button type="button" class="btn btn-default navbar-btn">
 								<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
 							</button>
-							</li>
-							 <%
- 	} else {
- %>
-							<li class="dropdown">
-	 							<a href="/myVolunteering/JSPs/myProfile&Events.jsp" 
-	 							class="dropdown-toggle" data-toggle="dropdown">
-	 							<%=user.getUserName()%>
-	 							</a>
-									<ul class="dropdown-menu">
-										<li>
-										<form method="post" action="LogoutController">
-											<button>Log out</button>
-										</form>
-										</li>
-									</ul>
-							</li>
-<%
- 	}
-%>
-						
+						</li>
+						<%
+							} else {
+						%>
+						<li class="dropdown"><a
+							href="/myVolunteering/JSPs/myProfile&Events.jsp"
+							class="dropdown-toggle" data-toggle="dropdown"> <%=user.getUserName()%>
+						</a>
+							<ul class="dropdown-menu">
+								<li>
+									<form method="post" action="LogoutController">
+										<button>Log out</button>
+									</form>
+								</li>
+							</ul></li>
+						<%
+							}
+						%>
+
 					</ul>
 
 				</div>
@@ -121,8 +134,69 @@
 		<div class="container">
 			<div class="center">
 				<h2>Events list</h2>
-
 			</div>
+			<%
+						if (user != null && user.getLevel().equals("1")){
+			%>
+			<table class="table table-hover">
+				<tr>
+					<td><strong>events.no</strong></td>
+					<td><strong>events name</strong></td>
+					<td><strong>events state</strong></td>
+					<td><strong>my event</strong></td>
+					<td></td>
+				</tr>
+
+				<%
+					for (int i = 0; i < events.size(); i++) {
+				%>
+				<tr>
+					<td><%=events.get(i).getEventId()%></td>
+					<td><%=events.get(i).getTitle()%></td>
+					<td>
+						<%
+							if (events.get(i).getState() == 1) {
+						%> 
+						<strong class="mystrong">Going on</strong> 
+						<%
+ 							} else if (events.get(i).getState() == 2) {
+ 						%> 
+ 						<strong class="mystrong">Over</strong> 
+ 						<%
+ 							}
+ 						%>
+					</td>
+					<td><a
+						href="eventDetails.jsp?id=<%=events.get(i).getEventId()%>">more</a>
+					</td>
+					<td>
+						<%
+							if (myEvents.contains(events.get(i).getEventId())) {
+						%>
+							<button type="button" class="btn btn-danger"
+								style="margin-right: 20px;">已报名</button> 
+						<%
+ 							} else {
+ 						%>
+							<button type="button" class="btn btn-success"
+								onclick="enroll('<%=user.getUserId()%>',
+								'<%=events.get(i).getEventId()%>',
+								'<%=events.get(i).getState()%>')">
+								报名
+							</button>
+						<%
+							}
+						%>
+					</td>
+				</tr>
+				<%
+					}
+				%>
+			</table>
+			<%
+					} else {
+			%>
+			
 			<table class="table table-hover">
 				<tr>
 					<td><strong>events.no</strong></td>
@@ -149,20 +223,18 @@
  						<strong class="mystrong">Over</strong> 
  						<%
  							}
-						%>
+ 						%>
 					</td>
+					<td><button onclick="pleaseLogin()">ENROLL</button></td>
 					<td><a
 						href="eventDetails.jsp?id=<%=events.get(i).getEventId()%>">more</a>
 					</td>
 				</tr>
-
 				<%
 					}
 				%>
-
-
 			</table>
-
+			<% } %>
 		</div>
 		</section>
 	</div>
@@ -173,6 +245,7 @@
 		src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script
 		src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="/myVolunteering/js/main.js"></script>
 </body>
 
 </html>

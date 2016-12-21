@@ -19,9 +19,9 @@ public class UserInfoHandler {
 				userInfo = new UserInfo();
 				userInfo.setAge(rs.getInt("age"));
 				userInfo.setPhone(rs.getString("phone"));
-				userInfo.setAddress(rs.getString("address"));
 				userInfo.setEmail(rs.getString("email"));
 				userInfo.setGender(rs.getString("gender"));
+				userInfo.setAddress(rs.getString("address"));
 				userInfo.setSignature(rs.getString("signature"));
 //				userInfo.setUserName(rs.getString("username"));
 				userInfo.setUserId(rs.getInt("userId"));

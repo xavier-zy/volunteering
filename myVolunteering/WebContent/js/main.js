@@ -125,6 +125,27 @@ function insertUserInfo() {
 	console.log(data);
 }
 
+function addComment(replyId, userName, storyId) {
+	var data = {
+		'ReplyId' : replyId,
+		'UserName' : userName,
+		'StoryId' : storyId,
+		'uploadText' : $('#uploadText').val()
+	};
+	$.ajax({
+		url : 'AddCommentServlet',
+		type : 'post',
+		data : data,
+		success : function(tip) {
+			location.reload();
+		},
+		error : function(tip) {
+			alert('error');
+		}
+	})
+	console.log(data);
+}
+
 function updateUserInfo() {
 	var d = new Date();
 	var data = {
@@ -135,13 +156,10 @@ function updateUserInfo() {
 		'phone' : $('#phone').val(),
 		'signature' : $('#signature').val(),
 		'userId' : $('#userId').val(),
-		'username' : $('#username').val(),
-		'time' : getNowFormatDate(),
-		'department' : $('#department').val(),
-		'realname' : $('#realname').val()
 	};
 	$.ajax({
-		url : 'api/TUserInfoUpdateServlet',
+		url : 'ChangeUserInfoServlet',
+		type : 'post',
 		data : data,
 		success : function(tip) {
 			alert('修改成功！');
@@ -154,26 +172,27 @@ function updateUserInfo() {
 	console.log(data);
 }
 
-function enroll(userId, activityId, activityStatus) {
-	if (userId == '') {
-		alert('请登陆！');
-	} else {
-		$.ajax({
-			url : 'api/MyActivityInsertServlet',
-			data : {
-				userId : userId,
-				activityId : activityId,
-				activityStatus : activityStatus
-			},
-			success : function(tip) {
-				alert('报名成功！');
-				location.reload();
-			},
-			error : function(tip) {
-				alert('报名失败！');
-			}
-		})
-	}
+function enroll(userId, eventId, eventStatus) {
+	$.ajax({
+		url : 'EnrollAnEventServlet',
+		type : 'post',
+		data : {
+			userId : userId,
+			eventId : eventId,
+			eventStatus : eventStatus
+		},
+		success : function(tip) {
+			alert('报名成功！');
+			location.reload();
+		},
+		error : function(tip) {
+			alert('报名失败！');
+		}
+	})
+}
+
+function pleaseLogin() {
+	alert('Please log in first!');
 }
 
 function cancel(id) {
@@ -255,7 +274,7 @@ function test() {
 			alert('发布失败！');
 		}
 	})
-	
+
 }
 
 function addLike(id) {
@@ -265,8 +284,11 @@ function addLike(id) {
 		data : {
 			id : id
 		},
+		success : function(tip) {
+			location.reload();
+		}
 	})
-	window.location.reload();
+
 }
 
 function addStory() {
@@ -307,4 +329,3 @@ function publishNews() {
 		}
 	})
 }
-

@@ -49,7 +49,39 @@ public class UserHandler {
 	public static User getTUserById(int id) {
 		int i = 0;
 		User tuser = new User();
-		String sql = "SELECT level,lastLogin,userName,password FROM user WHERE userId=" + id;
+		String sql = "SELECT * FROM user WHERE userId=" + id;
+		DBUtil util = new DBUtil();
+		Connection conn = util.getConnection();
+
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				i++;
+				tuser.setLevel(rs.getString("level"));
+				tuser.setLastLogin(new java.util.Date(rs.getDate("lastLogin").getTime()));
+				tuser.setUserName(rs.getString("userName"));
+				tuser.setPassword(rs.getString("password"));
+				tuser.setEmail(rs.getString("email"));
+				tuser.setUserId(rs.getInt("userId"));
+				System.out.println(rs.getInt("userId"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if (i == 0) {
+			return null;
+		} else {
+			return tuser;
+		}
+	}
+	
+	public static User getUserByUserName(String uname) {
+		int i = 0;
+		User tuser = new User();
+		String sql = "SELECT userId,level,lastLogin,password FROM user WHERE userName=" + uname;
 		DBUtil util = new DBUtil();
 		Connection conn = util.getConnection();
 
@@ -97,7 +129,7 @@ public class UserHandler {
 		}
 	}
 
-	public static void updateUser(User user) {
+	public static void updateUserPW(User user) {
 		DBUtil util = new DBUtil();
 		Connection conn = util.getConnection();
 
@@ -107,6 +139,23 @@ public class UserHandler {
 			PreparedStatement ps = conn.prepareStatement(updateSQL);
 			ps.setString(1, user.getPassword());
 			ps.setString(2, user.getUserName());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void updateUserHeadImg(User user) {
+		DBUtil util = new DBUtil();
+		Connection conn = util.getConnection();
+
+		String updateSQL = "UPDATE user SET headImg = ? WHERE userId = ?";
+
+		try {
+			PreparedStatement ps = conn.prepareStatement(updateSQL);
+			ps.setString(1, user.getHeadImg());
+			ps.setInt(2, user.getUserId());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

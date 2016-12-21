@@ -204,7 +204,7 @@ public class SqlStatement {
 	}
 
 	public static int updateTable(String table, Object ob) throws NoSuchMethodException, Exception {
-		String sql = getSql("update", table, ob);
+		String sql = getSql("UPDATE", table, ob);
 		System.out.println("UpdateSql:" + sql);
 
 		DBUtil util = new DBUtil();
@@ -238,15 +238,15 @@ public class SqlStatement {
 		String sql = "";
 		switch (operation) {
 		case "INSERT":
-			sql = "INSERT into " + table + " (";
-			for (int i = 1; i < fields.length; i++) {
+			sql = "INSERT INTO " + table + " (";
+			for (int i = 0; i < fields.length; i++) {
 				sql += fields[i].getName().toString();
 				if (i >= 0 && i < fields.length - 1) {
 					sql += ", ";
 				}
 			}
 			sql += ") values(";
-			for (int i = 1; i < fields.length; i++) {
+			for (int i = 0; i < fields.length; i++) {
 				String value = getReflectValue(ob, fields[i]);
 				sql += "'" + value + "'";
 				if (i >= 0 && i < fields.length - 1) {
@@ -254,10 +254,10 @@ public class SqlStatement {
 				}
 			}
 			sql += ")";
-			// System.out.println("sql:"+sql);
+			// System.out.println("ADSFWDSDXsql:"+sql);
 			break;
-		case "update":
-			sql = "update " + table + " set ";
+		case "UPDATE":
+			sql = "UPDATE " + table + " SET ";
 			for (int i = 1; i < fields.length; i++) {
 				sql += fields[i].getName().toString() + "='" + getReflectValue(ob, fields[i]) + "'";
 				if (i >= 0 && i < fields.length - 1) {

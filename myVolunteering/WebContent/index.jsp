@@ -54,7 +54,7 @@
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
 							<li class="active"><a href="#">Home</a></li>
-							<li><a href="/myVolunteering/JSPs/events.jsp">Events</a></li>
+							<li><a href="events.jsp">Events</a></li>
 							<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
 							<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
 							<%
@@ -75,7 +75,7 @@
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown">MyVolunteering<strong class="caret"></strong></a>
 								<ul class="dropdown-menu">
-									<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Profile</a>
+									<li><a href="myProfile&Events.jsp">Profile</a>
 									</li>
 									<li class="divider">
 									<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>

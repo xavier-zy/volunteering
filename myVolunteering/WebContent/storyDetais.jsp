@@ -8,9 +8,10 @@
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	User user = (User) session.getAttribute("user");
-	String aid = "";
-	aid = request.getParameter("id");
+	String aid = "1";
+	//aid = request.getParameter("id");
 	Stories theStory = StoriesHandler.getStoryByStoryId(aid);
+	ArrayList<Comment> comments = CommentHandler.getCommentsByStoryId(aid);
 %>
 
 <!DOCTYPE html>
@@ -105,17 +106,16 @@
 		<div class="container">
 			<div class="center">
 				<h2><%=theStory.getTitle()%></h2>
-				<span style="float: center;"> 
-					Author:&nbsp;<%=UserHandler.getTUserById(theStory.getUserId()).getUserName()%>&nbsp;&nbsp;&nbsp;
+				<span style="float: center;"> Author:&nbsp;<%=UserHandler.getTUserById(theStory.getUserId()).getUserName()%>&nbsp;&nbsp;&nbsp;
 					Publish time:&nbsp;<%=theStory.getWrittenTime()%>&nbsp;&nbsp;&nbsp;
-					
+
 					<span class="glyphicon glyphicon-heart"
 					style="color: rgb(255, 60, 64);"></span> <%=theStory.getLike()%>&nbsp;&nbsp;&nbsp;
-					
-					<button type="button" class="btn btn-link" onclick="addLike('<%=aid %>')">
+
+					<button type="button" class="btn btn-link"
+						onclick="addLike('<%=aid%>')">
 						<span class="glyphicon glyphicon-ok"
-						style="color: rgb(255, 128, 47);"></span>
-						like the story
+							style="color: rgb(255, 128, 47);"></span> like the story
 					</button>
 				</span> <br>
 				<!-- <p>请对活动做出修改</p> -->
@@ -127,6 +127,141 @@
 				</div>
 			</div>
 
+			<div class="comments_block">
+
+				<h4>Comments:</h4>
+				<%
+					if (comments != null) {
+				%>
+				<%
+					for (int i = 0; i < comments.size(); i++) {
+				%>
+				<%
+					if (comments.get(i).getReplyId() < 0) {
+				%>
+
+				<div class="comments">
+					<p class="meta">
+						<%=comments.get(i).getUserName()%>&nbsp;<%=comments.get(i).getCommentTime()%>
+					</p>
+					<div class="comments_content">
+						<p>
+							<%=comments.get(i).getCommentContent()%>
+						</p>
+
+						<%
+							if (user != null && user.getLevel().equals("1")) {
+						%>
+						<button id="show" class="reply">Reply</button>
+
+						<form id="form" style="display: none;"
+							enctype="multipart/form-data">
+							<textarea name="uploadText" id="uploadText" rows="5" cols="60"
+								placeholder="Your Comment"></textarea>
+							<button type="submit" class="btn btn-success"
+								onclick="addComment('<%=comments.get(i).getCommentId()%>',
+								'<%=user.getUserName()%>',
+								'<%=comments.get(i).getStoryId()%>')">
+								Submit</button>
+							<button id="hide" type="button" class="btn btn-danger"
+								value="Cancel">Cancel</button>
+						</form>
+						<%
+							} else {
+						%>
+						<button class="reply" onclick="pleaseLogin()">Reply</button>
+
+						<%
+							}
+						%>
+						<div class="clr"></div>
+						<div class="reply_icon"></div>
+					</div>
+				</div>
+				<%
+					}
+				%>
+
+				<%
+					if (-1 != comments.get(i).getReplyId()) {
+				%>
+				<div class="comments reply">
+					<p class="meta">
+						<%=comments.get(1).getUserName()%>&nbsp;<%=comments.get(1).getCommentTime()%>
+					</p>
+					<div class="comments_content">
+						<p>
+							<%=comments.get(i).getCommentContent()%>
+						</p>
+						<%
+							if (user != null && user.getLevel().equals("1")) {
+						%>
+						<button id="show" class="reply">Reply</button>
+
+						<form id="form" style="display: none;"
+							enctype="multipart/form-data">
+							<textarea name="uploadText" id="uploadText" rows="5" cols="60"
+								placeholder="Your Comment"></textarea>
+							<button type="submit" class="btn btn-success"
+								onclick="addComment('<%=comments.get(i).getCommentId()%>',
+								'<%=user.getUserName()%>',
+								'<%=comments.get(i).getStoryId()%>')">
+								Submit</button>
+							<button id="hide" type="button" class="btn btn-danger"
+								value="Cancel">Cancel</button>
+						</form>
+						<%
+							} else {
+						%>
+						<button class="reply" onclick="pleaseLogin()">Reply</button>
+
+						<%
+							}
+						%>
+
+						<div class="clr"></div>
+						<div class="reply_icon"></div>
+					</div>
+				</div>
+				<%
+					}
+				%>
+
+				<%
+					}
+					}
+				%>
+
+				<!-- Comment Form -->
+				<h5>Write a Comment</h5>
+
+				<%
+					if (user != null && user.getLevel().equals("1")) {
+				%>
+				<form id="form" enctype="multipart/form-data">
+					<textarea name="uploadText" id="uploadText" rows="5" cols="60"
+						placeholder="Your Comment"></textarea>
+					<button type="submit" class="btn btn-success"
+						onclick="addComment('-1',
+								'<%=user.getUserName()%>',
+								'<%=theStory.getStoryId()%>')">
+						Submit</button>
+				</form>
+				<%
+					} else {
+				%>
+
+				<form id="form" enctype="multipart/form-data">
+					<textarea name="uploadText" id="uploadText" rows="5" cols="60"
+						placeholder="Your Comment"></textarea>
+					<button type="submit" class="btn btn-success"
+						onclick="pleaseLogin()">Submit</button>
+				</form>
+				<%
+					}
+				%>
+
+			</div>
 
 		</div>
 	</section>
@@ -136,7 +271,22 @@
 		src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script
 		src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="/myVolunteering/js/jquery.js"></script>
+	<script src="/myVolunteering/js/bootstrap.min.js"></script>
 	<script src="/myVolunteering/js/main.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#hide").click(function() {
+				$("#form").hide();
+			});
+			$("#show").click(function() {
+				$("#form").show();
+			});
+			$("#send submit").click(function() {
+				location.reload();
+			});
+		});
+	</script>
 </body>
 
 </html>
