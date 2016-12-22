@@ -21,7 +21,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>about us</title>
+<title>VOLUNTEERING | about us</title>
 <meta name="description" content="">
 
 <!-- CSS -->
@@ -53,46 +53,73 @@
 						<li><a href="/myVolunteering/JSPs/events.jsp">Events</a></li>
 						<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
 
-						<li class="dropdown"><a href="my%20volunteering.html"
-							class="dropdown-toggle" data-toggle="dropdown">MyVolunteering<strong
-								class="caret"></strong></a>
-							<ul class="dropdown-menu">
-								<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Profile</a>
-								</li>
-								<li class="divider">
-								<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>
-								</li>
-								<li class="divider">
-								<li><a href="/myVolunteering/JSPs/mySharing.jsp">Sharing</a></li>
-							</ul></li>
+						<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
+							<%
+								if (user != null && (user.getLevel().equals("0"))) {
+							%>
+							<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown">Management<strong class="caret"></strong></a>
+								<ul class="dropdown-menu">
+									<li><a href="newsPublishing.jsp">News publishing</a></li>
+									<li class="divider">
+									<li><a href="/myVolunteering/JSPs/eventsPublishing.jsp">Events
+											publishing</a></li>
+								</ul></li>
 
-						<li  class="active"><a href="#">About Us</a></li>
-						<li>
-							<% if (user == null) {%>
-							<button type="submit" class="btn btn-default">
-								<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
-							</button>
-							<button type="button" class="btn btn-default navbar-btn">
-								<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
-							</button> 
-							<% } else { %>
-							<li class="dropdown">
-	 							<a href="/myVolunteering/JSPs/myProfile&Events.jsp" 
-	 							class="dropdown-toggle" data-toggle="dropdown">
-	 							<%=user.getUserName()%>
-	 							</a>
-									<ul class="dropdown-menu">
-										<li>
+							<%
+								} else {
+							%>
+							<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown">MyVolunteering<strong class="caret"></strong></a>
+								<ul class="dropdown-menu">
+									<li><a href="myProfile&Events.jsp">Profile</a>
+									</li>
+									<li class="divider">
+									<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>
+									</li>
+									<li class="divider">
+									<li><a href="/myVolunteering/JSPs/mySharing.jsp">Sharing</a></li>
+								</ul></li>
+							<%
+								}
+							%>
+
+							<li class="active"><a href="#">About Us</a></li>
+
+
+
+
+							<%
+								if (user == null) {
+							%>
+							<li>
+								<button type="submit" class="btn btn-link">
+									<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
+								</button>
+								|
+								<button type="button" class="btn btn-link navbar-btn">
+									<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
+								</button>
+							</li>
+							<%
+								} else {
+							%>
+							<li class="dropdown"><a
+								href="/myVolunteering/JSPs/myProfile&Events.jsp"
+								class="dropdown-toggle" data-toggle="dropdown"> <%=user.getUserName()%>
+							</a>
+								<ul class="dropdown-menu">
+									<li>
 										<form method="post" action="LogoutController">
 											<button>Log out</button>
 										</form>
-										</li>
-									</ul>
-							</li>
-							 <%
- 	}
- %>
-							</li>
+									</li>
+								</ul></li>
+
+							<%
+								}
+							%>
+
 						</ul>
 
 					</div>

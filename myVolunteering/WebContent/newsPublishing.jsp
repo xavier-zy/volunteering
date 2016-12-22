@@ -15,7 +15,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VOLUNTEER | 新闻发布</title>
+<title>VOLUNTEERING | admin-publish resources</title>
 <meta name="description" content="">
 
 <!-- core CSS -->
@@ -60,26 +60,14 @@
 								class="dropdown-toggle" data-toggle="dropdown">Management<strong
 									class="caret"></strong></a>
 								<ul class="dropdown-menu">
-									<li><a href="newsPublishing.jsp">News publishing</a></li>
+									<li class="active"><a href="#">News publishing</a></li>
 									<li class="divider">
 									<li><a href="/myVolunteering/JSPs/eventsPublishing.jsp">Events
 											publishing</a></li>
 								</ul></li>
 							<li><a href="about%20us.html">About Us</a></li>
 							<li>
-								<%
-									if (user == null) {
-								%>
-								<button type="submit" class="btn btn-default">
-									<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
-								</button>
-								<button type="button" class="btn btn-default navbar-btn">
-									<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
-								</button>
-							</li>
-							<%
-								} else {
-							%>
+			
 							<li class="dropdown"><a
 								href="/myVolunteering/JSPs/myProfile&Events.jsp"
 								class="dropdown-toggle" data-toggle="dropdown"> <%=user.getUserName()%>
@@ -90,10 +78,6 @@
 											<button>Log out</button>
 										</form>
 									</li>
-									<%
-										}
-									%>
-
 								</ul>
 					</div>
 				</nav>

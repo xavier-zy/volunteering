@@ -20,7 +20,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Volunteering: home page</title>
+<title>VOLUNTEERING | home page</title>
 <meta name="description" content="">
 
 <!-- CSS -->
@@ -96,10 +96,11 @@
 								if (user == null) {
 							%>
 							<li>
-								<button type="submit" class="btn btn-default">
+								<button type="submit" class="btn btn-link">
 									<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
 								</button>
-								<button type="button" class="btn btn-default navbar-btn">
+								|
+								<button type="button" class="btn btn-link navbar-btn">
 									<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
 								</button>
 							</li>
@@ -108,7 +109,12 @@
 							%>
 							<li class="dropdown"><a
 								href="/myVolunteering/JSPs/myProfile&Events.jsp"
-								class="dropdown-toggle" data-toggle="dropdown"> <%=user.getUserName()%>
+								class="dropdown-toggle" data-toggle="dropdown">
+								<% if (user.getLevel().equals("0")) { %>	
+									<span class="adminname"><%=user.getUserName()%></span>
+								<%} else { %>
+									<span class="username"><%=user.getUserName()%></span>
+								<% } %>
 							</a>
 								<ul class="dropdown-menu">
 									<li>

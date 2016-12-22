@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>sign up</title>
+<title>VOLUNTEERING | sign up</title>
 <meta name="description" content="">
 
 <!-- CSS -->
@@ -34,23 +34,25 @@
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="/myVolunteering/index.jsp">Home</a></li>
-						<li class><a href="#">Events</a></li>
-						<li><a href="#">Resources</a></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
+						<li class><a href="/myVolunteering/events.jsp">Events</a></li>
+						<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
+						<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
+						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown">MyVolunteering<strong class="caret"></strong></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Profile</a></li>
+								<li><a href="/myVolunteering/myProfile&Events.jsp">Profile</a></li>
 								<li class="divider">
-								<li><a href="#">Events</a></li>
+								<li><a href="/myVolunteering/myProfile&Events.jsp">Events</a></li>
 								<li class="divider">
-								<li><a href="#">Sharing</a></li>
+								<li><a href="/myVolunteering/JSPs/mySharing.jsp">Stories</a></li>
 							</ul></li>
-						<li><a href="#">About Us</a></li>
+						<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
 						<li>
-							<button type="submit" class="btn btn-default">
-								<a href="Login.jsp">Log in</a>
+							<button type="submit" class="btn btn-link">
+								<a href="#">Log in</a>
 							</button>
-							<button type="button" class="btn btn-default navbar-btn">
+							|
+							<button type="button" class="btn btn-link navbar-btn">
 								<a href="Signup.jsp">Sign up</a>
 							</button>
 						</li>
@@ -63,7 +65,7 @@
 		</div>
 	</div>
 
-	<div class="panel panel-default">
+	<div class="panel mypanel-default">
 		<form class="form-horizontal" id="signupForm" name="signupForm"
 			method="post" action="/myVolunteering/SignupController">
 			<div class="form-group">
@@ -83,16 +85,12 @@
 					name="con_password" placeholder="Confirm password">
 					<span id="repeatTip"></span>
 			</div>
-			<div class="checkbox">
-				<center>
-					<label> <input type="checkbox"> remember me
-					</label>
-				</center>
-			</div>
 			<center>
-				<button type="submit" class="btn btn_signup" onclick="check()">Sign
-					up</button>
-			</center>
+                <div class="myform-group">
+                    <button type="submit" class="btn btn_signup">Sign up</button>
+                </div>
+                <p class="haveAcc">Already have an account? <a class="login" href="/myVolunteering/JSPs/Login.jsp">Log in</a></p>
+            </center>
 		</form>
 	</div>
 

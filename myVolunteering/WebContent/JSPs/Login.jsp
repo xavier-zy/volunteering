@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>log in</title>
+<title>VOLUNTEERING | log in</title>
 <meta name="description" content="">
 
 <!-- CSS -->
@@ -35,23 +35,25 @@
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="/myVolunteering/index.jsp">Home</a></li>
-						<li><a href="#">Events</a></li>
-						<li><a href="#">Resources</a></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
+						<li><a href="/myVolunteering/events.jsp">Events</a></li>
+						<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
+						<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
+						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown">MyVolunteering<strong class="caret"></strong></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Profile</a></li>
+								<li><a href="/myVolunteering/myProfile&Events.jsp">Profile</a></li>
 								<li class="divider">
-								<li><a href="#">Events</a></li>
+								<li><a href="/myVolunteering/myProfile&Events.jsp">Events</a></li>
 								<li class="divider">
-								<li><a href="#">Sharing</a></li>
+								<li><a href="/myVolunteering/JSPs/mySharing.jsp">Stories</a></li>
 							</ul></li>
-						<li><a href="#">About Us</a></li>
+						<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
 						<li>
-							<button type="submit" class="btn btn-default">
+							<button type="submit" class="btn btn-link">
 								<a href="#">Log in</a>
 							</button>
-							<button type="button" class="btn btn-default navbar-btn">
+							|
+							<button type="button" class="btn btn-link navbar-btn">
 								<a href="Signup.jsp">Sign up</a>
 							</button>
 						</li>
@@ -73,15 +75,12 @@
 				<input type="password" class="form-control" name="password"
 					id="password" placeholder="Password">
 			</div>
-			<div class="checkbox">
-				<center>
-					<label> <input type="checkbox"> remember me
-					</label>
-				</center>
-			</div>
 			<center>
-				<button type="submit" class="btn btn_signup">Log in</button>
-			</center>
+                <div class="myform-group">
+                    <button type="submit" class="btn btn_signup">Log in</button>
+                </div>
+                <p class="haveAcc">Don't have an account? <a class="login" href="/myVolunteering/JSPs/Signup.jsp">Sign up</a></p>
+            </center>
 		</form>
 	</div>
 	<!-- 

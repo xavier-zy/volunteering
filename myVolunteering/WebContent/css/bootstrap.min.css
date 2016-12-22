@@ -1,7 +1,6 @@
 /*!
  * Bootstrap v3.3.0 (http://getbootstrap.com)
- * Copyright 2011-2014 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
 
@@ -900,7 +899,7 @@ html {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: lato, Arial, sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
@@ -2872,7 +2871,7 @@ select[multiple].form-group-lg .form-control {
 }
 .btn {
     display: inline-block;
-    padding: 6px 12px;
+    /* padding: 6px 12px; */
     margin-bottom: 0;
     font-size: 14px;
     font-weight: 400;
@@ -3197,7 +3196,8 @@ fieldset[disabled] .btn-danger.active {
 .btn-link {
     font-weight: 400;
     color: #428bca;
-    border-radius: 0
+    border-radius: 0;
+    padding: 6px
 }
 .btn-link,
 .btn-link:active,
@@ -4762,7 +4762,7 @@ a.list-group-item.active>.badge,
     max-width: 100%
 }
 @media screen and (min-width:768px) {
- 
+
     .container .jumbotron {
         padding-right: 60px;
         padding-left: 60px
@@ -5405,7 +5405,7 @@ a.list-group-item-danger.active:focus {
     border-bottom: 1px solid #ddd
 }
 .panel-default {
-    border-color: #ddd;
+    border-color: #3498db;
     margin: 50px 40%;
     padding: 20px;
 }
@@ -6479,9 +6479,9 @@ form {
 }
 
 .btn-large {
-    
+
 }
 
 .center {
-    
+
 }

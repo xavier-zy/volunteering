@@ -46,7 +46,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>events</title>
+<title>VOLUNTEERING | events</title>
 <meta name="description" content="">
 
 <!-- CSS -->
@@ -78,29 +78,48 @@
 						<li><a href="/myVolunteering/index.jsp">Home</a></li>
 						<li class="active"><a href="#">Events</a></li>
 						<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
+						<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
+						
+						<%
+								if (user != null && (user.getLevel().equals("0"))) {
+							%>
+							<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown">Management<strong class="caret"></strong></a>
+								<ul class="dropdown-menu">
+									<li><a href="newsPublishing.jsp">News publishing</a></li>
+									<li class="divider">
+									<li><a href="/myVolunteering/JSPs/eventsPublishing.jsp">Events
+											publishing</a></li>
+								</ul></li>
 
-						<li class="dropdown"><a href="my%20volunteering.html"
-							class="dropdown-toggle" data-toggle="dropdown">MyVolunteering<strong
-								class="caret"></strong></a>
-							<ul class="dropdown-menu">
-								<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Profile</a>
-								</li>
-								<li class="divider">
-								<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>
-								</li>
-								<li class="divider">
-								<li><a href="/myVolunteering/JSPs/mySharing.jsp">Sharing</a></li>
-							</ul></li>
+							<%
+								} else {
+							%>
+							<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown">MyVolunteering<strong class="caret"></strong></a>
+								<ul class="dropdown-menu">
+									<li><a href="myProfile&Events.jsp">Profile</a>
+									</li>
+									<li class="divider">
+									<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>
+									</li>
+									<li class="divider">
+									<li><a href="/myVolunteering/JSPs/mySharing.jsp">Sharing</a></li>
+								</ul></li>
+							<%
+								}
+							%>
 
-						<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
+							<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
 						<li>
 							<%
 								if (user == null) {
 							%>
-							<button type="submit" class="btn btn-default">
+							<button type="submit" class="btn btn-link">
 								<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
 							</button>
-							<button type="button" class="btn btn-default navbar-btn">
+							|
+							<button type="button" class="btn btn-link navbar-btn">
 								<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
 							</button>
 						</li>

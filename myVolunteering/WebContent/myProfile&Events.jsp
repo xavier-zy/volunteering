@@ -20,7 +20,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>my profile & events</title>
+<title>VOLUNTEERING | my profile & events</title>
 <meta name="description" content="">
 
 <!-- CSS -->
@@ -64,25 +64,34 @@
 						<li><a href="/myVolunteering/index.jsp">Home</a></li>
 						<li><a href="/myVolunteering/JSPs/events.jsp">Events</a></li>
 						<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
-
+						<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
+						
 						<li class="dropdown" class="active"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown">MyVolunteering<strong
 								class="caret"></strong></a>
 							<ul class="dropdown-menu">
-								<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Profile</a>
+								<li><a href="#">Profile</a>
 								</li>
 								<li class="divider">
-								<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>
+								<li><a href="#">Events</a>
 								</li>
 								<li class="divider">
 								<li><a href="/myVolunteering/JSPs/mySharing.jsp">Sharing</a></li>
 							</ul></li>
 
 						<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
-						<li><a href="#"><%=user.getUserName()%></a>
-							<form method="post" action="../LogoutController">
-								<button>Log out</button>
-							</form>
+						<li class="dropdown">
+							<a
+								href="/myVolunteering/JSPs/myProfile&Events.jsp"
+								class="dropdown-toggle" data-toggle="dropdown"> <span class="username"><%=user.getUserName()%></span>
+							</a>
+								<ul class="dropdown-menu">
+									<li>
+										<form method="post" action="LogoutController">
+											<button class="btn btn-link">Log out</button>
+										</form>
+									</li>
+								</ul></li>
 					</ul>
 
 				</div>

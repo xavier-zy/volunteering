@@ -31,7 +31,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>resources</title>
+<title>VOLUNTEERING | resources</title>
 <meta name="description" content="">
 
 <!-- CSS -->
@@ -61,50 +61,76 @@
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="/myVolunteering/index.jsp">Home</a></li>
-						<li><a href="/myVolunteering/JSPs/events.jsp">Events</a></li>
+						<li><a href="/myVolunteering/events.jsp">Events</a></li>
 						<li  class="active"><a href="#">Resources</a></li>
+						<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
+							<%
+								if (user != null && (user.getLevel().equals("0"))) {
+							%>
+							<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown">Management<strong class="caret"></strong></a>
+								<ul class="dropdown-menu">
+									<li><a href="newsPublishing.jsp">News publishing</a></li>
+									<li class="divider">
+									<li><a href="/myVolunteering/JSPs/eventsPublishing.jsp">Events
+											publishing</a></li>
+								</ul></li>
 
-						<li class="dropdown"><a href="my%20volunteering.html"
-							class="dropdown-toggle" data-toggle="dropdown">MyVolunteering<strong
-								class="caret"></strong></a>
-							<ul class="dropdown-menu">
-								<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Profile</a>
-								</li>
-								<li class="divider">
-								<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>
-								</li>
-								<li class="divider">
-								<li><a href="/myVolunteering/JSPs/mySharing.jsp">Sharing</a></li>
-							</ul></li>
+							<%
+								} else {
+							%>
+							<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown">MyVolunteering<strong class="caret"></strong></a>
+								<ul class="dropdown-menu">
+									<li><a href="myProfile&Events.jsp">Profile</a>
+									</li>
+									<li class="divider">
+									<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>
+									</li>
+									<li class="divider">
+									<li><a href="/myVolunteering/JSPs/mySharing.jsp">Sharing</a></li>
+								</ul></li>
+							<%
+								}
+							%>
 
-						<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
-						<li>
-							<% if (user == null) {%>
-							<button type="submit" class="btn btn-default">
-								<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
-							</button>
-							<button type="button" class="btn btn-default navbar-btn">
-								<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
-							</button> 
-							<% } else { %>
-							<div id="loginDiv" style="margin-left: 10px; margin-top: 8px;">
-								<a style="margin-right: 10px; color: #161617" href="/myVolunteering/JSPs/myProfile&Events.jsp">
-									<%-- <span>
-										<img
-										style="margin-right: 10px;" class="img-rounded" width="50px"
-										src="<%= basePath+user.getHeadImg()%>">
-									</span --%>
-									<%=user.getUserName()%>
-								</a> 
-								<a  style= "color: #161617" href="<%=request.getContextPath()%>/com.Controller/LogoutController">
-									Log out
-								</a>
-							</div> <%
- 	}
- %>
-						</li>
-					</ul>
+							<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
 
+
+
+
+							<%
+								if (user == null) {
+							%>
+							<li>
+								<button type="submit" class="btn btn-link">
+									<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
+								</button>
+								|
+								<button type="button" class="btn btn-link navbar-btn">
+									<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
+								</button>
+							</li>
+							<%
+								} else {
+							%>
+							<li class="dropdown"><a
+								href="/myVolunteering/JSPs/myProfile&Events.jsp"
+								class="dropdown-toggle" data-toggle="dropdown"> <%=user.getUserName()%>
+							</a>
+								<ul class="dropdown-menu">
+									<li>
+										<form method="post" action="LogoutController">
+											<button>Log out</button>
+										</form>
+									</li>
+								</ul></li>
+
+							<%
+								}
+							%>
+
+						</ul>
 				</div>
 				</nav>
 			</div>

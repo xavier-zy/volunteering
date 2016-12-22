@@ -8,12 +8,12 @@
 			+ path + "/";
 	User user = (User) session.getAttribute("user");
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>publish events</title>
+<title>VOLUNTEERING | admin-publish events</title>
 <meta name="description" content="">
 
 <!-- CSS -->
@@ -21,6 +21,17 @@
 <link href="/myVolunteering/css/mycss.css" rel="stylesheet">
 </head>
 
+<%
+	if (user == null || user.getLevel().equals("1")) {
+%>
+<script type="text/javascript">
+	alert("Please log in as a administrator");
+	window.location.href = "/myVolunteering/JSPs/Login.jsp";
+</script>
+<%
+	} else {
+		
+%>
 
 <body>
 	<div class="container">
@@ -49,29 +60,16 @@
 							class="dropdown-toggle" data-toggle="dropdown">Management<strong
 								class="caret"></strong></a>
 							<ul class="dropdown-menu">
-								<li><a href="newsPublishing.jsp">News publishing</a></li>
+								<li><a href="../newsPublishing.jsp">News publishing</a></li>
 								<li class="divider">
-								<li><a href="/myVolunteering/JSPs/eventsPublishing.jsp">Events
+								<li class="active"><a href="#">Events
 										publishing</a></li>
 							</ul></li>
 						<li><a href="about%20us.html">About Us</a></li>
 						<li>
-							<%
-								if (user == null) {
-							%>
-							<button type="submit" class="btn btn-default">
-								<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
-							</button>
-							<button type="button" class="btn btn-default navbar-btn">
-								<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
-							</button>
-						</li>
-						<%
-							} else {
-						%>
 						<li class="dropdown"><a
 							href="/myVolunteering/JSPs/myProfile&Events.jsp"
-							class="dropdown-toggle" data-toggle="dropdown"> <%=user.getUserName()%>
+							class="dropdown-toggle" data-toggle="dropdown"> <span class="adminname"><%=user.getUserName()%></span>
 						</a>
 							<ul class="dropdown-menu">
 								<li>
@@ -80,9 +78,6 @@
 									</form>
 								</li>
 							</ul></li>
-						<%
-							}
-						%>
 
 					</ul>
 
@@ -95,13 +90,13 @@
 	<section id="inner-page">
 	<div class="container">
 		<div class="center">
-			<h2>信息发布中心</h2>
-			<p class="lead">Manager only</p>
+			<h2>Information Publishing Center</h2>
+			<p class="lead">administrator only</p>
 
 			<ul class="nav nav-tabs">
 				<li role="presentation" class="active"><a
-					href="publishActivity.jsp">发布活动</a></li>
-				<li role="presentation"><a href="../newsPublishing.jsp">发布新闻</a></li>
+					href="publishActivity.jsp">publish events</a></li>
+				<li role="presentation"><a href="../newsPublishing.jsp">publish resources</a></li>
 
 			</ul>
 
@@ -162,5 +157,6 @@
 	<script
 		src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
+<% } %>
 
 </html>
