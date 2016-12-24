@@ -101,12 +101,18 @@
 							%>
 							<li class="dropdown"><a
 								href="/myVolunteering/JSPs/myProfile&Events.jsp"
-								class="dropdown-toggle" data-toggle="dropdown"> <%=user.getUserName()%>
+								class="dropdown-toggle" data-toggle="dropdown"> <%
+ 	if (user.getLevel().equals("0")) {
+ %> <span class="adminname"><%=user.getUserName()%></span> <%
+ 	} else {
+ %> <span class="username"><%=user.getUserName()%></span> <%
+ 	}
+ %>
 							</a>
 								<ul class="dropdown-menu">
 									<li>
 										<form method="post" action="LogoutController">
-											<button>Log out</button>
+											<button class="btn btn-link">Log out</button>
 										</form>
 									</li>
 								</ul></li>
@@ -121,14 +127,13 @@
 				</nav>
 			</div>
 		</div>
-	</div>
-	<section id="inner-page">
-		<div class="container">
+
+		<div class="panel mypanel1" >
 			<div class="center" style="margin: 80px 80px;">
-				<h2>About us</h2>
+				<h2 style="color:rgb(255, 109, 60)">About us</h2>
 				<div class="post-footer"></div>
 				<br />
-				<h3 class="page-intro">Volunteering is one of the most
+				<h3 class="page-intro" style="color:#5fb25f">Volunteering is one of the most
 					rewarding things you can do.</h3>
 				<p>And thinking about how you want to benefit from volunteering
 					is a good start to finding an opportunity that's right for you.</p>
@@ -145,34 +150,57 @@
 				<p>Through volunteering you can challenge yourself to try
 					something different, achieve personal goals, practice using your
 					skills and discover hidden talents.</p>
-
-			</div>
+		</div>
+		
+		<div class="panel mypanel2" >
 			<div class="center">
-				<h2>Contact us</h2>
+				<h2 style="color:rgb(255, 109, 60)">Contact us</h2>
 				<div class="post-footer"></div>
 					<br />
 				<div class="row contact_top">
 					<div class="col-md-4 contact_details">
-						<i class="fa fa-map-marker fa-2x"></i>
-						<p>Shanghai,China</p>
+						<span class="glyphicon glyphicon-map-marker" style="color: rgb(32, 141, 200); font-size: 20px;"></span>
+						&nbsp;<strong>Shanghai,China</strong>
 					</div>
 					<div class="col-md-4 contact_details">
-						<i class="fa fa-envelope-o fa-2x"></i>
-						<p>123456789@qq.com</p>
+						<span class="glyphicon glyphicon-envelope" style="color: rgb(32, 141, 200); font-size: 20px;"></span>
+						&nbsp;<strong>123456789@qq.com</strong>
+						
 					</div>
 					<div class="col-md-4 contact_details">
-						<i class="fa fa-phone fa-2x"></i>
-						<p>+86 65980808</p>
+						<span class="glyphicon glyphicon-earphone" style="color: rgb(32, 141, 200); font-size: 20px;"></span>
+						&nbsp;<strong>+86 65980808</strong>
 					</div>
 				</div>
 			</div>
-			<!--/.row-->
-			<!--/.row-->
+			</div>
+			
 		</div>
-		<!--/.container-->
-	</section>
-	<!-- 
-    script -->
+
+
+		<div class="footer">
+			<div class="mypanel">
+				<div class="row">
+					<div class="col-sm-6">Copyright &copy; 2016 T_11 for Java EE
+						final project</div>
+					<div class="col-sm-6" style="text-align:right">
+						<div class="follow-us">
+							<span>for more information: </span> &nbsp;<span
+								class="glyphicon glyphicon-globe"
+								style="color: rgb(255, 140, 60);" >globe</span>&nbsp; <span
+								class="glyphicon glyphicon-copyright-mark"
+								style="color: rgb(255, 140, 60);">links</span>&nbsp; <span
+								class="glyphicon glyphicon-link"
+								style="color: rgb(255, 140, 60);">flag</span>&nbsp;<span
+								class="glyphicon glyphicon-info-sign"
+								style="color: rgb(255, 140, 60);">info</span>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>	
+	</div>
+	
 	<script
 		src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script

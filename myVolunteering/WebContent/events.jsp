@@ -132,9 +132,17 @@
 							</a>
 								<ul class="dropdown-menu">
 									<li>
+										<li class="dropdown"><a
+								href="/myVolunteering/JSPs/myProfile&Events.jsp"
+								class="dropdown-toggle" data-toggle="dropdown"> <%=user.getUserName()%>
+							</a>
+								<ul class="dropdown-menu">
+									<li>
 										<form method="post" action="LogoutController">
-											<button>Log out</button>
+											<button class="btn btn-link">Log out</button>
 										</form>
+									</li>
+								</ul></li>
 									</li>
 								</ul></li>
 							<%

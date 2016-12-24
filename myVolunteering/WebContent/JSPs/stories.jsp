@@ -99,12 +99,18 @@
 							<li class="dropdown">
 	 							<a href="/myVolunteering/JSPs/myProfile&Events.jsp" 
 	 							class="dropdown-toggle" data-toggle="dropdown">
-	 							<%=user.getUserName()%>
+	 							<%
+ 	if (user.getLevel().equals("0")) {
+ %> <span class="adminname"><%=user.getUserName()%></span> <%
+ 	} else {
+ %> <span class="username"><%=user.getUserName()%></span> <%
+ 	}
+ %>
 	 							</a>
 									<ul class="dropdown-menu">
 										<li>
-										<form method="post" action="../LogoutController">
-											<button>Log out</button>
+										<form method="post" action="LogoutController">
+											<button class="btn btn-link">Log out</button>
 										</form>
 										</li>
 									</ul>
@@ -123,7 +129,7 @@
 			<main class="col-md-8 main-content">
 			<div class="post" style="text-align: center">
 				<h2><%=theStory.getTitle()%></h2>
-				<span style="float: center;"> Author:&nbsp;<%=UserHandler.getTUserById(theStory.getUserId()).getUserName()%>&nbsp;&nbsp;&nbsp;
+				<span style="float: center;"> Author:&nbsp;<span class="username"><%=UserHandler.getTUserById(theStory.getUserId()).getUserName()%></span>&nbsp;&nbsp;&nbsp;
 					Publish time:&nbsp;<%=theStory.getWrittenTime()%>&nbsp;&nbsp;&nbsp;
 
 					<span class="glyphicon glyphicon-heart"
@@ -131,7 +137,7 @@
 
 					<button type="button" class="btn btn-link"
 						onclick="addLike('<%=aid%>')">
-						<span class="glyphicon glyphicon-ok"
+						<span class="glyphicon glyphicon-thumbs-up"
 							style="color: rgb(255, 128, 47);"></span> like the story
 					</button>
 				</span> <br>
@@ -288,9 +294,8 @@
 							list</h4>
 						<table class="table table-hover">
 							<tr>
-								<td><strong>story title</strong></td>
+								<td style="text-align:left"><strong>story title</strong></td>
 								<td><strong>liked</strong></td>
-								<td><strong>publish time</strong></td>
 								<td></td>
 							</tr>
 
@@ -300,9 +305,8 @@
 							%>
 							<tr>
 
-								<td><%=stories.get(i).getTitle()%></td>
-								<td><%=stories.get(i).getLike()%></td>
-								<td><%=stories.get(i).getWrittenTime()%></td>
+								<td style="text-align:left"><%=stories.get(i).getTitle()%></td>
+								<td style="color:rgb(255, 0, 0)"><%=stories.get(i).getLike()%></td>
 								<td><a
 									href="../storyDetais.jsp?id=<%=stories.get(i).getStoryId()%>">more</a>
 								</td>

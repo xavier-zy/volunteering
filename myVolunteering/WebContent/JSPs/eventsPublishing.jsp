@@ -30,7 +30,6 @@
 </script>
 <%
 	} else {
-		
 %>
 
 <body>
@@ -39,116 +38,127 @@
 			<div class="col-md-12 column">
 
 				<nav class="navbar navbar-default" role="navigation">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span><span
-							class="icon-bar"></span><span class="icon-bar"></span><span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.html">Volunteering</a>
-				</div>
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span><span
+								class="icon-bar"></span><span class="icon-bar"></span><span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="index.html">Volunteering</a>
+					</div>
 
-				<div class="collapse navbar-collapse"
-					id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/myVolunteering/index.jsp">Home</a></li>
-						<li><a href="events.html">Events</a></li>
-						<li><a href="resouces.html">Resources</a></li>
+					<div class="collapse navbar-collapse"
+						id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="/myVolunteering/index.jsp"><span
+									class="glyphicon glyphicon-home"></span> Home</a></li>
+							<li><a href="events.html">Events</a></li>
+							<li><a href="resouces.html">Resources</a></li>
+							<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
 
-						<li class="dropdown" class="active"><a
-							class="dropdown-toggle" data-toggle="dropdown">Management<strong
-								class="caret"></strong></a>
-							<ul class="dropdown-menu">
-								<li><a href="../newsPublishing.jsp">News publishing</a></li>
-								<li class="divider">
-								<li class="active"><a href="#">Events
-										publishing</a></li>
-							</ul></li>
-						<li><a href="about%20us.html">About Us</a></li>
-						<li>
-						<li class="dropdown"><a
-							href="/myVolunteering/JSPs/myProfile&Events.jsp"
-							class="dropdown-toggle" data-toggle="dropdown"> <span class="adminname"><%=user.getUserName()%></span>
-						</a>
-							<ul class="dropdown-menu">
-								<li>
-									<form method="post" action="LogoutController">
-										<button>Log out</button>
-									</form>
-								</li>
-							</ul></li>
+							<li class="dropdown" class="active"><a
+								class="dropdown-toggle" data-toggle="dropdown">Management<strong
+									class="caret"></strong></a>
+								<ul class="dropdown-menu">
+									<li><a href="../newsPublishing.jsp">News publishing</a></li>
+									<li class="divider">
+									<li class="active"><a href="#">Events publishing</a></li>
+								</ul></li>
+							<li><a href="about%20us.html">About Us</a></li>
+							<li>
+							<li class="dropdown"><a
+								href="/myVolunteering/JSPs/myProfile&Events.jsp"
+								class="dropdown-toggle" data-toggle="dropdown"> <span
+									class="adminname"><%=user.getUserName()%></span>
+							</a>
+								<ul class="dropdown-menu">
+									<li>
+										<form method="post" action="LogoutController">
+											<button class="btn btn-link">Log out</button>
+										</form>
+									</li>
+								</ul></li>
 
-					</ul>
+						</ul>
 
-				</div>
+					</div>
 				</nav>
 			</div>
 		</div>
-	</div>
 
-	<section id="inner-page">
-	<div class="container">
 		<div class="center">
-			<h2>Information Publishing Center</h2>
+			<h3>Information Publishing Center</h3>
 			<p class="lead">administrator only</p>
-
+			<br>
 			<ul class="nav nav-tabs">
 				<li role="presentation" class="active"><a
 					href="publishActivity.jsp">publish events</a></li>
-				<li role="presentation"><a href="../newsPublishing.jsp">publish resources</a></li>
+				<li role="presentation"><a href="../newsPublishing.jsp">publish
+						resources</a></li>
 
 			</ul>
 
 		</div>
 
-
-		<!--/.row-->
-
-
-		<div>
-			<div class="center">
-				<h3>publish a new event</h3>
-			</div>
-			<div class="row">
+		<div class="panel" style="padding-top:20px; background:rgba(255,255,255,0.5)">
+			<div class="row" style="margin-left:10%">
 				<form id="main-contact-form" class="contact-form"
 					name="contact-form" method="post"
 					action="../EventsPublishingController">
-					<div class="col-sm-5 col-sm-offset-1">
+					
+						<label for="meeting">time：</label>
 						<div class="form-group">
-							<!-- <label>活动时间 *</label>
-            <input type="email" name="email" class="form-control" required="required"> -->
-							<label for="meeting">活动时间：</label><input id="eventDate"
+							<input id="eventDate"
 								name="eventDate" type="date" />
 						</div>
 
+						<label>title *</label> 
 						<div class="form-group">
-							<label>活动名称 *</label> <input type="text" id="title" name="title"
-								class="form-control" required="required">
+							<input type="text" id="title" name="title"
+								class="form-control" required="required" style="width:50%">
 						</div>
 
-					</div>
-					<div class="col-sm-5">
+			
+						<label>content *</label>
 						<div class="form-group">
-							<label>具体内容 *</label>
 							<textarea name="introduction" id="introduction" required
-								class="form-control" rows="8"></textarea>
+								class="form-control" rows="8" style="width:70%"></textarea>
 						</div>
 						<div class="form-group">
-							<button name="submit" class="btn btn-primary btn-lg">Publish</button>
+							<button name="submit" class="btn btn-primary">Publish</button>
 						</div>
-					</div>
 				</form>
 			</div>
 		</div>
-		<!--/.row-->
-		<br /> <br /> <br />
 
+		<div class="footer" style="margin-top:30px">
+			<div class="mypanel">
+				<div class="row">
+					<div class="col-sm-6">Copyright &copy; 2016 T_11 for Java EE
+						final project</div>
+					<div class="col-sm-6" style="text-align: right">
+						<div class="follow-us">
+							<span>for more information: </span> &nbsp;<span
+								class="glyphicon glyphicon-globe"
+								style="color: rgb(255, 140, 60);">globe</span>&nbsp; <span
+								class="glyphicon glyphicon-copyright-mark"
+								style="color: rgb(255, 140, 60);">links</span>&nbsp; <span
+								class="glyphicon glyphicon-link"
+								style="color: rgb(255, 140, 60);">flag</span>&nbsp;<span
+								class="glyphicon glyphicon-info-sign"
+								style="color: rgb(255, 140, 60);">info</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
 	</div>
 
-	<!--/.container--> <br>
+	<!--/.container-->
 	<br>
-	</section>
+	<br>
 
 	<!-- 
     script -->
@@ -157,6 +167,8 @@
 	<script
 		src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
-<% } %>
+<%
+	}
+%>
 
 </html>

@@ -19,19 +19,19 @@
 }
 
 .my_jumbotron {
-	padding: 30px 50px;
+	padding: 30px;
 	margin-left: 50px;
 	margin-right: 50px;
 	position: relative;
 	color: inherit;
 	background-color: #eee;
-	text-align: center;
-	line-height: 200%;
 }
 
 .center {
 	text-align: center;
-	padding-bottom: 55px;
+	padding-bottom: 30px;
+	margin-top:40px;
+	
 }
 
 .center h2, h3 {

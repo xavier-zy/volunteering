@@ -52,7 +52,8 @@
 					<div class="collapse navbar-collapse"
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="/myVolunteering/index.jsp">Home</a></li>
+							<li><a href="/myVolunteering/index.jsp"><span
+									class="glyphicon glyphicon-home"></span> Home</a></li>
 							<li><a href="events.html">Events</a></li>
 							<li><a href="resouces.html">Resources</a></li>
 							<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
@@ -68,15 +69,14 @@
 								</ul></li>
 							<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
 							<li>
-			
 							<li class="dropdown"><a
 								href="/myVolunteering/JSPs/myProfile&Events.jsp"
-								class="dropdown-toggle" data-toggle="dropdown"> <%=user.getUserName()%>
-							</a>
+								class="dropdown-toggle" data-toggle="dropdown"><span
+									class="adminname"><%=user.getUserName()%></span> </a>
 								<ul class="dropdown-menu">
 									<li>
 										<form method="post" action="LogoutController">
-											<button>Log out</button>
+											<button class="btn btn-link">Log out</button>
 										</form>
 									</li>
 								</ul>
@@ -84,207 +84,199 @@
 				</nav>
 			</div>
 		</div>
-	</div>
 
-	<section id="inner-page">
-		<div class="container">
-			<div class="center">
-				<h2>信息发布中心</h2>
-				<p class="lead">Manager only</p>
 
-				<ul class="nav nav-tabs">
-					<li role="presentation"><a
-						href="/myVolunteering/JSPs/eventsPublishing.jsp">发布活动</a></li>
-					<li role="presentation" class="active"><a
-						href="publishNews.jsp">发布新闻</a></li>
+		<div class="center">
+			<h3>News Publishing Center</h3>
+			<p class="lead">Manager only</p>
+			<br>
+			<ul class="nav nav-tabs">
+				<li role="presentation"><a
+					href="/myVolunteering/JSPs/eventsPublishing.jsp">publish events</a></li>
+				<li role="presentation" class="active"><a
+					href="publishNews.jsp">publish news</a></li>
 
-				</ul>
-
-			</div>
-
-			<div>
-				<div class="center">
-					<h3>发布新闻</h3>
-				</div>
-				<div class="row">
-
-					<form id="main-contact-form" class="contact-form"
-						name="contact-form" method="post" action="">
-
-						<div class="col-sm-9 col-sm-offset-1">
-							<div class="form-group">
-								<label>新闻标题 *</label> <input type="text" name="title" id="title"
-									class="form-control" required="required">
-							</div>
-						</div>
-
-						<div class="col-sm-10 col-sm-offset-1">
-							<label>正文 *</label>
-							<script type="text/plain" id="myEditor"
-								style="width: 800px; height: 500px;">
-                            </script>
-							<div class="form-group">
-								<button type="button" class="btn btn-primary btn-lg"
-									onclick="publishNews()">发布</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-			<!--/.row-->
-			<br /> <br /> <br />
-
+			</ul>
 		</div>
 
-		<!--/.container-->
-		<br> <br>
-	</section>
-	<!--/#inner-page-->
+		<div class="panel" style="padding-top:20px; background:rgba(255,255,255,0.5)">
+			<div class="row" style="margin-left: 10%">
 
-	<footer id="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6">Copyright &copy; 2016 tjzyz</div>
-				<div class="col-sm-6">
-					<div class="follow-us">
-						<a class="fa fa-facebook social-icon" href="#"></a> <a
-							class="fa fa-twitter social-icon" href="#"></a> <a
-							class="fa fa-linkedin social-icon" href="#"></a> <a
-							class="fa fa-google-plus social-icon" href="#"></a>
+				<form id="main-contact-form" class="contact-form"
+					name="contact-form" method="post" action="">
+
+					<label>news title *</label>
+					<div class="form-group">
+						<input type="text" name="title" id="title" class="form-control"
+							required="required" style="width: 50%">
+					</div>
+
+					<label>content *</label>
+					<script type="text/plain" id="myEditor"
+						style="width: 800px; height: 500px;">
+                            </script>
+					<br>
+					<div class="form-group">
+						<button type="button" class="btn btn-primary"
+							onclick="publishNews()">publish</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+			<div class="footer" style="margin-top:30px">
+				<div class="mypanel">
+					<div class="row">
+						<div class="col-sm-6">Copyright &copy; 2016 T_11 for Java EE
+							final project</div>
+						<div class="col-sm-6" style="text-align: right">
+							<div class="follow-us">
+								<span>for more information: </span> &nbsp;<span
+									class="glyphicon glyphicon-globe"
+									style="color: rgb(255, 140, 60);">globe</span>&nbsp; <span
+									class="glyphicon glyphicon-copyright-mark"
+									style="color: rgb(255, 140, 60);">links</span>&nbsp; <span
+									class="glyphicon glyphicon-link"
+									style="color: rgb(255, 140, 60);">flag</span>&nbsp;<span
+									class="glyphicon glyphicon-info-sign"
+									style="color: rgb(255, 140, 60);">info</span>
+							</div>
+						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
-	</footer>
-	<!--/#footer-->
 
 
 
-	<script src="/myVolunteering/js/jquery.js"></script>
-	<script src="/myVolunteering/js/bootstrap.min.js"></script>
-	<script src="/myVolunteering/js/jquery.prettyPhoto.js"></script>
-	<script src="/myVolunteering/js/jquery.isotope.min.js"></script>
-	<script src="/myVolunteering/js/main.js"></script>
-	<script src="/myVolunteering/js/umeditor.config.js"></script>
-	<script src="/myVolunteering/js/umeditor.min.js"></script>
-	<script type="text/javascript">
-		//实例化编辑器
-		var um = UM.getEditor('myEditor');
-		um.addListener('blur', function() {
-			$('#focush2').html('编辑器失去焦点了')
-		});
-		um.addListener('focus', function() {
-			$('#focush2').html('')
-		});
-		//按钮的操作
-		function insertHtml() {
-			var value = prompt('插入html代码', '');
-			um.execCommand('insertHtml', value)
-		}
 
-		function isFocus() {
-			alert(um.isFocus())
-		}
 
-		function doBlur() {
-			um.blur()
-		}
+		<script src="/myVolunteering/js/jquery.js"></script>
+		<script src="/myVolunteering/js/bootstrap.min.js"></script>
+		<script src="/myVolunteering/js/jquery.prettyPhoto.js"></script>
+		<script src="/myVolunteering/js/jquery.isotope.min.js"></script>
+		<script src="/myVolunteering/js/main.js"></script>
+		<script src="/myVolunteering/js/umeditor.config.js"></script>
+		<script src="/myVolunteering/js/umeditor.min.js"></script>
+		<script type="text/javascript">
+			//实例化编辑器
+			var um = UM.getEditor('myEditor');
+			um.addListener('blur', function() {
+				$('#focush2').html('编辑器失去焦点了')
+			});
+			um.addListener('focus', function() {
+				$('#focush2').html('')
+			});
+			//按钮的操作
+			function insertHtml() {
+				var value = prompt('插入html代码', '');
+				um.execCommand('insertHtml', value)
+			}
 
-		function createEditor() {
-			enableBtn();
-			um = UM.getEditor('myEditor');
-		}
+			function isFocus() {
+				alert(um.isFocus())
+			}
 
-		function getAllHtml() {
-			alert(UM.getEditor('myEditor').getAllHtml())
-		}
+			function doBlur() {
+				um.blur()
+			}
 
-		function getContent() {
-			var arr = [];
-			arr.push("使用editor.getContent()方法可以获得编辑器的内容");
-			arr.push("内容为：");
-			arr.push(UM.getEditor('myEditor').getContent());
-			alert(arr.join("\n"));
-		}
+			function createEditor() {
+				enableBtn();
+				um = UM.getEditor('myEditor');
+			}
 
-		function getPlainTxt() {
-			var arr = [];
-			arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
-			arr.push("内容为：");
-			arr.push(UM.getEditor('myEditor').getPlainTxt());
-			alert(arr.join('\n'))
-		}
+			function getAllHtml() {
+				alert(UM.getEditor('myEditor').getAllHtml())
+			}
 
-		function setContent(isAppendTo) {
-			var arr = [];
-			arr.push("使用editor.setContent('欢迎使用umeditor')方法可以设置编辑器的内容");
-			UM.getEditor('myEditor').setContent('欢迎使用umeditor', isAppendTo);
-			alert(arr.join("\n"));
-		}
+			function getContent() {
+				var arr = [];
+				arr.push("使用editor.getContent()方法可以获得编辑器的内容");
+				arr.push("内容为：");
+				arr.push(UM.getEditor('myEditor').getContent());
+				alert(arr.join("\n"));
+			}
 
-		function setDisabled() {
-			UM.getEditor('myEditor').setDisabled('fullscreen');
-			disableBtn("enable");
-		}
+			function getPlainTxt() {
+				var arr = [];
+				arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
+				arr.push("内容为：");
+				arr.push(UM.getEditor('myEditor').getPlainTxt());
+				alert(arr.join('\n'))
+			}
 
-		function setEnabled() {
-			UM.getEditor('myEditor').setEnabled();
-			enableBtn();
-		}
+			function setContent(isAppendTo) {
+				var arr = [];
+				arr.push("使用editor.setContent('欢迎使用umeditor')方法可以设置编辑器的内容");
+				UM.getEditor('myEditor').setContent('欢迎使用umeditor', isAppendTo);
+				alert(arr.join("\n"));
+			}
 
-		function getText() {
-			//当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
-			var range = UM.getEditor('myEditor').selection.getRange();
-			range.select();
-			var txt = UM.getEditor('myEditor').selection.getText();
-			alert(txt)
-		}
+			function setDisabled() {
+				UM.getEditor('myEditor').setDisabled('fullscreen');
+				disableBtn("enable");
+			}
 
-		function getContentTxt() {
-			var arr = [];
-			arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
-			arr.push("编辑器的纯文本内容为：");
-			arr.push(UM.getEditor('myEditor').getContentTxt());
-			alert(arr.join("\n"));
-		}
+			function setEnabled() {
+				UM.getEditor('myEditor').setEnabled();
+				enableBtn();
+			}
 
-		function hasContent() {
-			var arr = [];
-			arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
-			arr.push("判断结果为：");
-			arr.push(UM.getEditor('myEditor').hasContents());
-			alert(arr.join("\n"));
-		}
+			function getText() {
+				//当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
+				var range = UM.getEditor('myEditor').selection.getRange();
+				range.select();
+				var txt = UM.getEditor('myEditor').selection.getText();
+				alert(txt)
+			}
 
-		function setFocus() {
-			UM.getEditor('myEditor').focus();
-		}
+			function getContentTxt() {
+				var arr = [];
+				arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
+				arr.push("编辑器的纯文本内容为：");
+				arr.push(UM.getEditor('myEditor').getContentTxt());
+				alert(arr.join("\n"));
+			}
 
-		function deleteEditor() {
-			disableBtn();
-			UM.getEditor('myEditor').destroy();
-		}
+			function hasContent() {
+				var arr = [];
+				arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
+				arr.push("判断结果为：");
+				arr.push(UM.getEditor('myEditor').hasContents());
+				alert(arr.join("\n"));
+			}
 
-		function disableBtn(str) {
-			var div = document.getElementById('btns');
-			var btns = domUtils.getElementsByTagName(div, "button");
-			for (var i = 0, btn; btn = btns[i++];) {
-				if (btn.id == str) {
-					domUtils.removeAttributes(btn, [ "disabled" ]);
-				} else {
-					btn.setAttribute("disabled", "true");
+			function setFocus() {
+				UM.getEditor('myEditor').focus();
+			}
+
+			function deleteEditor() {
+				disableBtn();
+				UM.getEditor('myEditor').destroy();
+			}
+
+			function disableBtn(str) {
+				var div = document.getElementById('btns');
+				var btns = domUtils.getElementsByTagName(div, "button");
+				for (var i = 0, btn; btn = btns[i++];) {
+					if (btn.id == str) {
+						domUtils.removeAttributes(btn, [ "disabled" ]);
+					} else {
+						btn.setAttribute("disabled", "true");
+					}
 				}
 			}
-		}
 
-		function enableBtn() {
-			var div = document.getElementById('btns');
-			var btns = domUtils.getElementsByTagName(div, "button");
-			for (var i = 0, btn; btn = btns[i++];) {
-				domUtils.removeAttributes(btn, [ "disabled" ]);
+			function enableBtn() {
+				var div = document.getElementById('btns');
+				var btns = domUtils.getElementsByTagName(div, "button");
+				for (var i = 0, btn; btn = btns[i++];) {
+					domUtils.removeAttributes(btn, [ "disabled" ]);
+				}
 			}
-		}
-	</script>
+		</script>
 </body>
 
 </html>

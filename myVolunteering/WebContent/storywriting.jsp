@@ -21,7 +21,6 @@
 <!-- core CSS -->
 <link href="/myVolunteering/css/bootstrap.min.css" rel="stylesheet">
 <link href="/myVolunteering/css/font-awesome.min.css" rel="stylesheet">
-<link href="/myVolunteering/css/prettyPhoto.css" rel="stylesheet">
 <link href="/myVolunteering/css/mycss.css" rel="stylesheet">
 <link href="/myVolunteering/css/responsive.css" rel="stylesheet">
 <link href="/myVolunteering/css/umeditor.min.css" rel="stylesheet">
@@ -87,70 +86,60 @@
 				</nav>
 			</div>
 		</div>
-	</div>
 
-	<section id="inner-page">
-		<div class="container">
-			<div class="center">
-				<h2>My Story</h2>
-				<p class="lead">Manager only</p>
-			</div>
 
-			<div>
-				<div class="center">
-					<h3>write a new story</h3>
-				</div>
-				<div class="row">
-
-					<form id="main-contact-form" class="contact-form"
-						name="contact-form" method="post" action="">
-
-						<div class="col-sm-9 col-sm-offset-1">
-							<div class="form-group">
-								<label>title *</label> <input type="text" name="title"
-									id="title" class="form-control" required="required">
-							</div>
-						</div>
-
-						<div class="col-sm-10 col-sm-offset-1">
-							<label>content *</label>
-							<script type="text/plain" id="myEditor"
-								style="width: 800px; height: 500px;">
-                            </script>
-							<div class="form-group">
-								<button type="button" class="btn btn-primary btn-lg"
-									onclick="addStory()">发布</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-			<!--/.row-->
-			<br /> <br /> <br />
-
+		<div class="center">
+			<h2>Write a New Story</h2>
+			<p class="lead">volunteer only</p>
 		</div>
+				<div class="panel" style="padding-top:20px; background:rgba(255,255,255,0.5)">
+		
+			<div class="row" style="margin-left:5%">
 
-		<!--/.container-->
-		<br> <br>
-	</section>
-	<!--/#inner-page-->
+				<form id="main-contact-form" class="contact-form"
+					name="contact-form">
 
-	<footer id="footer">
-		<div class="container">
+					<label>title *</label>
+					<div class="form-group">
+						<input type="text" name="title" id="title" class="form-control"
+							required="required" style="width: 70%">
+					</div>
+
+					<label>content *</label>
+					<script type="text/plain" id="myEditor"
+						style="width: 1000px; height: 500px;">
+                            </script>
+                    <br>
+					<div class="form-group">
+						<button type="button" class="btn btn-primary" onclick="addStory()">发布</button>
+					</div>
+				</form>
+			</div>
+			</div>
+
+
+	<div class="footer" style="margin-top:30px">
+		<div class="mypanel">
 			<div class="row">
-				<div class="col-sm-6">Copyright &copy; 2016 tjzyz</div>
-				<div class="col-sm-6">
+				<div class="col-sm-6">Copyright &copy; 2016 T_11 for Java EE
+					final project</div>
+				<div class="col-sm-6" style="text-align: right">
 					<div class="follow-us">
-						<a class="fa fa-facebook social-icon" href="#"></a> <a
-							class="fa fa-twitter social-icon" href="#"></a> <a
-							class="fa fa-linkedin social-icon" href="#"></a> <a
-							class="fa fa-google-plus social-icon" href="#"></a>
+						<span>for more information: </span> &nbsp;<span
+							class="glyphicon glyphicon-globe"
+							style="color: rgb(255, 140, 60);">globe</span>&nbsp; <span
+							class="glyphicon glyphicon-copyright-mark"
+							style="color: rgb(255, 140, 60);">links</span>&nbsp; <span
+							class="glyphicon glyphicon-link"
+							style="color: rgb(255, 140, 60);">flag</span>&nbsp;<span
+							class="glyphicon glyphicon-info-sign"
+							style="color: rgb(255, 140, 60);">info</span>
 					</div>
 				</div>
 			</div>
 		</div>
-	</footer>
-	<!--/#footer-->
+	</div>
+	</div>
 
 
 

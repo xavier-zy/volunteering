@@ -76,18 +76,23 @@
 									<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
 								</button> <%
  	} else {
+ %><li class="dropdown"><a
+								href="/myVolunteering/JSPs/myProfile&Events.jsp"
+								class="dropdown-toggle" data-toggle="dropdown"> <%
+ 	if (user.getLevel().equals("0")) {
+ %> <span class="adminname"><%=user.getUserName()%></span> <%
+ 	} else {
+ %> <span class="username"><%=user.getUserName()%></span> <%
+ 	}
  %>
-								<div id="loginDiv" style="margin-left: 10px; margin-top: 8px;">
-									<a style="margin-right: 10px; color: #161617"
-										href="/myVolunteering/JSPs/myProfile&Events.jsp"> <%-- <span>
-										<img
-										style="margin-right: 10px;" class="img-rounded" width="50px"
-										src="<%= basePath+user.getHeadImg()%>">
-									</span --%> <%=user.getUserName()%>
-									</a> <a style="color: #161617"
-										href="<%=request.getContextPath()%>/com.Controller/LogoutController">
-										Log out </a>
-								</div> <%
+							</a>
+								<ul class="dropdown-menu">
+									<li>
+										<form method="post" action="LogoutController">
+											<button class="btn btn-link">Log out</button>
+										</form>
+									</li>
+								</ul></li> <%
  	}
  %>
 							</li>
@@ -131,10 +136,12 @@
 					</div>
 		</aside>
 		<main class="col-md-8 main-content">
-		<div class="post" style="text-align: center">
+		<div class="post">
+				<div style="text-align: center">
 			<h3><%=NewsHandler.getNewsByNewsId(aid).getTitle()%></h3>
 			<span style="float: center;">published time:&nbsp;<%=NewsHandler.getNewsByNewsId(aid).getPublishTime()%>&nbsp;&nbsp;
 			</span> 
+			</div>
 			<div class="my_jumbotron">
 				<p><%=NewsHandler.getNewsByNewsId(aid).getContent()%></p>
 			</div>

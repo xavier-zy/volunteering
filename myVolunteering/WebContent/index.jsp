@@ -11,8 +11,7 @@
 	ArrayList<Stories> popularStories = StoriesHandler.getMostLikedStories();
 	ArrayList<Events> events = EventsHandler.getAllEvents();
 	ArrayList<News> news = NewsHandler.getAllNews();
-	/* ArrayList<Thoughts> thoughts = ThoughtsDao.getAllThoughts();
-	 */
+	
 %>
 <!DOCTYPE html >
 <html lang="en">
