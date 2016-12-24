@@ -55,6 +55,7 @@
 							<li><a href="/myVolunteering/index.jsp">Home</a></li>
 							<li><a href="events.html">Events</a></li>
 							<li><a href="resouces.html">Resources</a></li>
+							<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
 
 							<li class="dropdown" class="active"><a
 								class="dropdown-toggle" data-toggle="dropdown">Management<strong
@@ -65,7 +66,7 @@
 									<li><a href="/myVolunteering/JSPs/eventsPublishing.jsp">Events
 											publishing</a></li>
 								</ul></li>
-							<li><a href="about%20us.html">About Us</a></li>
+							<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
 							<li>
 			
 							<li class="dropdown"><a

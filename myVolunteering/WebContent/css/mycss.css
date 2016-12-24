@@ -242,14 +242,63 @@
 }
 
 .username {
-	font-family: monospace;
 	font-weight: 800;
-	font-size: 1.2em;
 	color: #EFA441;
 }
 .adminname {
-	font-family: monospace;
 	font-weight: 800;
-	font-size: 1.2em;
 	color: #5fb25f;
+}
+.mypanel-default2 {
+    width:30%;
+    margin-top: 20px;
+    background-color:#fff;
+}
+.mypanel-default3 {
+    width:50%;
+    margin-top: 20px;
+    padding:30px;
+    background-color:#fff;
+}
+.mypanel-default4 {
+    width:80%;
+    margin-top: 20px;
+    background-color:#fff;
+}
+.myform-group {
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-bottom: 10px;
+}
+.post-footer {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-top: 1px solid #ebebeb;
+    padding: 21px 0 0;
+}
+.mysidebar {
+	padding: 21px 30px;
+    position: relative;
+    background-color:#fff
+}
+.widget .title {
+    margin-top: 0;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #ebebeb;
+    margin-bottom: 21px;
+    position: relative;
+}
+
+.post {
+    padding: 35px;
+    background: #ffffff;
+    margin-bottom: 35px;
+    position: relative;
+    overflow: hidden;
+}
+.footer{
+	margin-top:20px;
+    padding:10px 20px 10px 20px;
+    color: #aaa;
+    background: #fff;
 }

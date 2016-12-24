@@ -3,16 +3,11 @@
 
 <%@ page import="com.Entity.*"%>
 <%@ page import="com.DAO.*"%>
-<%@ page import="java.util.ArrayList"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	User user = (User) session.getAttribute("user");
-	ArrayList<Events> events = EventsHandler.getAllEvents();
-	ArrayList<News> news = NewsHandler.getAllNews();
-	/* ArrayList<Thoughts> thoughts = ThoughtsDao.getAllThoughts();
-	 */
 %>
 
 <!DOCTYPE html>
@@ -49,7 +44,7 @@
 					<div class="collapse navbar-collapse"
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="/myVolunteering/index.jsp">Home</a></li>
+							<li><a href="/myVolunteering/index.jsp"><span class="glyphicon glyphicon-home"></span> Home</a></li>
 						<li><a href="/myVolunteering/JSPs/events.jsp">Events</a></li>
 						<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
 
@@ -130,7 +125,8 @@
 	<section id="inner-page">
 		<div class="container">
 			<div class="center" style="margin: 80px 80px;">
-				<h2>Contact us</h2>
+				<h2>About us</h2>
+				<div class="post-footer"></div>
 				<br />
 				<h3 class="page-intro">Volunteering is one of the most
 					rewarding things you can do.</h3>
@@ -152,6 +148,9 @@
 
 			</div>
 			<div class="center">
+				<h2>Contact us</h2>
+				<div class="post-footer"></div>
+					<br />
 				<div class="row contact_top">
 					<div class="col-md-4 contact_details">
 						<i class="fa fa-map-marker fa-2x"></i>

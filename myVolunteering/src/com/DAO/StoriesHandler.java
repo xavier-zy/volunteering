@@ -137,16 +137,16 @@ public class StoriesHandler {
 	}
 
 	// 删除
-	public static int deleteEventById(String id) {
+	public static int deleteStoryById(String id) {
 		int i = 0;
-		String sql = "DELETE FROM stories WHERE storyId =?";
+		String sql = "DELETE FROM stories WHERE storyId =" + id;
+		System.out.println(sql);
 
 		DBUtil util = new DBUtil();
 		Connection conn = util.getConnection();
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, id);
 			i = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

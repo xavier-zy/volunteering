@@ -60,7 +60,7 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/myVolunteering/index.jsp">Home</a></li>
+						<li><a href="/myVolunteering/index.jsp"><span class="glyphicon glyphicon-home"></span>  Home</a></li>
 						<li><a href="/myVolunteering/events.jsp">Events</a></li>
 						<li  class="active"><a href="#">Resources</a></li>
 						<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
@@ -144,6 +144,7 @@
 			</div>
 			<table class="table table-hover">
 				<tr>
+					<td><strong>tag</strong></td>
 					<td><strong>实时新闻</strong></td>
 					<td><strong>更新时间</strong></td>
 				</tr>
@@ -152,6 +153,7 @@
 						for (int i = 0; i < news.size(); i++) {
 				%>
 				<tr>
+					<td><strong>tag</strong></td>
 					<td><a
 						href="newsContent.jsp?id=<%=news.get(i).getNewsId()%>"><%=news.get(i).getTitle()%></a></td>
 					<td><a
@@ -159,20 +161,9 @@
 				</tr>
 				<%
 					}
-					/* } else {
-						int currentAmount = (int) amount - 10 * (int) (lastPage - 1);
-						for (int i = 0; i < currentAmount; i++) { */
+			
 				%>
-				<%-- <tr>
-					<td><a
-						href="newsContent.jsp?id=<%=news.get((index - 1) * 10 + i).getNewsId()%>"><%=news.get((index - 1) * 10 + i).getTitle()%></a></td>
-					<td><a
-						href="newsContent.jsp?id=<%=news.get((index - 1) * 10 + i).getNewsId()%>"><%=news.get((index - 1) * 10 + i).getPublishTime()%></a></td>
-				</tr> --%>
-				<%
-					/* }
-					} */
-				%>
+				
 			</table>
 		</div>
 		</section>

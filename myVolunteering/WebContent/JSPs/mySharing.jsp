@@ -56,13 +56,13 @@
 								class="icon-bar"></span><span class="icon-bar"></span><span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="index.html">Volunteering</a>
+						<a class="navbar-brand" href="../index.jsp">Volunteering</a>
 					</div>
 
 					<div class="collapse navbar-collapse"
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="/myVolunteering/index.jsp">Home</a></li>
+							<li><a href="/myVolunteering/index.jsp"><span class="glyphicon glyphicon-home"></span> Home</a></li>
 							<li><a href="/myVolunteering/JSPs/events.jsp">Events</a></li>
 							<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
 							<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
@@ -99,7 +99,6 @@
 		</div>
 	</div>
 
-	<section class="content-wrap">
 		<div class="container">
 			<div class="row">
 				<main class="col-md-8 main-content">
@@ -114,11 +113,12 @@
 							<a><%=mystories.get(number - 1).getTitle()%></a>
 						</h1>
 						<div class="post-meta">
-							<span class="author">author：<a href="/author/wangsai/"><%=user.getUserName()%></a></span>
+							<span class="author">author：<a href="/myVolunteering/myProfile&Events.jsp"><%=user.getUserName()%></a></span>
 							&bull;
 							<time class="post-date"><%=mystories.get(number - 1).getWrittenTime()%></time>
 						</div>
 					</div>
+					<div class="post-footer"></div>
 					<div class="featured-media">
 						<a href="/post/laravel-turns-five/"><img
 							src="http://image.golaravel.com/e/09/f05fc8d95497bad948ac46eb68d9d.jpg"></a>
@@ -126,27 +126,15 @@
 					<div class="post-content">
 						<p><%=mystories.get(number - 1).getContent()%></p>
 					</div>
-					<div class="post-permalink">
-						<a href="/post/laravel-turns-five/" class="btn btn-default">阅读全文</a>
-					</div>
+					<div class="post-footer"></div>
 					<%
 						}
 					%>
-					<footer class="post-footer clearfix">
-						<div class="pull-left tag-list">
-							<i class="fa fa-folder-open-o"></i>
-
-						</div>
-						<div class="pull-right share"></div>
-					</footer>
+					
 				</article>
 				</main>
 
 				<aside class="col-md-4 sidebar">
-					<!-- start widget -->
-					<!-- end widget -->
-
-					<!-- start tag cloud widget -->
 					<div class="widget">
 						
 						<div class="content community">
@@ -155,18 +143,10 @@
 		
 						</div>
 					</div>
-					<div class="widget">
-						<h4 class="title">My Profile</h4>
-						<div class="content community">
-							<p>
-								<a><i class="fa fa-comments"></i> </a>
-							</p>
-						</div>
-					</div>
-					<!-- end tag cloud widget -->
+
 					<!-- start widget -->
 					<div class="widget">
-						<h4 class="title">Sharing List</h4>
+						<h4 class="title">My stories</h4>
 
 						<div class="content download">
 							<%
@@ -174,7 +154,7 @@
 										int number = mystories.size();
 										for (int i = 0; i < number; i++) {
 							%>
-							<a href="myStory.jsp?id=<%=mystories.get(i).getStoryId()%>"><%=mystories.get(i).getTitle()%></a>
+							<a href="../myStory.jsp?id=<%=mystories.get(i).getStoryId()%>"><%=mystories.get(i).getTitle()%></a>
 								<br>
 
 							<%
@@ -188,7 +168,7 @@
 				</aside>
 			</div>
 		</div>
-	</section>
+
 
 	<!-- 
     script -->

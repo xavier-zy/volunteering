@@ -198,7 +198,26 @@ function pleaseLogin() {
 function cancel(id) {
 	console.log(id);
 	$.ajax({
-		url : 'api/MyActivityDeleteServlet',
+		url : 'CancelEnrollServlet',
+		type :'post',
+		data : {
+			id : id
+		},
+		success : function(tip) {
+			alert('取消报名成功！');
+			location.reload();
+		},
+		error : function(tip) {
+			alert('取消报名失败！');
+		}
+	})
+}
+
+function deleteStory(id) {
+	console.log(id);
+	$.ajax({
+		url : 'DeleteStoryServlet',
+		type :'post',
 		data : {
 			id : id
 		},

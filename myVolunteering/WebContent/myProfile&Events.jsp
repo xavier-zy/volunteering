@@ -61,7 +61,7 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/myVolunteering/index.jsp">Home</a></li>
+						<li><a href="/myVolunteering/index.jsp"><span class="glyphicon glyphicon-home"></span> Home</a></li>
 						<li><a href="/myVolunteering/JSPs/events.jsp">Events</a></li>
 						<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
 						<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
@@ -100,7 +100,6 @@
 		</div>
 	</div>
 
-	<section id="inner-page">
 	<div class="container">
 		<div class="center">
 			<h2>My volunteering</h2>
@@ -115,36 +114,30 @@
 			<li><a href="#mySetting" data-toggle="pill">Setting</a></li>
 		</ul>
 
-		<div class="col-sm-9">
+		<div>
 			<div class="tab-content">
 
 				<div class="tab-pane fade in active" id="myProfile">
-					<div class="panel mypanel-default">
+					<div class="panel mypanel-default4">
 
 						<input type="hidden" value="<%=user.getUserName()%>"
 							class="form-control input-sm" id="username" name="username">
 						<input type="hidden" value="<%=user.getUserId()%>"
 							class="form-control input-sm" id="userId" name="userId">
 							
-						<div class="col-xs-12 col-sm-7 col-md-7">
-						
-						 
+						<div class="col-md-4">
+							 <div style="text-align:center"	> 
 							<img style="width: 128px;"
 								src="images/person.jpg"
 								alt="Responsive image" class="img-rounded">
-								
-						<form method="post" action="UploadPictureServlet?userId=<%=user.getUserId() %>"
-							enctype="multipart/form-data">
-							<input type="file" name="uploadPicture">
-							<button>Upload headImg</button>
-						</form>		
-						
+									
 						
 							<h3><%=user.getUserName()%></h3>
 							<button type="button" id="change" onclick="change()"
 								class="btn btn-primary btn-right">修改资料</button>
-
+							</div>
 						</div>
+						
 						<%
 							if (userInfo != null) {
 									String gender = userInfo.getGender();
@@ -154,6 +147,105 @@
 									String address = userInfo.getAddress();
 									String signature = userInfo.getSignature();
 						%>
+						<div class="col-md-2" style="text-align: left">
+							<p class="lead">user name：</p>
+							<p class="lead">gender：</p>
+							<p class="lead">age：</p>
+							<p class="lead">phone：</p>
+							<p class="lead">email：</p>
+							<p class="lead">address：</p>
+							<p class="lead">signature：</p>
+						</div>
+						
+						<div class="col-md-2"  style="text-align: left; font-family:monospace" id="display" >
+							<p class="lead" >
+								<strong><%=user.getUserName()%></strong>
+							</p>
+							<p class="lead">
+								<strong><%=gender == null ? "" : gender%></strong>
+							</p>
+							<p class="lead">
+								<strong><%=age == 0 ? "" : age%></strong>
+							</p>
+							<p class="lead">
+								<strong><%=phone == null ? "" : phone%></strong>
+							</p>
+							<p class="lead">
+								<strong><%=email == null ? "" : email%></strong>
+							</p>
+							<p class="lead">
+								<strong><%=address == null ? "" : address%></strong>
+							</p>
+							<p class="lead">
+								<strong><%=signature == null ? "" : signature%></strong>
+							</p>
+						</div>
+						
+						<div class="col-md-6" id="displayForm"
+							style="display: none">
+							<form id="userInfo" class="form-horizontal">
+								<div class="form-group" style="margin-bottom: 10px">
+									<div class="col-sm-8 col-md-5">
+										<input type="text" value="<%=user.getUserName()%>"
+											class="form-control input-sm" id="nickname" name="nickname">
+									</div>
+								</div>
+								<div class="form-group" style="margin-bottom: 10px">
+
+									<div class="col-sm-5 col-md-5">
+
+										<select class="form-control  input-sm" id="gender"
+											name="gender">
+											<option value="male">male</option>
+											<option value="female">female</option>
+
+										</select>
+									</div>
+									<script>$('#gender').val('<%=gender == null ? "" : gender%>');
+									</script>
+								</div>
+								<div class="form-group" style="margin-bottom: 10px">
+									<div class="col-sm-5 col-md-5">
+										<input type="number" class="form-control input-sm" id="age"
+											name="age" value="<%=age == 0 ? "" : age%>">
+									</div>
+								</div>
+								<div class="form-group" style="margin-bottom: 10px">
+									<div class="col-sm-5 col-md-5">
+										<input type="text" class="form-control input-sm" id="phone"
+											name="phone" value="<%=phone == null ? "" : phone%>">
+									</div>
+								</div>
+								<div class="form-group" style="margin-bottom: 10px">
+									<div class="col-sm-5 col-md-5">
+										<input type="email" class="form-control input-sm" id="email"
+											name="email" value="<%=email == null ? "" : email%>">
+									</div>
+								</div>
+								<div class="form-group" style="margin-bottom: 10px">
+									<div class="col-sm-5 col-md-5">
+										<input type="text" class="form-control input-sm" id="address"
+											name="address" value="<%=address == null ? "" : address%>">
+									</div>
+								</div>
+								<div class="form-group" style="margin-bottom: 10px">
+									<div class="col-sm-5 col-md-5">
+										<textarea class="form-control input-sm"
+											id="signature" name="signature"
+											value="<%=signature == null ? "" : signature%>"></textarea>
+									</div>
+								</div>
+								<div class="form-group" style="margin-bottom: 10px">
+									<div class="col-sm-5 col-sm-offset-0">
+										<button onclick="updateUserInfo()" type="button"
+											class="btn btn-primary btn-right">confirm</button>
+									</div>
+								</div>
+							</form>
+						</div>
+						<%
+							} else {
+						%>
 						<div
 							class="col-xs-12 col-sm-4 col-md-4 col-sm-offset-1 col-md-offset-1"
 							style="text-align: left" id="display">
@@ -161,22 +253,22 @@
 								user name：<em><%=user.getUserName()%></em>
 							</p>
 							<p class="lead">
-								gender：<em><%=gender == null ? "" : gender%></em>
+								gender：<em></em>
 							</p>
 							<p class="lead">
-								age：<em><%=age == 0 ? "" : age%></em>
+								age：<em></em>
 							</p>
 							<p class="lead">
-								phone：<em><%=phone == null ? "" : phone%></em>
+								phone：<em></em>
 							</p>
 							<p class="lead">
-								email：<em><%=email == null ? "" : email%></em>
+								email：<em></em>
 							</p>
 							<p class="lead">
-								address：<em><%=address == null ? "" : address%></em>
+								address：<em></em>
 							</p>
 							<p class="lead">
-								signature：<em><%=signature == null ? "" : signature%></em>
+								signature：<em></em>
 							</p>
 						</div>
 						<div class="col-xs-12 col-sm-5 col-md-5" id="displayForm"
@@ -190,144 +282,47 @@
 									</div>
 								</div>
 								<div class="form-group">
-
 									<label class="col-sm-4 col-md-4 control-label">gender</label>
 									<div class="col-sm-5 col-md-5">
 
 										<select class="form-control  input-sm" id="gender"
 											name="gender">
-											<option value="male">male</option>
-											<option value="female">female</option>
+											<option>male</option>
+											<option>female</option>
 
 										</select>
 									</div>
-									<script>$('#gender').val('<%=gender == null ? "" : gender%>');
-									</script>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-4 col-md-4 control-label">age</label>
-									<div class="col-sm-5 col-md-5">
-										<input type="number" class="form-control input-sm" id="age"
-											name="age" value="<%=age == 0 ? "" : age%>">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-4 col-md-4 control-label">phone</label>
-									<div class="col-sm-5 col-md-5">
-										<input type="text" class="form-control input-sm" id="phone"
-											name="phone" value="<%=phone == null ? "" : phone%>">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-4 col-md-4 control-label">email</label>
-									<div class="col-sm-5 col-md-5">
-										<input type="email" class="form-control input-sm" id="email"
-											name="email" value="<%=email == null ? "" : email%>">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-4 col-md-4 control-label">address</label>
-									<div class="col-sm-5 col-md-5">
-										<input type="text" class="form-control input-sm" id="address"
-											name="address" value="<%=address == null ? "" : address%>">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-4 col-md-4 control-label">signature</label>
-									<div class="col-sm-5 col-md-5">
-										<textarea class="form-control input-sm"
-											id="signature" name="signature"
-											value="<%=signature == null ? "" : signature%>"></textarea>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-5 col-sm-offset-4">
-										<button onclick="updateUserInfo()" type="button"
-											class="btn btn-primary btn-right">修改信息</button>
-									</div>
-								</div>
-							</form>
-						</div>
-						<%
-							} else {
-						%>
-						<div
-							class="col-xs-12 col-sm-4 col-md-4 col-sm-offset-1 col-md-offset-1"
-							style="text-align: left" id="display">
-							<p class="lead">
-								昵称：<em><%=user.getUserName()%></em>
-							</p>
-							<p class="lead">
-								性别：<em></em>
-							</p>
-							<p class="lead">
-								年龄：<em></em>
-							</p>
-							<p class="lead">
-								电话：<em></em>
-							</p>
-							<p class="lead">
-								邮箱：<em></em>
-							</p>
-							<p class="lead">
-								地址：<em></em>
-							</p>
-							<p class="lead">
-								个人签名：<em></em>
-							</p>
-						</div>
-						<div class="col-xs-12 col-sm-5 col-md-5" id="displayForm"
-							style="display: none">
-							<form id="userInfo" class="form-horizontal">
-								<div class="form-group">
-									<label class="col-sm-4  col-md-4 control-label">昵称</label>
-									<div class="col-sm-5 col-md-5">
-										<input type="text" value="<%=user.getUserName()%>"
-											class="form-control input-sm" id="nickname" name="nickname">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-4 col-md-4 control-label">性别</label>
-									<div class="col-sm-5 col-md-5">
-
-										<select class="form-control  input-sm" id="gender"
-											name="gender">
-											<option>男</option>
-											<option>女</option>
-
-										</select>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-4 col-md-4 control-label">年龄</label>
 									<div class="col-sm-5 col-md-5">
 										<input type="number" class="form-control input-sm" id="age"
 											name="age">
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-4 col-md-4 control-label">电话</label>
+									<label class="col-sm-4 col-md-4 control-label">phone</label>
 									<div class="col-sm-5 col-md-5">
 										<input type="text" class="form-control input-sm" id="phone"
 											name="phone">
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-4 col-md-4 control-label">邮箱</label>
+									<label class="col-sm-4 col-md-4 control-label">mail</label>
 									<div class="col-sm-5 col-md-5">
 										<input type="email" class="form-control input-sm" id="email"
 											name="email">
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-4 col-md-4 control-label">地址</label>
+									<label class="col-sm-4 col-md-4 control-label">address</label>
 									<div class="col-sm-5 col-md-5">
 										<input type="text" class="form-control input-sm" id="address"
 											name="address">
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-4 col-md-4 control-label">个人签名</label>
+									<label class="col-sm-4 col-md-4 control-label">signature</label>
 									<div class="col-sm-5 col-md-5">
 										<textarea class="form-control input-sm"
 											id="signature" name="signature"></textarea>
@@ -336,7 +331,7 @@
 								<div class="form-group">
 									<div class="col-sm-5 col-sm-offset-4">
 										<button onclick="insertUserInfo()" type="button"
-											class="btn btn-primary btn-right">修改信息</button>
+											class="btn btn-primary btn-right">confirm</button>
 									</div>
 								</div>
 							</form>
@@ -349,12 +344,13 @@
 				</div>
 
 				<div class="tab-pane fade" id="myEvents">
-					<div class="panel mypanel-default">
+					<div class="panel mypanel-default3">
 						<div class="center">
-							<table class="table table-hover">
+							<table class="table table-hover table-bordered">
 								<tr>
-									<td><strong>events.no</strong></td>
-									<td><strong>events</strong></td>
+									<td><strong>event date</strong></td>
+									<td><strong>event</strong></td>
+									<td></td>
 								</tr>
 
 								<%
@@ -366,8 +362,12 @@
 								%>
 
 								<tr>
-									<td><%=myEvents.get(test).getEventId()%></td>
+									<td><%=myEvents.get(test).getEventDate()%></td>
 									<td><%=myEvents.get(test).getTitle()%></td>
+									<td>
+									<button type="button" class="btn btn-link" 
+									onclick="cancel('<%=myEvents.get(test).getEventId()%>')">cancel
+									</button></td>
 								</tr>
 								<%
 									}
@@ -381,22 +381,22 @@
 
 
 				<div class="tab-pane fade" id="mySetting">
-					<div class="panel mypanel-default">
-						<div class="panel-heading">修改密码</div>
+					<div class="panel mypanel-default2">
+						<div class="panel-heading" style="margin-bottom: 20px">Change your password</div>
 						<form method="POST" action="/myVolunteering/PasswordController"
-							id="pw-form">
+							id="pw-form" style="margin-left: 15px">
 							<div class="form-group">
-								<label class="control-label" for="id-currentpw">当前密码</label> <input
+								<label class="control-label" for="id-currentpw">current password</label> <input
 									type="password" class="form-control" name="currentpw"
 									id="id-currentpw" required>
 							</div>
 							<div class="form-group">
-								<label for="id-newpw" class="control-label">新的密码</label> <input
+								<label for="id-newpw" class="control-label">new password</label> <input
 									type="password" class="form-control" name="newpw1"
 									id="id-newpw" required>
 							</div>
 							<div class="form-group">
-								<label class="control-label" for="id-email">确认密码</label> <input
+								<label class="control-label" for="id-email">confirm password</label> <input
 									type="password" class="form-control" name="newpw2"
 									id="id-email" required>
 							</div>
@@ -410,10 +410,8 @@
 
 			</div>
 		</div>
-	</section>
 
-	<!-- 
-    script -->
+
 	<script
 		src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script

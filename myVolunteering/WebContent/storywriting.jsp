@@ -15,14 +15,14 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VOLUNTEER | Story Writing</title>
+<title>VOLUNTEER | story writing</title>
 <meta name="description" content="">
 
 <!-- core CSS -->
 <link href="/myVolunteering/css/bootstrap.min.css" rel="stylesheet">
 <link href="/myVolunteering/css/font-awesome.min.css" rel="stylesheet">
 <link href="/myVolunteering/css/prettyPhoto.css" rel="stylesheet">
-<link href="/myVolunteering/css/main.css" rel="stylesheet">
+<link href="/myVolunteering/css/mycss.css" rel="stylesheet">
 <link href="/myVolunteering/css/responsive.css" rel="stylesheet">
 <link href="/myVolunteering/css/umeditor.min.css" rel="stylesheet">
 <!--[if lt IE 9]>
@@ -33,70 +33,57 @@
 <!--/head-->
 
 <body>
-	
-		<div class="container">
+
+	<div class="container">
 		<div class="row clearfix">
 			<div class="col-md-12 column">
 
 				<nav class="navbar navbar-default" role="navigation">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span><span
-							class="icon-bar"></span><span class="icon-bar"></span><span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.html">Volunteering</a>
-				</div>
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span><span
+								class="icon-bar"></span><span class="icon-bar"></span><span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="index.html">Volunteering</a>
+					</div>
 
-				<div class="collapse navbar-collapse"
-					id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/myVolunteering/index.jsp">Home</a></li>
-						<li><a href="events.html">Events</a></li>
-						<li><a href="resouces.html">Resources</a></li>
-						<li class="dropdown" class="active"><a
-							href="my%20volunteering.html" class="dropdown-toggle"
-							data-toggle="dropdown">MyVolunteering<strong class="caret"></strong></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Profile</a></li>
-								<li class="divider">
-								<li><a href="#">Events</a></li>
-								<li class="divider">
-								<li><a href="my%20sharing.html">Sharing</a></li>
-							</ul></li>
-						<li><a href="about%20us.html">About Us</a></li>
-						<li>
-							<%
-								if (user == null) {
-							%>
-							<button type="submit" class="btn btn-default">
-								<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
-							</button>
-							<button type="button" class="btn btn-default navbar-btn">
-								<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
-							</button> <%
- 	} else {
- %>
-							<div id="loginDiv" style="margin-left: 10px; margin-top: 8px;">
-								<a style="margin-right: 10px; color: #161617" href="/myVolunteering/JSPs/myProfile&Events.jsp">
-									<%-- <span>
-										<img
-										style="margin-right: 10px;" class="img-rounded" width="50px"
-										src="<%= basePath+user.getHeadImg()%>">
-									</span --%>
-									<%=user.getUserName()%>
-								</a> 
-								<a  style= "color: #161617" href="<%=request.getContextPath()%>/com.Controller/LogoutController">
-									Log out
-								</a>
-							</div> <%
- 	}
- %>
-						</li>
-					</ul>
+					<div class="collapse navbar-collapse"
+						id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="/myVolunteering/index.jsp">Home</a></li>
+							<li><a href="/myVolunteering/JSPs/events.jsp">Events</a></li>
+							<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
+							<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
 
-				</div>
+							<li class="dropdown" class="active"><a href="#"
+								class="dropdown-toggle" data-toggle="dropdown">MyVolunteering<strong
+									class="caret"></strong></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Profile</a></li>
+									<li class="divider">
+									<li><a href="#">Events</a></li>
+									<li class="divider">
+									<li><a href="/myVolunteering/JSPs/mySharing.jsp">Sharing</a></li>
+								</ul></li>
+
+							<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
+							<li class="dropdown"><a
+								href="/myVolunteering/JSPs/myProfile&Events.jsp"
+								class="dropdown-toggle" data-toggle="dropdown"> <span
+									class="username"><%=user.getUserName()%></span>
+							</a>
+								<ul class="dropdown-menu">
+									<li>
+										<form method="post" action="LogoutController">
+											<button class="btn btn-link">Log out</button>
+										</form>
+									</li>
+								</ul></li>
+						</ul>
+
+					</div>
 				</nav>
 			</div>
 		</div>
@@ -107,33 +94,24 @@
 			<div class="center">
 				<h2>My Story</h2>
 				<p class="lead">Manager only</p>
-
-				<ul class="nav nav-tabs">
-					<li role="presentation"><a href="/myVolunteering/JSPs/eventsPublishing.jsp">write your story</a></li>
-					<li role="presentation" class="active"><a
-						href="publishNews.jsp">发布新闻</a></li>
-
-				</ul>
-
 			</div>
 
 			<div>
 				<div class="center">
-					<h3>发布新闻</h3>
+					<h3>write a new story</h3>
 				</div>
 				<div class="row">
 
 					<form id="main-contact-form" class="contact-form"
 						name="contact-form" method="post" action="">
-						
+
 						<div class="col-sm-9 col-sm-offset-1">
-								<div class="form-group">
-									<label>title *</label> 
-									<input type="text" name="title"
-										id="title" class="form-control" required="required">
-								</div>
+							<div class="form-group">
+								<label>title *</label> <input type="text" name="title"
+									id="title" class="form-control" required="required">
+							</div>
 						</div>
-						
+
 						<div class="col-sm-10 col-sm-offset-1">
 							<label>content *</label>
 							<script type="text/plain" id="myEditor"
@@ -141,14 +119,14 @@
                             </script>
 							<div class="form-group">
 								<button type="button" class="btn btn-primary btn-lg"
-									 onclick="addStory()">发布</button>
+									onclick="addStory()">发布</button>
 							</div>
 						</div>
-				</form>
+					</form>
+				</div>
 			</div>
-		</div>
-		<!--/.row-->
-		<br /> <br /> <br />
+			<!--/.row-->
+			<br /> <br /> <br />
 
 		</div>
 

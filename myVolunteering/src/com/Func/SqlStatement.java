@@ -191,7 +191,7 @@ public class SqlStatement {
 
 	// no Id in table for now
 	public static int deleteById(String table, int id) throws SQLException {
-		String sql = "delete from " + table + " where id = " + id;
+		String sql = "DELETE FROM " + table + " WHERE eventId = " + id;
 		System.out.println("DeleteSql:" + sql);
 
 		DBUtil util = new DBUtil();

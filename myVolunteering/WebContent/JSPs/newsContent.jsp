@@ -8,6 +8,7 @@
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	User user = (User) session.getAttribute("user");
+	ArrayList<News> news = NewsHandler.getAllNews();
 	String aid = "";
 	aid = request.getParameter("id");
 %>
@@ -100,6 +101,23 @@
 
 	<section id="inner-page">
 		<div class="container">
+		<aside class="col-md-3 sidebar">
+			<div class="content download">
+							<%
+								if (news != null) {
+										int number = news.size();
+										for (int i = 0; i < number; i++) {
+							%>
+							<a href="newsContent.jsp?id=<%=news.get(i).getNewsId()%>"><%=news.get(i).getTitle()%></a>
+								<br>
+
+							<%
+								}
+									}
+							%>
+						</div>
+		</aside>
+		<main class="col-md-9 main-content">
 			<div class="center">
 				<h2><%=NewsHandler.getNewsByNewsId(aid).getTitle()%></h2>
 				<span style="float: center;">发表时间:<%=NewsHandler.getNewsByNewsId(aid).getPublishTime()%>&nbsp;&nbsp;
@@ -111,6 +129,7 @@
 					<p><%=NewsHandler.getNewsByNewsId(aid).getContent()%></p>
 				</div>
 			</div>
+		</main>
 
 
 		</div>

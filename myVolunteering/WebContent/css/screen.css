@@ -4,7 +4,7 @@ body {
     line-height: 1.75em;
     background: #ebebeb;
     position: relative;
-    font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+    font-family: lato, Arial, sans-serif;
 }
 h1,
 h2,
@@ -323,7 +323,8 @@ pre {
     white-space: nowrap;
 }
 .post .featured-media {
-    margin-top: 30px;
+    /*margin-top: 30px;*/
+    margin-top: 20px;
     overflow: hidden;
 }
 .post .featured-media img {

@@ -53,7 +53,9 @@
 					<div class="collapse navbar-collapse"
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
-							<li class="active"><a href="#">Home</a></li>
+							<li class="active"><a href="#"> <span
+									class="glyphicon glyphicon-home"></span> Home
+							</a></li>
 							<li><a href="events.jsp">Events</a></li>
 							<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
 							<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
@@ -75,8 +77,7 @@
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown">MyVolunteering<strong class="caret"></strong></a>
 								<ul class="dropdown-menu">
-									<li><a href="myProfile&Events.jsp">Profile</a>
-									</li>
+									<li><a href="myProfile&Events.jsp">Profile</a></li>
 									<li class="divider">
 									<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>
 									</li>
@@ -98,8 +99,7 @@
 							<li>
 								<button type="submit" class="btn btn-link">
 									<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
-								</button>
-								|
+								</button> |
 								<button type="button" class="btn btn-link navbar-btn">
 									<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
 								</button>
@@ -109,17 +109,18 @@
 							%>
 							<li class="dropdown"><a
 								href="/myVolunteering/JSPs/myProfile&Events.jsp"
-								class="dropdown-toggle" data-toggle="dropdown">
-								<% if (user.getLevel().equals("0")) { %>	
-									<span class="adminname"><%=user.getUserName()%></span>
-								<%} else { %>
-									<span class="username"><%=user.getUserName()%></span>
-								<% } %>
+								class="dropdown-toggle" data-toggle="dropdown"> <%
+ 	if (user.getLevel().equals("0")) {
+ %> <span class="adminname"><%=user.getUserName()%></span> <%
+ 	} else {
+ %> <span class="username"><%=user.getUserName()%></span> <%
+ 	}
+ %>
 							</a>
 								<ul class="dropdown-menu">
 									<li>
 										<form method="post" action="LogoutController">
-											<button>Log out</button>
+											<button class="btn btn-link">Log out</button>
 										</form>
 									</li>
 								</ul></li>
@@ -164,7 +165,7 @@
 					</div>
 				</div>
 				<%
-				System.out.println("Helllllo!!");
+					System.out.println("Helllllo!!");
 					System.out.println(popularStories.size());
 					for (int i = 0; i < popularStories.size(); i++) {
 				%>
@@ -174,18 +175,21 @@
 						<div class="row slide-margin">
 							<div class="col-sm-12">
 								<div class="carousel-content">
-									<h2><%=popularStories.get(i).getTitle() %></h2>
+									<h2><%=popularStories.get(i).getTitle()%></h2>
 									<h4>Get to know our most liked stories.</h4>
-									<a class="btn-slide" href="storyDetais.jsp?id=<%=popularStories.get(i).getStoryId() %>">
-									Read More</a>
+									<a class="btn-slide"
+										href="storyDetais.jsp?id=<%=popularStories.get(i).getStoryId()%>">
+										Read More</a>
 								</div>
 
 							</div>
 						</div>
 					</div>
 				</div>
-				
-				<% } %>
+
+				<%
+					}
+				%>
 
 				<div class="item">
 					<img src="images/slider/bg3.jpg" alt="Third slide">
@@ -209,44 +213,29 @@
 			<a class="carousel-control right" href="#myCarousel"
 				data-slide="next">&rsaquo;</a>
 		</div>
+
+	
+	<div class="footer">
+			<div class="mypanel">
+				<div class="row">
+					<div class="col-sm-6">Copyright &copy; 2016 T_11 for Java EE
+						final project</div>
+					<div class="col-sm-6" style="text-align:right">
+						<div class="follow-us">
+							<span>follow us on: </span> <span
+								class="glyphicon glyphicon-globe"
+								style="color: rgb(255, 140, 60);" >Globe</span> <span
+								class="glyphicon glyphicon-copyright-mark"
+								style="color: rgb(255, 140, 60);">Copyright</span> <span
+								class="glyphicon glyphicon-flag"
+								style="color: rgb(255, 140, 60);">Flag</span> <span
+								class="glyphicon glyphicon-info-sign"
+								style="color: rgb(255, 140, 60);">Info</span>
+						</div>
+					</div>
+				</div>
+			</div>
 	</div>
-
-	<br>
-	<br>
-
-	<div class="row clearfix">
-		<div class="container">
-			<div class="col-md-4 column">
-				<h2>Stories</h2>
-				<p>Donec id elit non mi porta gravida at eget metus. Fusce
-					dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-					ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-					magna mollis euismod. Donec sed odio dui.</p>
-				<p>
-					<a class="btn" href="#">details »</a>
-				</p>
-			</div>
-			<div class="col-md-4 column">
-				<h2>Programs</h2>
-				<p>Donec id elit non mi porta gravida at eget metus. Fusce
-					dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-					ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-					magna mollis euismod. Donec sed odio dui.</p>
-				<p>
-					<a class="btn" href="#">details »</a>
-				</p>
-			</div>
-			<div class="col-md-4 column">
-				<h2>FAQs</h2>
-				<p>Donec id elit non mi porta gravida at eget metus. Fusce
-					dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-					ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-					magna mollis euismod. Donec sed odio dui.</p>
-				<p>
-					<a class="btn" href="#">details »</a>
-				</p>
-			</div>
-		</div>
 	</div>
 
 

@@ -52,28 +52,35 @@
 					<div class="collapse navbar-collapse"
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="/myVolunteering/index.jsp">Home</a></li>
+							<li><a href="/myVolunteering/index.jsp"><span class="glyphicon glyphicon-home"></span>Home</a></li>
 							<li><a href="/myVolunteering/JSPs/events.jsp">Events</a></li>
 							<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
+							<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
 
 							<li class="dropdown" class="active"><a href="#"
 								class="dropdown-toggle" data-toggle="dropdown">MyVolunteering<strong
 									class="caret"></strong></a>
 								<ul class="dropdown-menu">
-									<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Profile</a>
-									</li>
+									<li><a href="#">Profile</a></li>
 									<li class="divider">
-									<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>
-									</li>
+									<li><a href="#">Events</a></li>
 									<li class="divider">
 									<li><a href="/myVolunteering/JSPs/mySharing.jsp">Sharing</a></li>
 								</ul></li>
 
 							<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
-							<li><a href="#"><%=user.getUserName()%></a> <a
-								style="color: #f2f2f2"
-								href="<%=request.getContextPath()%>/com.Controller/LogoutController">Log
-									out</a></li>
+							<li class="dropdown"><a
+								href="/myVolunteering/JSPs/myProfile&Events.jsp"
+								class="dropdown-toggle" data-toggle="dropdown"> <span
+									class="username"><%=user.getUserName()%></span>
+							</a>
+								<ul class="dropdown-menu">
+									<li>
+										<form method="post" action="LogoutController">
+											<button class="btn btn-link">Log out</button>
+										</form>
+									</li>
+								</ul></li>
 						</ul>
 
 					</div>
@@ -81,7 +88,6 @@
 			</div>
 		</div>
 	</div>
-
 	<section class="content-wrap">
 		<div class="container">
 			<div class="row">
@@ -92,11 +98,15 @@
 							<a><%=MyStoryHandler.getStoryByStoryId(aid).getTitle()%></a>
 						</h1>
 						<div class="post-meta">
-							<span class="author">author：<a href="/author/wangsai/"><%=user.getUserName()%></a></span>
+							<span class="author">author：<a
+								href="/myVolunteering/myProfile&Events.jsp"><%=user.getUserName()%></a></span>
 							&bull;
 							<time class="post-date"><%=MyStoryHandler.getStoryByStoryId(aid).getWrittenTime()%></time>
+							<span class="glyphicon glyphicon-heart"
+					style="color: rgb(255, 60, 64);"></span> <%=MyStoryHandler.getStoryByStoryId(aid).getLike()%>
 						</div>
 					</div>
+					<div class="post-footer"></div>
 					<div class="featured-media">
 						<a href="/post/laravel-turns-five/"><img
 							src="http://image.golaravel.com/e/09/f05fc8d95497bad948ac46eb68d9d.jpg"></a>
@@ -104,16 +114,11 @@
 					<div class="post-content">
 						<p><%=MyStoryHandler.getStoryByStoryId(aid).getContent()%></p>
 					</div>
+					<div class="post-footer"></div>
 					<div class="post-permalink">
-						<a href="/post/laravel-turns-five/" class="btn btn-default">阅读全文</a>
+						<a href="/post/laravel-turns-five/" class="btn btn-default">edit</a>&nbsp;&nbsp;&nbsp;
+						<a class="btn btn-default" onclick="deleteStory('<%=aid%>')">delete</a>
 					</div>
-					<footer class="post-footer clearfix">
-						<div class="pull-left tag-list">
-							<i class="fa fa-folder-open-o"></i>
-
-						</div>
-						<div class="pull-right share"></div>
-					</footer>
 				</article>
 				</main>
 
@@ -138,15 +143,15 @@
 						<div class="content download">
 							<%
 								if (mystories != null) {
-										int number = mystories.size();
-										for (int i = 0; i < number; i++) {
+									int number = mystories.size();
+									for (int i = 0; i < number; i++) {
 							%>
 							<a href="myStory.jsp?id=<%=mystories.get(i).getStoryId()%>"><%=mystories.get(i).getTitle()%></a>
-								<br>
+							<br>
 
 							<%
 								}
-									}
+								}
 							%>
 						</div>
 
@@ -163,5 +168,7 @@
 		src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script
 		src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="/myVolunteering/js/main.js"></script>
+
 </body>
 </html>

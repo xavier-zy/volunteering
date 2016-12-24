@@ -12,7 +12,8 @@ html {
     -ms-text-size-adjust: 100%
 }
 body {
-    margin: 0
+    margin: 0;
+    background: #ebebeb;
 }
 article,
 aside,
@@ -903,7 +904,7 @@ body {
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
-    background-color: #fff
+    background-color: #ebebeb;
 }
 input,
 button,
@@ -1105,13 +1106,12 @@ p {
     margin: 0 0 10px
 }
 .lead {
-    margin-bottom: 20px;
-    font-size: 16px;
-    font-weight: 300;
+    margin-bottom: 10px;
+    font-size: 1.5em;
     line-height: 1.4
 }
 @media (min-width:768px) {
-    .lead {
+    .form-group {
         font-size: 21px
     }
 }
@@ -3766,7 +3766,8 @@ select[multiple].input-group-sm>.input-group-btn>.btn {
 .nav {
     padding-left: 0;
     margin-bottom: 0;
-    list-style: none
+    list-style: none;
+    background-color: #fff
 }
 .nav>li {
     position: relative;
@@ -4287,7 +4288,7 @@ select[multiple].input-group-sm>.input-group-btn>.btn {
     border-color: #e7e7e7
 }
 .navbar-default .navbar-brand {
-    color: #777
+    color: #8BE7AD
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
@@ -4298,7 +4299,7 @@ select[multiple].input-group-sm>.input-group-btn>.btn {
     color: #777
 }
 .navbar-default .navbar-nav>li>a {
-    color: #777
+    color: #428BCA
 }
 .navbar-default .navbar-nav>li>a:hover,
 .navbar-default .navbar-nav>li>a:focus {
@@ -5930,7 +5931,8 @@ button.close {
     border-left-color: #fff
 }
 .carousel {
-    position: relative
+    position: relative;
+    background-color:#fff
 }
 .carousel-inner {
     position: relative;

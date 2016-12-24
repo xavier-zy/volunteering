@@ -72,8 +72,11 @@ public class EventsHandler {
 //					activity.setNumber(rs.getInt("number"));
 //					activity.setOrganizator(rs.getString("organizator"));
 					event.setState(rs.getInt("state"));
+					event.setEventDate(rs.getString("eventDate"));
 //					activity.setIntroduction(rs.getString("introduction"));
 					event.setTitle(rs.getString("title"));
+					event.setIntroduction(rs.getString("introduction"));
+
 //					activity.setIndex2(rs.getInt("index2"));
 //					activity.setAdminid(rs.getInt("adminid"));
 

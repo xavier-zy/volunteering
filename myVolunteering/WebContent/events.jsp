@@ -40,7 +40,7 @@
 
 	}
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -54,6 +54,7 @@
 <link href="/myVolunteering/css/mycss.css" rel="stylesheet">
 
 
+
 </head>
 
 <body>
@@ -62,25 +63,26 @@
 			<div class="col-md-12 column">
 
 				<nav class="navbar navbar-default" role="navigation">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span><span
-							class="icon-bar"></span><span class="icon-bar"></span><span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.html">Volunteering</a>
-				</div>
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span><span
+								class="icon-bar"></span><span class="icon-bar"></span><span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="index.html">Volunteering</a>
+					</div>
 
-				<div class="collapse navbar-collapse"
-					id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/myVolunteering/index.jsp">Home</a></li>
-						<li class="active"><a href="#">Events</a></li>
-						<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
-						<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
-						
-						<%
+					<div class="collapse navbar-collapse"
+						id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="/myVolunteering/index.jsp"><span
+									class="glyphicon glyphicon-home"></span> Home</a></li>
+							<li class="active"><a href="#">Events</a></li>
+							<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
+							<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
+
+							<%
 								if (user != null && (user.getLevel().equals("0"))) {
 							%>
 							<li class="dropdown"><a class="dropdown-toggle"
@@ -98,8 +100,7 @@
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown">MyVolunteering<strong class="caret"></strong></a>
 								<ul class="dropdown-menu">
-									<li><a href="myProfile&Events.jsp">Profile</a>
-									</li>
+									<li><a href="myProfile&Events.jsp">Profile</a></li>
 									<li class="divider">
 									<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>
 									</li>
@@ -111,152 +112,114 @@
 							%>
 
 							<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
-						<li>
+							<li>
+								<%
+									if (user == null) {
+								%>
+								<button type="submit" class="btn btn-link">
+									<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
+								</button> |
+								<button type="button" class="btn btn-link navbar-btn">
+									<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
+								</button>
+							</li>
 							<%
-								if (user == null) {
+								} else {
 							%>
-							<button type="submit" class="btn btn-link">
-								<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
-							</button>
-							|
-							<button type="button" class="btn btn-link navbar-btn">
-								<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
-							</button>
-						</li>
-						<%
-							} else {
-						%>
-						<li class="dropdown"><a
-							href="/myVolunteering/JSPs/myProfile&Events.jsp"
-							class="dropdown-toggle" data-toggle="dropdown"> <%=user.getUserName()%>
-						</a>
-							<ul class="dropdown-menu">
-								<li>
-									<form method="post" action="LogoutController">
-										<button>Log out</button>
-									</form>
-								</li>
-							</ul></li>
-						<%
-							}
-						%>
+							<li class="dropdown"><a
+								href="/myVolunteering/JSPs/myProfile&Events.jsp"
+								class="dropdown-toggle" data-toggle="dropdown"> <%=user.getUserName()%>
+							</a>
+								<ul class="dropdown-menu">
+									<li>
+										<form method="post" action="LogoutController">
+											<button>Log out</button>
+										</form>
+									</li>
+								</ul></li>
+							<%
+								}
+							%>
 
-					</ul>
+						</ul>
 
-				</div>
+					</div>
 				</nav>
 			</div>
 		</div>
 
 
 		<section id="inner-page">
-		<div class="container">
-			<div class="center">
-				<h2>Events list</h2>
-			</div>
-			<%
-						if (user != null && user.getLevel().equals("1")){
-			%>
-			<table class="table table-hover">
-				<tr>
-					<td><strong>events.no</strong></td>
-					<td><strong>events name</strong></td>
-					<td><strong>events state</strong></td>
-					<td><strong>my event</strong></td>
-					<td></td>
-				</tr>
+			<aside class="col-md-4 mysidebar">
+				<div class="widget">
+					<h4 class="title" style="font-size: 1.5em; font-weight: 400;">Events list</h4>
 
-				<%
-					for (int i = 0; i < events.size(); i++) {
-				%>
-				<tr>
-					<td><%=events.get(i).getEventId()%></td>
-					<td><%=events.get(i).getTitle()%></td>
-					<td>
+					<div class="content download">
 						<%
-							if (events.get(i).getState() == 1) {
-						%> 
-						<strong class="mystrong">Going on</strong> 
-						<%
- 							} else if (events.get(i).getState() == 2) {
- 						%> 
- 						<strong class="mystrong">Over</strong> 
- 						<%
- 							}
- 						%>
-					</td>
-					<td><a
-						href="eventDetails.jsp?id=<%=events.get(i).getEventId()%>">more</a>
-					</td>
-					<td>
-						<%
-							if (myEvents.contains(events.get(i).getEventId())) {
+							if (user != null && user.getLevel().equals("1")) {
 						%>
-							<button type="button" class="btn btn-danger"
-								style="margin-right: 20px;">已报名</button> 
 						<%
- 							} else {
- 						%>
-							<button type="button" class="btn btn-success"
-								onclick="enroll('<%=user.getUserId()%>',
-								'<%=events.get(i).getEventId()%>',
-								'<%=events.get(i).getState()%>')">
-								报名
-							</button>
+							for (int i = 0; i < amount; i++) {
+						%>
+						<table class="table table-hover">
+							<tr>
+								<td><a
+									href="/myVolunteering/JSPs/eventDetails.jsp?id=<%=events.get(i).getEventId()%>">
+										<%=events.get(i).getEventDate()%>&nbsp;|&nbsp;<%=events.get(i).getTitle()%></a></td>
+								<%
+									if (myEvents.contains(events.get(i).getEventId())) {
+								%>
+								<td>
+									<button type="button" class="btn btn-danger"
+										style="margin-right: 20px;">已报名</button>
+								</td>
+								<%
+									} else {
+								%>
+								<td><button type="button" class="btn btn-success"
+										onclick="enroll('<%=user.getUserId()%>',
+									'<%=events.get(i).getEventId()%>',
+									'<%=events.get(i).getState()%>')">
+										报名</button></td>
+							</tr>
+						</table>
 						<%
 							}
+								}
+							} else {
+								for (int i = 0; i < amount; i++) {
 						%>
-					</td>
-				</tr>
-				<%
-					}
-				%>
-			</table>
-			<%
-					} else {
-			%>
-			
-			<table class="table table-hover">
-				<tr>
-					<td><strong>events.no</strong></td>
-					<td><strong>events name</strong></td>
-					<td><strong>events state</strong></td>
-					<td></td>
-				</tr>
+						<table class="table table-hover">
+							<tr>
+								<td><a
+									href="/myVolunteering/JSPs/eventDetails.jsp?id=<%=events.get(i).getEventId()%>">
+										<%=events.get(i).getEventDate()%>&nbsp;|&nbsp;<%=events.get(i).getTitle()%></a></td>
+								<td><button type="button" class="btn btn-success"
+										onclick="pleaseLogin()">报名</button></td>
+							</tr>
+						</table>
+						<%
+							}
+							}
+						%>
+					</div>
+				</div>
+			</aside>
 
-				<%
-					/* if (index < lastPage) { */
-					for (int i = 0; i < events.size(); i++) {
-				%>
-				<tr>
-					<td><%=events.get(i).getEventId()%></td>
-					<td><%=events.get(i).getTitle()%></td>
-					<td>
-						<%
-							if (events.get(i).getState() == 1) {
-						%> 
-						<strong class="mystrong">Going on</strong> 
-						<%
- 							} else if (events.get(i).getState() == 2) {
- 						%> 
- 						<strong class="mystrong">Over</strong> 
- 						<%
- 							}
- 						%>
-					</td>
-					<td><button onclick="pleaseLogin()">ENROLL</button></td>
-					<td><a
-						href="eventDetails.jsp?id=<%=events.get(i).getEventId()%>">more</a>
-					</td>
-				</tr>
-				<%
-					}
-				%>
-			</table>
-			<% } %>
-		</div>
-		</section>
+
+			<main class="col-md-8 main-content">
+			<div class="post" style="text-align:center">
+				<h3><%=events.get(amount - 1).getTitle()%></h3>
+				<span style="float: center;">published time:&nbsp;<%=events.get(amount - 1).getEventDate()%>
+				</span>
+				<div class="my_jumbotron">
+					<p><%=events.get(amount - 1).getIntroduction()%></p>
+				</div>
+			</div>
+			</main>
 	</div>
+	</section>
+
 
 	<!-- 
     script -->

@@ -61,7 +61,7 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/myVolunteering/index.jsp">Home</a></li>
+						<li><a href="/myVolunteering/index.jsp"><span class="glyphicon glyphicon-home"></span> Home</a></li>
 						<li><a href="/myVolunteering/JSPs/events.jsp">Events</a></li>
 						<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
 						<li class="active"><a href="#">Stories</a></li>
@@ -71,10 +71,10 @@
 							class="dropdown-toggle" data-toggle="dropdown">MyVolunteering<strong
 								class="caret"></strong></a>
 							<ul class="dropdown-menu">
-								<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Profile</a>
+								<li><a href="/myVolunteering/myProfile&Events.jsp">Profile</a>
 								</li>
 								<li class="divider">
-								<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>
+								<li><a href="/myVolunteering/myProfile&Events.jsp">Events</a>
 								</li>
 								<li class="divider">
 								<li><a href="/myVolunteering/JSPs/mySharing.jsp">Sharing</a></li>
