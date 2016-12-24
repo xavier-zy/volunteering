@@ -9,7 +9,7 @@
 			+ path + "/";
 	User user = (User) session.getAttribute("user");
 	ArrayList<News> news = NewsHandler.getAllNews();
-	double amount = news.size();
+	int amount = news.size();
 	double lastPage = Math.ceil(amount / 10);
 	System.out.println(lastPage);
 	int index;
@@ -60,113 +60,149 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/myVolunteering/index.jsp"><span class="glyphicon glyphicon-home"></span>  Home</a></li>
+						<li><a href="/myVolunteering/index.jsp"><span
+								class="glyphicon glyphicon-home"></span> Home</a></li>
 						<li><a href="/myVolunteering/events.jsp">Events</a></li>
-						<li  class="active"><a href="#">Resources</a></li>
+						<li class="active"><a href="#">Resources</a></li>
 						<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
-							<%
-								if (user != null && (user.getLevel().equals("0"))) {
-							%>
-							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown">Management<strong class="caret"></strong></a>
-								<ul class="dropdown-menu">
-									<li><a href="newsPublishing.jsp">News publishing</a></li>
-									<li class="divider">
-									<li><a href="/myVolunteering/JSPs/eventsPublishing.jsp">Events
-											publishing</a></li>
-								</ul></li>
+						<%
+							if (user != null && (user.getLevel().equals("0"))) {
+						%>
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown">Management<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li><a href="newsPublishing.jsp">News publishing</a></li>
+								<li class="divider">
+								<li><a href="/myVolunteering/JSPs/eventsPublishing.jsp">Events
+										publishing</a></li>
+							</ul></li>
 
-							<%
-								} else {
-							%>
-							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown">MyVolunteering<strong class="caret"></strong></a>
-								<ul class="dropdown-menu">
-									<li><a href="myProfile&Events.jsp">Profile</a>
-									</li>
-									<li class="divider">
-									<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>
-									</li>
-									<li class="divider">
-									<li><a href="/myVolunteering/JSPs/mySharing.jsp">Sharing</a></li>
-								</ul></li>
-							<%
-								}
-							%>
+						<%
+							} else {
+						%>
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown">MyVolunteering<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li><a href="myProfile&Events.jsp">Profile</a></li>
+								<li class="divider">
+								<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>
+								</li>
+								<li class="divider">
+								<li><a href="/myVolunteering/JSPs/mySharing.jsp">Sharing</a></li>
+							</ul></li>
+						<%
+							}
+						%>
 
-							<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
-
+						<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
 
 
 
-							<%
-								if (user == null) {
-							%>
-							<li>
-								<button type="submit" class="btn btn-link">
-									<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
-								</button>
-								|
-								<button type="button" class="btn btn-link navbar-btn">
-									<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
-								</button>
-							</li>
-							<%
-								} else {
-							%>
-							<li class="dropdown"><a
-								href="/myVolunteering/JSPs/myProfile&Events.jsp"
-								class="dropdown-toggle" data-toggle="dropdown"> <%=user.getUserName()%>
-							</a>
-								<ul class="dropdown-menu">
-									<li>
-										<form method="post" action="LogoutController">
-											<button>Log out</button>
-										</form>
-									</li>
-								</ul></li>
 
-							<%
-								}
-							%>
+						<%
+							if (user == null) {
+						%>
+						<li>
+							<button type="submit" class="btn btn-link">
+								<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
+							</button> |
+							<button type="button" class="btn btn-link navbar-btn">
+								<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
+							</button>
+						</li>
+						<%
+							} else {
+						%>
+						<li class="dropdown"><a
+							href="/myVolunteering/JSPs/myProfile&Events.jsp"
+							class="dropdown-toggle" data-toggle="dropdown"> <%=user.getUserName()%>
+						</a>
+							<ul class="dropdown-menu">
+								<li>
+									<form method="post" action="LogoutController">
+										<button>Log out</button>
+									</form>
+								</li>
+							</ul></li>
 
-						</ul>
+						<%
+							}
+						%>
+
+					</ul>
 				</div>
 				</nav>
 			</div>
 		</div>
 
-		<section id="inner-page">
-		<div class="container">
-			<div class="center">
-				<h2>News</h2>
-				<!-- <p>请对活动做出修改</p> -->
+		<div class="row clearfix">
+			<aside class="col-md-4">
+			<div class="mysidebar">
+				<div class="widget">
+					<h4 class="title" style="font-size: 1.5em; font-weight: 400;">News
+						list</h4>
+
+					<div class="content download">
+						<table class="table table-hover">
+							<tr>
+								<td><strong>news</strong></td>
+								<td><strong>time</strong></td>
+							</tr>
+							<%
+								//if (index < lastPage) {
+								for (int i = 0; i < news.size(); i++) {
+							%>
+							<tr>
+								<td><a
+									href="newsContent.jsp?id=<%=news.get(i).getNewsId()%>"><%=news.get(i).getTitle()%></a></td>
+								<td><a
+									href="newsContent.jsp?id=<%=news.get(i).getNewsId()%>"><%=news.get(i).getPublishTime()%></a></td>
+							</tr>
+							<%
+								}
+							%>
+						</table>
+					</div>
+				</div>
 			</div>
-			<table class="table table-hover">
-				<tr>
-					<td><strong>tag</strong></td>
-					<td><strong>实时新闻</strong></td>
-					<td><strong>更新时间</strong></td>
-				</tr>
-				<%
-					//if (index < lastPage) {
-						for (int i = 0; i < news.size(); i++) {
-				%>
-				<tr>
-					<td><strong>tag</strong></td>
-					<td><a
-						href="newsContent.jsp?id=<%=news.get(i).getNewsId()%>"><%=news.get(i).getTitle()%></a></td>
-					<td><a
-						href="newsContent.jsp?id=<%=news.get(i).getNewsId()%>"><%=news.get(i).getPublishTime()%></a></td>
-				</tr>
-				<%
-					}
+			</aside>
 			
-				%>
-				
-			</table>
+			<main class="col-md-8 main-content">
+			<div class="post" style="text-align: center">
+				<h3><%=news.get(amount - 1).getTitle()%></h3>
+				<span style="float: center;">published time:&nbsp;<%=news.get(amount - 1).getPublishTime()%>
+				</span>
+				<div class="my_jumbotron">
+					<p><%=news.get(amount - 1).getContent()%></p>
+				</div>
+			</div>
+			</main>
+			
 		</div>
-		</section>
+		
+		<div class="footer">
+			<div class="mypanel">
+				<div class="row">
+					<div class="col-sm-6">Copyright &copy; 2016 T_11 for Java EE
+						final project</div>
+					<div class="col-sm-6" style="text-align: right">
+						<div class="follow-us">
+							<span>for more information: </span> &nbsp;<span
+								class="glyphicon glyphicon-globe"
+								style="color: rgb(255, 140, 60);">globe</span>&nbsp; <span
+								class="glyphicon glyphicon-copyright-mark"
+								style="color: rgb(255, 140, 60);">links</span>&nbsp; <span
+								class="glyphicon glyphicon-link"
+								style="color: rgb(255, 140, 60);">flag</span>&nbsp;<span
+								class="glyphicon glyphicon-info-sign"
+								style="color: rgb(255, 140, 60);">info</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
 	</div>
 
 	<!-- 

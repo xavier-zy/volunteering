@@ -25,7 +25,6 @@
 <!-- CSS -->
 <link href="/myVolunteering/css/bootstrap.min.css" rel="stylesheet">
 <link href="/myVolunteering/css/mycss.css" rel="stylesheet">
-<link href="/myVolunteering/css/screen.css" rel="stylesheet">
 
 
 </head>
@@ -103,47 +102,73 @@
 			</div>
 		</div>
 
+		<div class="row clearfix">
+			<aside class="col-md-4">
+				<div class="mysidebar">
+					<div class="widget">
+						<h4 class="title" style="font-size: 1.5em; font-weight: 400;">Events
+							list</h4>
 
-		<section id="inner-page">
-			<aside class="col-md-4 sidebar">
-
-				<h4 class="title">Events list</h4>
-
-				<div class="content download">
-					<%
-							int number = events.size();
-							for (int i = 0; i < number; i++) {
-					%>
-
-					<a
-						href="/myVolunteering/JSPs/eventDetails.jsp?id=<%=events.get(i).getEventId()%>"><%=events.get(i).getEventDate()%>&nbsp;<%=events.get(i).getTitle()%></a>
-					<br>
-
-					<%
-						}
-					%>
-				</div>
+						<div class="content download">
+						<table class="table table-hover">
+							<%
+								int number = events.size();
+								for (int i = 0; i < number; i++) {
+							%>
+							<tr>
+								<td style="text-align:left">
+								<a href="/myVolunteering/JSPs/eventDetails.jsp?id=<%=events.get(i).getEventId()%>"><%=events.get(i).getEventDate()%>&nbsp;|&nbsp;<%=events.get(i).getTitle()%></a>
+								</td>
+							</tr>
+							<%
+								}
+							%>
+						</table>
+						</div>
+						</div>
+						</div>
 			</aside>
 
 			<main class="col-md-8 main-content">
-			<div class="center">
-				<h2><%=EventsHandler.getEventByEventId(aid).getTitle()%></h2>
+			<div class="post" style="text-align: center">
+				<h3><%=EventsHandler.getEventByEventId(aid).getTitle()%></h3>
 				<span style="float: center;">published time:&nbsp;<%=EventsHandler.getEventByEventId(aid).getEventDate()%>
-				</span> <br>
-				<br />
-				<!-- <p>请对活动做出修改</p> -->
+				</span>
 				<div class="my_jumbotron">
 					<p><%=EventsHandler.getEventByEventId(aid).getIntroduction()%></p>
 				</div>
 			</div>
 			</main>
+		</div>
 
+		<div class="footer">
+			<div class="mypanel">
+				<div class="row">
+					<div class="col-sm-6">Copyright &copy; 2016 T_11 for Java EE
+						final project</div>
+					<div class="col-sm-6" style="text-align: right">
+						<div class="follow-us">
+							<span>for more information: </span> &nbsp;<span
+								class="glyphicon glyphicon-globe"
+								style="color: rgb(255, 140, 60);">globe</span>&nbsp; <span
+								class="glyphicon glyphicon-copyright-mark"
+								style="color: rgb(255, 140, 60);">links</span>&nbsp; <span
+								class="glyphicon glyphicon-link"
+								style="color: rgb(255, 140, 60);">flag</span>&nbsp;<span
+								class="glyphicon glyphicon-info-sign"
+								style="color: rgb(255, 140, 60);">info</span>
+						</div>
+					</div>
+				</div>
+			</div>
 
+		</div>
 
-		</section>
 	</div>
-	<!-- 
-    script -->
+
+
+
+
 	<script
 		src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script

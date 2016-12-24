@@ -149,7 +149,7 @@
 			<div class="carousel-inner">
 
 				<div class="item active" style="">
-					<img src="images/slider/bg1.jpg" alt="First slide">
+					<img src="images/slider/002.png" alt="First slide">
 					<div class="mycontainer">
 						<div class="row slide-margin">
 							<div class="col-sm-12">
@@ -157,6 +157,7 @@
 									<h2>Welcome to VOLUNTEER</h2>
 									<h4>Volunteering is one of the most rewarding things you
 										can do!</h4>
+										<br>
 									<a class="btn-slide" href="/myVolunteering/JSPs/aboutUs.jsp">Read
 										More</a>
 								</div>
@@ -170,13 +171,14 @@
 					for (int i = 0; i < popularStories.size(); i++) {
 				%>
 				<div class="item">
-					<img src="images/slider/bg2.jpg" alt="Second slide">
+					<img src="images/slider/001.png" alt="Second slide">
 					<div class="mycontainer">
 						<div class="row slide-margin">
 							<div class="col-sm-12">
 								<div class="carousel-content">
 									<h2><%=popularStories.get(i).getTitle()%></h2>
 									<h4>Get to know our most liked stories.</h4>
+										<br>
 									<a class="btn-slide"
 										href="storyDetais.jsp?id=<%=popularStories.get(i).getStoryId()%>">
 										Read More</a>
@@ -192,13 +194,14 @@
 				%>
 
 				<div class="item">
-					<img src="images/slider/bg3.jpg" alt="Third slide">
+					<img src="images/slider/003.png" alt="Third slide">
 					<div class="mycontainer">
 						<div class="row slide-margin">
 							<div class="col-sm-12">
 								<div class="carousel-content">
 									<h2>Latest NEWS</h2>
 									<h4>Get some news and other resources!</h4>
+										<br>
 									<a class="btn-slide"
 										href="/myVolunteering/JSPs/newsInResources.jsp">Read More</a>
 								</div>
@@ -222,15 +225,15 @@
 						final project</div>
 					<div class="col-sm-6" style="text-align:right">
 						<div class="follow-us">
-							<span>follow us on: </span> <span
+							<span>for more information: </span> &nbsp;<span
 								class="glyphicon glyphicon-globe"
-								style="color: rgb(255, 140, 60);" >Globe</span> <span
+								style="color: rgb(255, 140, 60);" >globe</span>&nbsp; <span
 								class="glyphicon glyphicon-copyright-mark"
-								style="color: rgb(255, 140, 60);">Copyright</span> <span
-								class="glyphicon glyphicon-flag"
-								style="color: rgb(255, 140, 60);">Flag</span> <span
+								style="color: rgb(255, 140, 60);">links</span>&nbsp; <span
+								class="glyphicon glyphicon-link"
+								style="color: rgb(255, 140, 60);">flag</span>&nbsp;<span
 								class="glyphicon glyphicon-info-sign"
-								style="color: rgb(255, 140, 60);">Info</span>
+								style="color: rgb(255, 140, 60);">info</span>
 						</div>
 					</div>
 				</div>

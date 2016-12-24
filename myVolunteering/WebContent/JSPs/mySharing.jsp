@@ -167,6 +167,30 @@
 					<!-- end widget -->
 				</aside>
 			</div>
+		
+		<div class="footer">
+			<div class="mypanel">
+				<div class="row">
+					<div class="col-sm-6">Copyright &copy; 2016 T_11 for Java EE
+						final project</div>
+					<div class="col-sm-6" style="text-align: right">
+						<div class="follow-us">
+							<span>for more information: </span> &nbsp;<span
+								class="glyphicon glyphicon-globe"
+								style="color: rgb(255, 140, 60);">globe</span>&nbsp; <span
+								class="glyphicon glyphicon-copyright-mark"
+								style="color: rgb(255, 140, 60);">links</span>&nbsp; <span
+								class="glyphicon glyphicon-link"
+								style="color: rgb(255, 140, 60);">flag</span>&nbsp;<span
+								class="glyphicon glyphicon-info-sign"
+								style="color: rgb(255, 140, 60);">info</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
 		</div>
 
 

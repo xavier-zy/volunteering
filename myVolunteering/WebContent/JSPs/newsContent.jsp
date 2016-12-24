@@ -19,7 +19,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>events</title>
+<title>VOLUNTEERING | resources</title>
 <meta name="description" content="">
 
 <!-- CSS -->
@@ -48,46 +48,46 @@
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="/myVolunteering/index.jsp">Home</a></li>
-						<li><a href="/myVolunteering/JSPs/events.jsp">Events</a></li>
-						<li class="active"><a href="#">Resources</a></li>
+							<li><a href="/myVolunteering/JSPs/events.jsp">Events</a></li>
+							<li class="active"><a href="#">Resources</a></li>
 
-						<li class="dropdown"><a href="my%20volunteering.html"
-							class="dropdown-toggle" data-toggle="dropdown">MyVolunteering<strong
-								class="caret"></strong></a>
-							<ul class="dropdown-menu">
-								<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Profile</a>
-								</li>
-								<li class="divider">
-								<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>
-								</li>
-								<li class="divider">
-								<li><a href="/myVolunteering/JSPs/mySharing.jsp">Sharing</a></li>
-							</ul></li>
+							<li class="dropdown"><a href="my%20volunteering.html"
+								class="dropdown-toggle" data-toggle="dropdown">MyVolunteering<strong
+									class="caret"></strong></a>
+								<ul class="dropdown-menu">
+									<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Profile</a>
+									</li>
+									<li class="divider">
+									<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>
+									</li>
+									<li class="divider">
+									<li><a href="/myVolunteering/JSPs/mySharing.jsp">Sharing</a></li>
+								</ul></li>
 
-						<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
-						<li>
-							<% if (user == null) {%>
-							<button type="submit" class="btn btn-default">
-								<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
-							</button>
-							<button type="button" class="btn btn-default navbar-btn">
-								<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
-							</button> 
-							<% } else { %>
-							<div id="loginDiv" style="margin-left: 10px; margin-top: 8px;">
-								<a style="margin-right: 10px; color: #161617" href="/myVolunteering/JSPs/myProfile&Events.jsp">
-									<%-- <span>
+							<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
+							<li>
+								<%
+									if (user == null) {
+								%>
+								<button type="submit" class="btn btn-default">
+									<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
+								</button>
+								<button type="button" class="btn btn-default navbar-btn">
+									<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
+								</button> <%
+ 	} else {
+ %>
+								<div id="loginDiv" style="margin-left: 10px; margin-top: 8px;">
+									<a style="margin-right: 10px; color: #161617"
+										href="/myVolunteering/JSPs/myProfile&Events.jsp"> <%-- <span>
 										<img
 										style="margin-right: 10px;" class="img-rounded" width="50px"
 										src="<%= basePath+user.getHeadImg()%>">
-									</span --%>
-									<%=user.getUserName()%>
-								</a> 
-								<a  style= "color: #161617" href="<%=request.getContextPath()%>/com.Controller/LogoutController">
-									Log out
-								</a>
-							</div>
-							<%
+									</span --%> <%=user.getUserName()%>
+									</a> <a style="color: #161617"
+										href="<%=request.getContextPath()%>/com.Controller/LogoutController">
+										Log out </a>
+								</div> <%
  	}
  %>
 							</li>
@@ -97,45 +97,75 @@
 				</nav>
 			</div>
 		</div>
-	</div>
+	
 
-	<section id="inner-page">
-		<div class="container">
-		<aside class="col-md-3 sidebar">
-			<div class="content download">
+	<div class="row clearfix">
+		<aside class="col-md-4">
+			<div class="mysidebar">
+				<div class="widget">
+					<h4 class="title" style="font-size: 1.5em; font-weight: 400;">Events
+						list</h4>
+
+					<div class="content download">
+						<table class="table table-hover">
+							<tr>
+								<td><strong>news</strong></td>
+								<td><strong>time</strong></td>
+							</tr>
 							<%
-								if (news != null) {
-										int number = news.size();
-										for (int i = 0; i < number; i++) {
+								//if (index < lastPage) {
+								for (int i = 0; i < news.size(); i++) {
 							%>
-							<a href="newsContent.jsp?id=<%=news.get(i).getNewsId()%>"><%=news.get(i).getTitle()%></a>
-								<br>
-
+							<tr>
+								<td><a
+									href="newsContent.jsp?id=<%=news.get(i).getNewsId()%>"><%=news.get(i).getTitle()%></a></td>
+								<td><a
+									href="newsContent.jsp?id=<%=news.get(i).getNewsId()%>"><%=news.get(i).getPublishTime()%></a></td>
+							</tr>
 							<%
 								}
-									}
 							%>
-						</div>
+						</table>
+					</div>
+					</div>
+					</div>
 		</aside>
-		<main class="col-md-9 main-content">
-			<div class="center">
-				<h2><%=NewsHandler.getNewsByNewsId(aid).getTitle()%></h2>
-				<span style="float: center;">发表时间:<%=NewsHandler.getNewsByNewsId(aid).getPublishTime()%>&nbsp;&nbsp;
-				</span>
-				<br><br/>
-				<!-- <p>请对活动做出修改</p> -->
-				<div class="my_jumbotron">
-					<h3><%=NewsHandler.getNewsByNewsId(aid).getTitle()%></h3>
-					<p><%=NewsHandler.getNewsByNewsId(aid).getContent()%></p>
+		<main class="col-md-8 main-content">
+		<div class="post" style="text-align: center">
+			<h3><%=NewsHandler.getNewsByNewsId(aid).getTitle()%></h3>
+			<span style="float: center;">published time:&nbsp;<%=NewsHandler.getNewsByNewsId(aid).getPublishTime()%>&nbsp;&nbsp;
+			</span> 
+			<div class="my_jumbotron">
+				<p><%=NewsHandler.getNewsByNewsId(aid).getContent()%></p>
+			</div>
+		</div>
+		</main>
+	</div>
+	
+	<div class="footer">
+			<div class="mypanel">
+				<div class="row">
+					<div class="col-sm-6">Copyright &copy; 2016 T_11 for Java EE
+						final project</div>
+					<div class="col-sm-6" style="text-align: right">
+						<div class="follow-us">
+							<span>for more information: </span> &nbsp;<span
+								class="glyphicon glyphicon-globe"
+								style="color: rgb(255, 140, 60);">globe</span>&nbsp; <span
+								class="glyphicon glyphicon-copyright-mark"
+								style="color: rgb(255, 140, 60);">links</span>&nbsp; <span
+								class="glyphicon glyphicon-link"
+								style="color: rgb(255, 140, 60);">flag</span>&nbsp;<span
+								class="glyphicon glyphicon-info-sign"
+								style="color: rgb(255, 140, 60);">info</span>
+						</div>
+					</div>
 				</div>
 			</div>
-		</main>
-
 
 		</div>
-	</section>
-	<!-- 
-    script -->
+	</div>
+	
 	<script
 		src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script

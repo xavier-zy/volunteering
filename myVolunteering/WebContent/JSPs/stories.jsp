@@ -11,6 +11,10 @@
 	User user = (User) session.getAttribute("user");
 	ArrayList<Stories> stories = StoriesHandler.getAllStories();
 	int amount = stories.size();
+	String aid= stories.get(amount-1).getStoryId() + "";
+	Stories theStory = StoriesHandler.getStoryByStoryId(aid);
+	ArrayList<Comment> comments = CommentHandler.getCommentsByStoryId(aid);
+
 	double lastPage = Math.ceil(amount / 10);
 	System.out.println(lastPage);
 	int index;
@@ -26,7 +30,7 @@
 	}
 %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -62,7 +66,7 @@
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="/myVolunteering/index.jsp"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-						<li><a href="/myVolunteering/JSPs/events.jsp">Events</a></li>
+						<li><a href="/myVolunteering/events.jsp">Events</a></li>
 						<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
 						<li class="active"><a href="#">Stories</a></li>
 						
@@ -115,44 +119,234 @@
 		</div>
 		
 		
-		<section id="inner-page">
-		<div class="container">
-			<div class="center">
-				<h2>Stories</h2>
+			<div class="row clearfix">
+			<main class="col-md-8 main-content">
+			<div class="post" style="text-align: center">
+				<h2><%=theStory.getTitle()%></h2>
+				<span style="float: center;"> Author:&nbsp;<%=UserHandler.getTUserById(theStory.getUserId()).getUserName()%>&nbsp;&nbsp;&nbsp;
+					Publish time:&nbsp;<%=theStory.getWrittenTime()%>&nbsp;&nbsp;&nbsp;
+
+					<span class="glyphicon glyphicon-heart"
+					style="color: rgb(255, 60, 64);"></span> <%=theStory.getLike()%>&nbsp;&nbsp;&nbsp;
+
+					<button type="button" class="btn btn-link"
+						onclick="addLike('<%=aid%>')">
+						<span class="glyphicon glyphicon-ok"
+							style="color: rgb(255, 128, 47);"></span> like the story
+					</button>
+				</span> <br>
+				<!-- <p>请对活动做出修改</p> -->
+				<div class="my_jumbotron">
+					<h3><%=theStory.getTitle()%></h3>
+					<p>
+						<%=theStory.getContent()%>
+					</p>
+				</div>
+			</div>
+
+			<div class="comments_block">
+
+				<h4>Comments:</h4>
+				<%
+					if (comments != null) {
+				%>
+				<%
+					for (int i = 0; i < comments.size(); i++) {
+				%>
+				<%
+					if (comments.get(i).getReplyId() < 0) {
+				%>
+
+				<div class="comments">
+					<p class="meta">
+						<%=comments.get(i).getUserName()%>&nbsp;<%=comments.get(i).getCommentTime()%>
+					</p>
+					<div class="comments_content">
+						<p>
+							<%=comments.get(i).getCommentContent()%>
+						</p>
+
+						<%
+							if (user != null && user.getLevel().equals("1")) {
+						%>
+						<button id="show" class="reply">Reply</button>
+
+						<form id="form" style="display: none;"
+							enctype="multipart/form-data">
+							<textarea name="uploadText" id="uploadText" rows="5" cols="60"
+								placeholder="Your Comment"></textarea><br>
+							<button type="submit" class="btn btn-success"
+								onclick="addComment('<%=comments.get(i).getCommentId()%>',
+								'<%=user.getUserName()%>',
+								'<%=comments.get(i).getStoryId()%>')">
+								Submit</button>
+							<button id="hide" type="button" class="btn btn-danger"
+								value="Cancel">Cancel</button>
+						</form>
+						<%
+							} else {
+						%>
+						<button class="reply" onclick="pleaseLogin()">Reply</button>
+
+						<%
+							}
+						%>
+						<div class="clr"></div>
+						<div class="reply_icon"></div>
+					</div>
+				</div>
+				<%
+					}
+				%>
+
+				<%
+					if (-1 != comments.get(i).getReplyId()) {
+				%>
+				<div class="comments reply">
+					<p class="meta">
+						<%=comments.get(1).getUserName()%>&nbsp;<%=comments.get(1).getCommentTime()%>
+					</p>
+					<div class="comments_content">
+						<p>
+							<%=comments.get(i).getCommentContent()%>
+						</p>
+						<%
+							if (user != null && user.getLevel().equals("1")) {
+						%>
+						<button id="show" class="reply">Reply</button>
+
+						<form id="form" style="display: none;"
+							enctype="multipart/form-data">
+							<textarea name="uploadText" id="uploadText" rows="5" cols="60"
+								placeholder="Your Comment"></textarea>
+							<button type="submit" class="btn btn-success"
+								onclick="addComment('<%=comments.get(i).getCommentId()%>',
+								'<%=user.getUserName()%>',
+								'<%=comments.get(i).getStoryId()%>')">
+								Submit</button>
+							<button id="hide" type="button" class="btn btn-danger"
+								value="Cancel">Cancel</button>
+						</form>
+						<%
+							} else {
+						%>
+						<button class="reply" onclick="pleaseLogin()">Reply</button>
+
+						<%
+							}
+						%>
+
+						<div class="clr"></div>
+						<div class="reply_icon"></div>
+					</div>
+				</div>
+				<%
+					}
+				%>
+
+				<%
+					}
+					}
+				%>
+
+				<!-- Comment Form -->
+				<h5>Write a Comment</h5>
+
+				<%
+					if (user != null && user.getLevel().equals("1")) {
+				%>
+				<form id="form" enctype="multipart/form-data">
+					<textarea name="uploadText" id="uploadText" rows="5" cols="60"
+						placeholder="Your Comment"></textarea><br>
+					<button type="submit" class="btn btn-success"
+						onclick="addComment('-1',
+								'<%=user.getUserName()%>',
+								'<%=theStory.getStoryId()%>')">
+						Submit</button>
+				</form>
+				<%
+					} else {
+				%>
+
+				<form id="form" enctype="multipart/form-data">
+					<textarea name="uploadText" id="uploadText" rows="5" cols="60"
+						placeholder="Your Comment"></textarea><br>
+					<button type="submit" class="btn btn-success"
+						onclick="pleaseLogin()">Submit</button>
+				</form>
+				<%
+					}
+				%>
 
 			</div>
-			<table class="table table-hover">
-				<tr>
-					<td><strong>story.no</strong></td>
-					<td><strong>story title</strong></td>
-					<td></td>
-				</tr>
-				
-				<%
-					/* if (index < lastPage) { */
-						for (int i = 0; i < stories.size(); i++) {
-				%>
-				<tr>
-					<td><%=stories.get(i).getStoryId() %></td>
-					<td><%=stories.get(i).getTitle() %></td>
-					<td>
-						<a href="../storyDetais.jsp?id=<%=stories.get(i).getStoryId() %>" >more</a>
-					</td>
-				</tr>
-				
-				<% /* } */
-						} 
-				%>
-			
-				
-			</table>
+			</main>
+
+			<aside class="col-md-4">
+				<div class="mysidebar">
+					<div class="widget">
+						<h4 class="title" style="font-size: 1.5em; font-weight: 400;">Events
+							list</h4>
+						<table class="table table-hover">
+							<tr>
+								<td><strong>story title</strong></td>
+								<td><strong>liked</strong></td>
+								<td><strong>publish time</strong></td>
+								<td></td>
+							</tr>
+
+							<%
+								/* if (index < lastPage) { */
+								for (int i = 0; i < stories.size(); i++) {
+							%>
+							<tr>
+
+								<td><%=stories.get(i).getTitle()%></td>
+								<td><%=stories.get(i).getLike()%></td>
+								<td><%=stories.get(i).getWrittenTime()%></td>
+								<td><a
+									href="../storyDetais.jsp?id=<%=stories.get(i).getStoryId()%>">more</a>
+								</td>
+							</tr>
+
+							<%
+								/* } */
+								}
+							%>
+
+
+						</table>
+
+					</div>
+				</div>
+			</aside>
 
 		</div>
-		</section>
-	</div>
 
-	<!-- 
-    script -->
+		<div class="footer">
+			<div class="mypanel">
+				<div class="row">
+					<div class="col-sm-6">Copyright &copy; 2016 T_11 for Java EE
+						final project</div>
+					<div class="col-sm-6" style="text-align: right">
+						<div class="follow-us">
+							<span>for more information: </span> &nbsp;<span
+								class="glyphicon glyphicon-globe"
+								style="color: rgb(255, 140, 60);">globe</span>&nbsp; <span
+								class="glyphicon glyphicon-copyright-mark"
+								style="color: rgb(255, 140, 60);">links</span>&nbsp; <span
+								class="glyphicon glyphicon-link"
+								style="color: rgb(255, 140, 60);">flag</span>&nbsp;<span
+								class="glyphicon glyphicon-info-sign"
+								style="color: rgb(255, 140, 60);">info</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
 	<script
 		src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script

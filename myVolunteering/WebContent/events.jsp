@@ -149,66 +149,79 @@
 		</div>
 
 
-		<section id="inner-page">
-			<aside class="col-md-4 mysidebar">
-				<div class="widget">
-					<h4 class="title" style="font-size: 1.5em; font-weight: 400;">Events list</h4>
+		<div class="row clearfix">
+			<aside class="col-md-4">
+				<div class="mysidebar">
+					<div class="widget">
+						<h4 class="title" style="font-size: 1.5em; font-weight: 400;">Events
+							list</h4>
 
-					<div class="content download">
-						<%
-							if (user != null && user.getLevel().equals("1")) {
-						%>
-						<%
-							for (int i = 0; i < amount; i++) {
-						%>
-						<table class="table table-hover">
-							<tr>
-								<td><a
-									href="/myVolunteering/JSPs/eventDetails.jsp?id=<%=events.get(i).getEventId()%>">
-										<%=events.get(i).getEventDate()%>&nbsp;|&nbsp;<%=events.get(i).getTitle()%></a></td>
+						<div class="content download">
+							<%
+								if (user != null && user.getLevel().equals("1")) {
+							%>
+							<table class="table table-hover">
 								<%
-									if (myEvents.contains(events.get(i).getEventId())) {
+									for (int i = 0; i < amount; i++) {
 								%>
-								<td>
-									<button type="button" class="btn btn-danger"
-										style="margin-right: 20px;">已报名</button>
-								</td>
-								<%
-									} else {
-								%>
-								<td><button type="button" class="btn btn-success"
-										onclick="enroll('<%=user.getUserId()%>',
+
+								<tr>
+									<td style="text-align: left"><a
+										href="/myVolunteering/JSPs/eventDetails.jsp?id=<%=events.get(i).getEventId()%>">
+											<%=events.get(i).getEventDate()%>&nbsp;|&nbsp;<%=events.get(i).getTitle()%></a></td>
+									<%
+										if (myEvents.contains(events.get(i).getEventId())) {
+									%>
+									<td>
+										<button type="button" class="btn btn-danger"
+											style="margin-right: 20px;">已报名</button>
+									</td>
+									<%
+										} else {
+									%>
+									<td><button type="button" class="btn btn-success"
+											onclick="enroll('<%=user.getUserId()%>',
 									'<%=events.get(i).getEventId()%>',
 									'<%=events.get(i).getState()%>')">
-										报名</button></td>
-							</tr>
-						</table>
-						<%
-							}
+											报名</button></td>
+								</tr>
+
+								<%
+									}
+										}
+								%>
+							</table>
+							<%
+								} else {
+							%>
+							<table class="table table-hover">
+								<%
+									for (int i = 0; i < amount; i++) {
+								%>
+
+								<tr>
+									<td style="text-align: left"><a
+										href="/myVolunteering/JSPs/eventDetails.jsp?id=<%=events.get(i).getEventId()%>">
+											<%=events.get(i).getEventDate()%>&nbsp;|&nbsp;<%=events.get(i).getTitle()%></a></td>
+									<td><button type="button" class="btn btn-success"
+											onclick="pleaseLogin()">报名</button></td>
+								</tr>
+
+								<%
+									}
+								%>
+							</table>
+							<%
 								}
-							} else {
-								for (int i = 0; i < amount; i++) {
-						%>
-						<table class="table table-hover">
-							<tr>
-								<td><a
-									href="/myVolunteering/JSPs/eventDetails.jsp?id=<%=events.get(i).getEventId()%>">
-										<%=events.get(i).getEventDate()%>&nbsp;|&nbsp;<%=events.get(i).getTitle()%></a></td>
-								<td><button type="button" class="btn btn-success"
-										onclick="pleaseLogin()">报名</button></td>
-							</tr>
-						</table>
-						<%
-							}
-							}
-						%>
+							%>
+						</div>
 					</div>
 				</div>
 			</aside>
 
 
 			<main class="col-md-8 main-content">
-			<div class="post" style="text-align:center">
+			<div class="post" style="text-align: center">
 				<h3><%=events.get(amount - 1).getTitle()%></h3>
 				<span style="float: center;">published time:&nbsp;<%=events.get(amount - 1).getEventDate()%>
 				</span>
@@ -217,8 +230,33 @@
 				</div>
 			</div>
 			</main>
+		</div>
+
+		<div class="footer">
+			<div class="mypanel">
+				<div class="row">
+					<div class="col-sm-6">Copyright &copy; 2016 T_11 for Java EE
+						final project</div>
+					<div class="col-sm-6" style="text-align: right">
+						<div class="follow-us">
+							<span>for more information: </span> &nbsp;<span
+								class="glyphicon glyphicon-globe"
+								style="color: rgb(255, 140, 60);">globe</span>&nbsp; <span
+								class="glyphicon glyphicon-copyright-mark"
+								style="color: rgb(255, 140, 60);">links</span>&nbsp; <span
+								class="glyphicon glyphicon-link"
+								style="color: rgb(255, 140, 60);">flag</span>&nbsp;<span
+								class="glyphicon glyphicon-info-sign"
+								style="color: rgb(255, 140, 60);">info</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
 	</div>
-	</section>
+
 
 
 	<!-- 

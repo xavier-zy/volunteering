@@ -70,6 +70,7 @@ public class StoriesHandler {
 				story.setStoryId(rs.getInt("storyId"));
 				story.setTitle(rs.getString("title"));
 				story.setLike(rs.getInt("liked"));
+				story.setWrittenTime(rs.getString("writtenTime"));
 				storylist.add(story);
 			}
 		} catch (SQLException e) {

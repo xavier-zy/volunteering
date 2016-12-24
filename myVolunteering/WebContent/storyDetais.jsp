@@ -2,14 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="com.Entity.*"%>
 <%@ page import="com.DAO.*"%>
-<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.*"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	User user = (User) session.getAttribute("user");
-	String aid = "1";
-	//aid = request.getParameter("id");
+	ArrayList<Stories> stories = StoriesHandler.getAllStories();
+	String aid = request.getParameter("id");
 	Stories theStory = StoriesHandler.getStoryByStoryId(aid);
 	ArrayList<Comment> comments = CommentHandler.getCommentsByStoryId(aid);
 %>
@@ -23,7 +23,6 @@
 <title>events</title>
 <meta name="description" content="">
 
-<!-- CSS -->
 <link href="/myVolunteering/css/bootstrap.min.css" rel="stylesheet">
 <link href="/myVolunteering/css/mycss.css" rel="stylesheet">
 
@@ -100,11 +99,11 @@
 				</nav>
 			</div>
 		</div>
-	</div>
 
-	<section id="inner-page">
-		<div class="container">
-			<div class="center">
+
+		<div class="row clearfix">
+			<main class="col-md-8 main-content">
+			<div class="post" style="text-align: center">
 				<h2><%=theStory.getTitle()%></h2>
 				<span style="float: center;"> Author:&nbsp;<%=UserHandler.getTUserById(theStory.getUserId()).getUserName()%>&nbsp;&nbsp;&nbsp;
 					Publish time:&nbsp;<%=theStory.getWrittenTime()%>&nbsp;&nbsp;&nbsp;
@@ -262,11 +261,76 @@
 				%>
 
 			</div>
+			</main>
+
+			<aside class="col-md-4">
+				<div class="mysidebar">
+					<div class="widget">
+						<h4 class="title" style="font-size: 1.5em; font-weight: 400;">Events
+							list</h4>
+						<table class="table table-hover">
+							<tr>
+								<td><strong>story title</strong></td>
+								<td><strong>liked</strong></td>
+								<td><strong>publish time</strong></td>
+								<td></td>
+							</tr>
+
+							<%
+								/* if (index < lastPage) { */
+								for (int i = 0; i < stories.size(); i++) {
+							%>
+							<tr>
+
+								<td><%=stories.get(i).getTitle()%></td>
+								<td><%=stories.get(i).getLike()%></td>
+								<td><%=stories.get(i).getWrittenTime()%></td>
+								<td><a
+									href="storyDetais.jsp?id=<%=stories.get(i).getStoryId()%>">more</a>
+								</td>
+							</tr>
+
+							<%
+								/* } */
+								}
+							%>
+
+
+						</table>
+
+					</div>
+				</div>
+			</aside>
 
 		</div>
-	</section>
-	<!-- 
-    script -->
+
+		<div class="footer">
+			<div class="mypanel">
+				<div class="row">
+					<div class="col-sm-6">Copyright &copy; 2016 T_11 for Java EE
+						final project</div>
+					<div class="col-sm-6" style="text-align: right">
+						<div class="follow-us">
+							<span>for more information: </span> &nbsp;<span
+								class="glyphicon glyphicon-globe"
+								style="color: rgb(255, 140, 60);">globe</span>&nbsp; <span
+								class="glyphicon glyphicon-copyright-mark"
+								style="color: rgb(255, 140, 60);">links</span>&nbsp; <span
+								class="glyphicon glyphicon-link"
+								style="color: rgb(255, 140, 60);">flag</span>&nbsp;<span
+								class="glyphicon glyphicon-info-sign"
+								style="color: rgb(255, 140, 60);">info</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+
+
 	<script
 		src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script
