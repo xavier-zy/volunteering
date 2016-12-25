@@ -3,6 +3,7 @@
 <%@ page import="com.Entity.*"%>
 <%@ page import="com.DAO.*"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.HashSet"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -48,9 +49,11 @@
 					<div class="collapse navbar-collapse"
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="/myVolunteering/index.jsp">Home</a></li>
-							<li class="active"><a href="/myVolunteering/JSPs/events.jsp">Events</a></li>
+							<li><a href="/myVolunteering/index.jsp"><span
+									class="glyphicon glyphicon-home"></span> Home</a></li>
+							<li class="active"><a href="/myVolunteering/events.jsp">Events</a></li>
 							<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
+							<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
 
 							<li class="dropdown"><a href="my%20volunteering.html"
 								class="dropdown-toggle" data-toggle="dropdown">MyVolunteering<strong
@@ -70,10 +73,10 @@
 								<%
 									if (user == null) {
 								%>
-								<button type="submit" class="btn btn-default">
+								<button type="submit" class="btn btn-link">
 									<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
 								</button>
-								<button type="button" class="btn btn-default navbar-btn">
+								<button type="button" class="btn btn-link navbar-btn">
 									<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
 								</button>
 							</li>
@@ -110,30 +113,32 @@
 							list</h4>
 
 						<div class="content download">
-						<table class="table table-hover">
-							<%
-								int number = events.size();
-								for (int i = 0; i < number; i++) {
-							%>
-							<tr>
-								<td style="text-align:left">
-								<a href="/myVolunteering/JSPs/eventDetails.jsp?id=<%=events.get(i).getEventId()%>"><%=events.get(i).getEventDate()%>&nbsp;|&nbsp;<%=events.get(i).getTitle()%></a>
-								</td>
-							</tr>
-							<%
-								}
-							%>
-						</table>
+							<table class="table table-hover">
+								<%
+									int number = events.size();
+									for (int i = 0; i < number; i++) {
+								%>
+								<tr>
+									<td style="text-align: left"><a
+										href="/myVolunteering/JSPs/eventDetails.jsp?id=<%=events.get(i).getEventId()%>"><%=events.get(i).getEventDate()%>&nbsp;|&nbsp;<%=events.get(i).getTitle()%></a>
+									</td>
+								</tr>
+								<%
+									}
+								%>
+							</table>
 						</div>
-						</div>
-						</div>
+					</div>
+				</div>
 			</aside>
 
 			<main class="col-md-8 main-content">
-			<div class="post" style="text-align: center">
-				<h3><%=EventsHandler.getEventByEventId(aid).getTitle()%></h3>
-				<span style="float: center;">published time:&nbsp;<%=EventsHandler.getEventByEventId(aid).getEventDate()%>
-				</span>
+			<div class="post">
+				<div style="text-align: center">
+					<h3><%=EventsHandler.getEventByEventId(aid).getTitle()%></h3>
+					<span style="float: center;">published time:&nbsp;<%=EventsHandler.getEventByEventId(aid).getEventDate()%>
+					</span>
+				</div><br>
 				<div class="my_jumbotron">
 					<p><%=EventsHandler.getEventByEventId(aid).getIntroduction()%></p>
 				</div>

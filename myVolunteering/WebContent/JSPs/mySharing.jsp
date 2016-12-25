@@ -119,10 +119,6 @@
 						</div>
 					</div>
 					<div class="post-footer"></div>
-					<div class="featured-media">
-						<a href="/post/laravel-turns-five/"><img
-							src="http://image.golaravel.com/e/09/f05fc8d95497bad948ac46eb68d9d.jpg"></a>
-					</div>
 					<div class="post-content">
 						<p><%=mystories.get(number - 1).getContent()%></p>
 					</div>

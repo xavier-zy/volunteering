@@ -81,14 +81,14 @@
 
 
 		<div class="center">
-			<h3>News Publishing Center</h3>
+			<h3>Resources Publishing Center</h3>
 			<p class="lead">Manager only</p>
 			<br>
 			<ul class="nav nav-tabs">
 				<li role="presentation"><a
 					href="/myVolunteering/JSPs/eventsPublishing.jsp">publish events</a></li>
 				<li role="presentation" class="active"><a
-					href="publishNews.jsp">publish news</a></li>
+					href="publishNews.jsp">publish resources</a></li>
 
 			</ul>
 		</div>

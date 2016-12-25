@@ -127,7 +127,8 @@
 		
 			<div class="row clearfix">
 			<main class="col-md-8 main-content">
-			<div class="post" style="text-align: center">
+			<div class="post">
+			<div style="text-align: center">
 				<h2><%=theStory.getTitle()%></h2>
 				<span style="float: center;"> Author:&nbsp;<span class="username"><%=UserHandler.getTUserById(theStory.getUserId()).getUserName()%></span>&nbsp;&nbsp;&nbsp;
 					Publish time:&nbsp;<%=theStory.getWrittenTime()%>&nbsp;&nbsp;&nbsp;
@@ -140,11 +141,10 @@
 						<span class="glyphicon glyphicon-thumbs-up"
 							style="color: rgb(255, 128, 47);"></span> like the story
 					</button>
-				</span> <br>
-				<!-- <p>请对活动做出修改</p> -->
-				<div class="my_jumbotron">
-						<%=theStory.getContent()%>
-				</div>
+				</span> 
+			</div><br>
+			<div class="post-content">
+						<%=theStory.getContent()%></div>
 			</div>
 
 			<div class="comments_block">

@@ -66,16 +66,19 @@
 								</ul></li>
 
 							<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
-							<li>
+							
 								<%
 									if (user == null) {
 								%>
-								<button type="submit" class="btn btn-default">
+							<li>
+								<button type="submit" class="btn btn-link">
 									<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
 								</button>
-								<button type="button" class="btn btn-default navbar-btn">
+								<button type="button" class="btn btn-link navbar-btn">
 									<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
-								</button> <%
+								</button> 
+							</li>
+							<%
  	} else {
  %>
 								<li class="dropdown"><a
@@ -98,7 +101,7 @@
  <%
  	}
  %>
-							</li>
+							
 						</ul>
 
 					</div>
@@ -109,7 +112,8 @@
 
 		<div class="row clearfix">
 			<main class="col-md-8 main-content">
-			<div class="post" style="text-align: center">
+			<div class="post">
+			<div style="text-align: center">
 				<h2><%=theStory.getTitle()%></h2>
 				<span style="float: center;"> Author:&nbsp;<span class="username"><%=UserHandler.getTUserById(theStory.getUserId()).getUserName()%></span>&nbsp;&nbsp;&nbsp;
 					Publish time:&nbsp;<%=theStory.getWrittenTime()%>&nbsp;&nbsp;&nbsp;
@@ -122,11 +126,13 @@
 						<span class="glyphicon glyphicon-thumbs-up"
 							style="color: rgb(255, 128, 47);"></span> like the story
 					</button>
-				</span> <br>
+				</span>
+			</div> <br>
 				<!-- <p>请对活动做出修改</p> -->
-				<div class="my_jumbotron">
-						<%=theStory.getContent()%>
-				</div>
+				
+						<div class="post-content">
+						<%=theStory.getContent()%></div>
+			</div>
 			</div>
 
 			<div class="comments_block">
@@ -269,7 +275,7 @@
 			<aside class="col-md-4">
 				<div class="mysidebar">
 					<div class="widget">
-						<h4 class="title" style="font-size: 1.5em; font-weight: 400;">Events
+						<h4 class="title" style="font-size: 1.5em; font-weight: 400;">Story
 							list</h4>
 						<table class="table table-hover">
 							<tr>

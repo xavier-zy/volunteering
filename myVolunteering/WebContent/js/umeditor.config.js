@@ -154,6 +154,8 @@
         //lang值也可以通过自动获取 (navigator.language||navigator.browserLanguage ||navigator.userLanguage).toLowerCase()
         ,lang:"en"
         ,langPath:URL +"lang/"
+        
+        ,iframeCssUrl: '__PUBLIC__/other/ueditor/themes/iframe.css',// 引入css
 
         //ie下的链接自动监测
         //,autourldetectinie:false
@@ -226,7 +228,7 @@
 
         //dropFileEnabled
         // 是否允许拖放图片到编辑区域，上传并插入,默认true
-        ,dropFileEnabled:true
+        //,dropFileEnabled:true
 
         //pasteImageEnabled
         // 是否允许粘贴QQ截屏，上传并插入,默认true

@@ -73,7 +73,7 @@
 									<button type="submit" class="btn btn-link">
 										<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
 									</button>
-									<button type="button" class="btn btn-link">
+									<button type="button" class="btn btn-link navbar-btn">
 										<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
 									</button> 
 								</li>
@@ -141,10 +141,11 @@
 		<div class="post">
 				<div style="text-align: center">
 			<h3><%=NewsHandler.getNewsByNewsId(aid).getTitle()%></h3>
-			<span style="float: center;"><span class="badge"><%=NewsHandler.getNewsByNewsId(aid).getTag()%></span>&nbsp;&nbsp; published time:&nbsp;<%=NewsHandler.getNewsByNewsId(aid).getPublishTime()%>&nbsp;&nbsp;
-			</span> 
+			<span class="badge"><%=NewsHandler.getNewsByNewsId(aid).getTag()%></span>&nbsp;&nbsp; published time:&nbsp;<%=NewsHandler.getNewsByNewsId(aid).getPublishTime()%>&nbsp;&nbsp;
+			
 			</div>
-			<div class="my_jumbotron">
+			<br>
+			<div class="my_jumbotron post-content ">
 				<p><%=NewsHandler.getNewsByNewsId(aid).getContent()%></p>
 			</div>
 		</div>

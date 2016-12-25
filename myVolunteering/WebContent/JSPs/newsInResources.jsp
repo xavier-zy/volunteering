@@ -176,10 +176,11 @@
 			<div class="post">
 				<div style="text-align: center">
 					<h3><%=news.get(amount - 1).getTitle()%></h3>
-					<span style="float: center;"><span class="badge"><%=news.get(amount-1).getTag()%></span>&nbsp;&nbsp; published time:&nbsp;<%=news.get(amount - 1).getPublishTime()%>
-					</span>
+					<span class="badge"><%=news.get(amount-1).getTag()%></span>&nbsp;&nbsp; published time:&nbsp;<%=news.get(amount - 1).getPublishTime()%>
+					
 				</div>
-				<div class="my_jumbotron">
+				<br>
+				<div class="my_jumbotron post-content">
 					<%=news.get(amount - 1).getContent()%>
 				</div>
 			</div>

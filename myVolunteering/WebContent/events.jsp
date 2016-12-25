@@ -182,7 +182,7 @@
 									%>
 									<td>
 										<button type="button" class="btn btn-danger"
-											style="margin-right: 20px;">已报名</button>
+											style="margin-right: 20px;">has enrolled</button>
 									</td>
 									<%
 										} else {
@@ -191,7 +191,7 @@
 											onclick="enroll('<%=user.getUserId()%>',
 									'<%=events.get(i).getEventId()%>',
 									'<%=events.get(i).getState()%>')">
-											报名</button></td>
+											enroll</button></td>
 								</tr>
 
 								<%
@@ -212,7 +212,7 @@
 										href="/myVolunteering/JSPs/eventDetails.jsp?id=<%=events.get(i).getEventId()%>">
 											<%=events.get(i).getEventDate()%>&nbsp;|&nbsp;<%=events.get(i).getTitle()%></a></td>
 									<td><button type="button" class="btn btn-success"
-											onclick="pleaseLogin()">报名</button></td>
+											onclick="pleaseLogin()">enroll</button></td>
 								</tr>
 
 								<%
@@ -229,10 +229,12 @@
 
 
 			<main class="col-md-8 main-content">
-			<div class="post" style="text-align: center">
+			<div class="post">
+			<div  style="text-align: center">
 				<h3><%=events.get(amount - 1).getTitle()%></h3>
 				<span style="float: center;">published time:&nbsp;<%=events.get(amount - 1).getEventDate()%>
 				</span>
+				</div><br>
 				<div class="my_jumbotron">
 					<p><%=events.get(amount - 1).getIntroduction()%></p>
 				</div>

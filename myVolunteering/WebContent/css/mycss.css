@@ -20,8 +20,8 @@
 
 .my_jumbotron {
 	padding: 30px;
-	margin-left: 50px;
-	margin-right: 50px;
+	margin-left: 10px;
+	margin-right: 10px;
 	position: relative;
 	color: inherit;
 	background-color: #eee;
@@ -301,4 +301,9 @@
     padding:10px 20px 10px 20px;
     color: #aaa;
     background: #fff;
+}
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 0.2em 0;
 }
