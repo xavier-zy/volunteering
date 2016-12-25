@@ -143,17 +143,17 @@
 
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的从新定义
         ,toolbar:[
-            'source | undo redo | bold italic underline strikethrough | superscript subscript | forecolor backcolor | removeformat |',
-            'insertorderedlist insertunorderedlist | selectall cleardoc paragraph | fontfamily fontsize' ,
+            'source | undo redo | bold italic underline strikethrough | forecolor backcolor | removeformat |',
+            'insertorderedlist insertunorderedlist | cleardoc paragraph | fontfamily fontsize' ,
             '| justifyleft justifycenter justifyright justifyjustify |',
-            'link unlink | emotion image video  | map',
-            '| horizontal print preview fullscreen', 'drafts', 'formula'
+            'link unlink | emotion image ',
+            '| horizontal preview fullscreen', 'drafts'
         ]
 
         //语言配置项,默认是zh-cn。有需要的话也可以使用如下这样的方式来自动多语言切换，当然，前提条件是lang文件夹下存在对应的语言文件：
         //lang值也可以通过自动获取 (navigator.language||navigator.browserLanguage ||navigator.userLanguage).toLowerCase()
-        //,lang:"zh-cn"
-        //,langPath:URL +"lang/"
+        ,lang:"en"
+        ,langPath:URL +"lang/"
 
         //ie下的链接自动监测
         //,autourldetectinie:false
@@ -226,7 +226,7 @@
 
         //dropFileEnabled
         // 是否允许拖放图片到编辑区域，上传并插入,默认true
-        //,dropFileEnabled:true
+        ,dropFileEnabled:true
 
         //pasteImageEnabled
         // 是否允许粘贴QQ截屏，上传并插入,默认true

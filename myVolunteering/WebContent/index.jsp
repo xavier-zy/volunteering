@@ -27,8 +27,7 @@
 <link href="/myVolunteering/css/bootstrap.min.css" rel="stylesheet">
 <link href="/myVolunteering/css/font-awesome.min.css" rel="stylesheet">
 <link href="/myVolunteering/css/prettyPhoto.css" rel="stylesheet">
-<!-- <link href="/myVolunteering/css/main.css" rel="stylesheet">
- -->
+
 <link href="/myVolunteering/css/responsive.css" rel="stylesheet">
 </head>
 
@@ -109,12 +108,12 @@
 							<li class="dropdown"><a
 								href="/myVolunteering/JSPs/myProfile&Events.jsp"
 								class="dropdown-toggle" data-toggle="dropdown"> <%
- 	if (user.getLevel().equals("0")) {
- %> <span class="adminname"><%=user.getUserName()%></span> <%
- 	} else {
- %> <span class="username"><%=user.getUserName()%></span> <%
- 	}
- %>
+								 	if (user.getLevel().equals("0")) {
+								 %> <span class="adminname"><%=user.getUserName()%></span> <%
+								 	} else {
+								 %> <span class="username"><%=user.getUserName()%></span> <%
+								 	}
+								 %>
 							</a>
 								<ul class="dropdown-menu">
 									<li>
