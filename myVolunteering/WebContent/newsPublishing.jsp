@@ -21,7 +21,6 @@
 <!-- core CSS -->
 <link href="/myVolunteering/css/bootstrap.min.css" rel="stylesheet">
 <link href="/myVolunteering/css/font-awesome.min.css" rel="stylesheet">
-<link href="/myVolunteering/css/prettyPhoto.css" rel="stylesheet">
 <link href="/myVolunteering/css/mycss.css" rel="stylesheet">
 <link href="/myVolunteering/css/responsive.css" rel="stylesheet">
 <link href="/myVolunteering/css/umeditor.min.css" rel="stylesheet">
@@ -94,11 +93,23 @@
 			</ul>
 		</div>
 
-		<div class="panel" style="padding-top:20px; background:rgba(255,255,255,0.5)">
+		<div class="panel"
+			style="padding-top: 20px; background: rgba(255, 255, 255, 0.5)">
 			<div class="row" style="margin-left: 10%">
 
 				<form id="main-contact-form" class="contact-form"
 					name="contact-form" method="post" action="">
+
+					<label>tag *</label>
+					<div class="form-group">
+							<select class="form-control" id="tag" name="tag" style="width:10%">
+								<option value="news">news</option>
+								<option value="publication">publication</option>
+								<option value="report">report</option>
+								<option value="training">training</option>
+								<option value="other">other</option>
+							</select>
+					</div>
 
 					<label>news title *</label>
 					<div class="form-group">
@@ -119,159 +130,159 @@
 			</div>
 		</div>
 
-			<div class="footer" style="margin-top:30px">
-				<div class="mypanel">
-					<div class="row">
-						<div class="col-sm-6">Copyright &copy; 2016 T_11 for Java EE
-							final project</div>
-						<div class="col-sm-6" style="text-align: right">
-							<div class="follow-us">
-								<span>for more information: </span> &nbsp;<span
-									class="glyphicon glyphicon-globe"
-									style="color: rgb(255, 140, 60);">globe</span>&nbsp; <span
-									class="glyphicon glyphicon-copyright-mark"
-									style="color: rgb(255, 140, 60);">links</span>&nbsp; <span
-									class="glyphicon glyphicon-link"
-									style="color: rgb(255, 140, 60);">flag</span>&nbsp;<span
-									class="glyphicon glyphicon-info-sign"
-									style="color: rgb(255, 140, 60);">info</span>
-							</div>
+		<div class="footer" style="margin-top: 30px">
+			<div class="mypanel">
+				<div class="row">
+					<div class="col-sm-6">Copyright &copy; 2016 T_11 for Java EE
+						final project</div>
+					<div class="col-sm-6" style="text-align: right">
+						<div class="follow-us">
+							<span>for more information: </span> &nbsp;<span
+								class="glyphicon glyphicon-globe"
+								style="color: rgb(255, 140, 60);">globe</span>&nbsp; <span
+								class="glyphicon glyphicon-copyright-mark"
+								style="color: rgb(255, 140, 60);">links</span>&nbsp; <span
+								class="glyphicon glyphicon-link"
+								style="color: rgb(255, 140, 60);">flag</span>&nbsp;<span
+								class="glyphicon glyphicon-info-sign"
+								style="color: rgb(255, 140, 60);">info</span>
 						</div>
 					</div>
 				</div>
-
 			</div>
+
 		</div>
+	</div>
 
 
 
 
 
-		<script src="/myVolunteering/js/jquery.js"></script>
-		<script src="/myVolunteering/js/bootstrap.min.js"></script>
-		<script src="/myVolunteering/js/jquery.prettyPhoto.js"></script>
-		<script src="/myVolunteering/js/jquery.isotope.min.js"></script>
-		<script src="/myVolunteering/js/main.js"></script>
-		<script src="/myVolunteering/js/umeditor.config.js"></script>
-		<script src="/myVolunteering/js/umeditor.min.js"></script>
-		<script type="text/javascript">
-			//实例化编辑器
-			var um = UM.getEditor('myEditor');
-			um.addListener('blur', function() {
-				$('#focush2').html('编辑器失去焦点了')
-			});
-			um.addListener('focus', function() {
-				$('#focush2').html('')
-			});
-			//按钮的操作
-			function insertHtml() {
-				var value = prompt('插入html代码', '');
-				um.execCommand('insertHtml', value)
-			}
+	<script src="/myVolunteering/js/jquery.js"></script>
+	<script src="/myVolunteering/js/bootstrap.min.js"></script>
+	<script src="/myVolunteering/js/jquery.prettyPhoto.js"></script>
+	<script src="/myVolunteering/js/jquery.isotope.min.js"></script>
+	<script src="/myVolunteering/js/main.js"></script>
+	<script src="/myVolunteering/js/umeditor.config.js"></script>
+	<script src="/myVolunteering/js/umeditor.min.js"></script>
+	<script type="text/javascript">
+		//实例化编辑器
+		var um = UM.getEditor('myEditor');
+		um.addListener('blur', function() {
+			$('#focush2').html('编辑器失去焦点了')
+		});
+		um.addListener('focus', function() {
+			$('#focush2').html('')
+		});
+		//按钮的操作
+		function insertHtml() {
+			var value = prompt('插入html代码', '');
+			um.execCommand('insertHtml', value)
+		}
 
-			function isFocus() {
-				alert(um.isFocus())
-			}
+		function isFocus() {
+			alert(um.isFocus())
+		}
 
-			function doBlur() {
-				um.blur()
-			}
+		function doBlur() {
+			um.blur()
+		}
 
-			function createEditor() {
-				enableBtn();
-				um = UM.getEditor('myEditor');
-			}
+		function createEditor() {
+			enableBtn();
+			um = UM.getEditor('myEditor');
+		}
 
-			function getAllHtml() {
-				alert(UM.getEditor('myEditor').getAllHtml())
-			}
+		function getAllHtml() {
+			alert(UM.getEditor('myEditor').getAllHtml())
+		}
 
-			function getContent() {
-				var arr = [];
-				arr.push("使用editor.getContent()方法可以获得编辑器的内容");
-				arr.push("内容为：");
-				arr.push(UM.getEditor('myEditor').getContent());
-				alert(arr.join("\n"));
-			}
+		function getContent() {
+			var arr = [];
+			arr.push("使用editor.getContent()方法可以获得编辑器的内容");
+			arr.push("内容为：");
+			arr.push(UM.getEditor('myEditor').getContent());
+			alert(arr.join("\n"));
+		}
 
-			function getPlainTxt() {
-				var arr = [];
-				arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
-				arr.push("内容为：");
-				arr.push(UM.getEditor('myEditor').getPlainTxt());
-				alert(arr.join('\n'))
-			}
+		function getPlainTxt() {
+			var arr = [];
+			arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
+			arr.push("内容为：");
+			arr.push(UM.getEditor('myEditor').getPlainTxt());
+			alert(arr.join('\n'))
+		}
 
-			function setContent(isAppendTo) {
-				var arr = [];
-				arr.push("使用editor.setContent('欢迎使用umeditor')方法可以设置编辑器的内容");
-				UM.getEditor('myEditor').setContent('欢迎使用umeditor', isAppendTo);
-				alert(arr.join("\n"));
-			}
+		function setContent(isAppendTo) {
+			var arr = [];
+			arr.push("使用editor.setContent('欢迎使用umeditor')方法可以设置编辑器的内容");
+			UM.getEditor('myEditor').setContent('欢迎使用umeditor', isAppendTo);
+			alert(arr.join("\n"));
+		}
 
-			function setDisabled() {
-				UM.getEditor('myEditor').setDisabled('fullscreen');
-				disableBtn("enable");
-			}
+		function setDisabled() {
+			UM.getEditor('myEditor').setDisabled('fullscreen');
+			disableBtn("enable");
+		}
 
-			function setEnabled() {
-				UM.getEditor('myEditor').setEnabled();
-				enableBtn();
-			}
+		function setEnabled() {
+			UM.getEditor('myEditor').setEnabled();
+			enableBtn();
+		}
 
-			function getText() {
-				//当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
-				var range = UM.getEditor('myEditor').selection.getRange();
-				range.select();
-				var txt = UM.getEditor('myEditor').selection.getText();
-				alert(txt)
-			}
+		function getText() {
+			//当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
+			var range = UM.getEditor('myEditor').selection.getRange();
+			range.select();
+			var txt = UM.getEditor('myEditor').selection.getText();
+			alert(txt)
+		}
 
-			function getContentTxt() {
-				var arr = [];
-				arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
-				arr.push("编辑器的纯文本内容为：");
-				arr.push(UM.getEditor('myEditor').getContentTxt());
-				alert(arr.join("\n"));
-			}
+		function getContentTxt() {
+			var arr = [];
+			arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
+			arr.push("编辑器的纯文本内容为：");
+			arr.push(UM.getEditor('myEditor').getContentTxt());
+			alert(arr.join("\n"));
+		}
 
-			function hasContent() {
-				var arr = [];
-				arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
-				arr.push("判断结果为：");
-				arr.push(UM.getEditor('myEditor').hasContents());
-				alert(arr.join("\n"));
-			}
+		function hasContent() {
+			var arr = [];
+			arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
+			arr.push("判断结果为：");
+			arr.push(UM.getEditor('myEditor').hasContents());
+			alert(arr.join("\n"));
+		}
 
-			function setFocus() {
-				UM.getEditor('myEditor').focus();
-			}
+		function setFocus() {
+			UM.getEditor('myEditor').focus();
+		}
 
-			function deleteEditor() {
-				disableBtn();
-				UM.getEditor('myEditor').destroy();
-			}
+		function deleteEditor() {
+			disableBtn();
+			UM.getEditor('myEditor').destroy();
+		}
 
-			function disableBtn(str) {
-				var div = document.getElementById('btns');
-				var btns = domUtils.getElementsByTagName(div, "button");
-				for (var i = 0, btn; btn = btns[i++];) {
-					if (btn.id == str) {
-						domUtils.removeAttributes(btn, [ "disabled" ]);
-					} else {
-						btn.setAttribute("disabled", "true");
-					}
-				}
-			}
-
-			function enableBtn() {
-				var div = document.getElementById('btns');
-				var btns = domUtils.getElementsByTagName(div, "button");
-				for (var i = 0, btn; btn = btns[i++];) {
+		function disableBtn(str) {
+			var div = document.getElementById('btns');
+			var btns = domUtils.getElementsByTagName(div, "button");
+			for (var i = 0, btn; btn = btns[i++];) {
+				if (btn.id == str) {
 					domUtils.removeAttributes(btn, [ "disabled" ]);
+				} else {
+					btn.setAttribute("disabled", "true");
 				}
 			}
-		</script>
+		}
+
+		function enableBtn() {
+			var div = document.getElementById('btns');
+			var btns = domUtils.getElementsByTagName(div, "button");
+			for (var i = 0, btn; btn = btns[i++];) {
+				domUtils.removeAttributes(btn, [ "disabled" ]);
+			}
+		}
+	</script>
 </body>
 
 </html>

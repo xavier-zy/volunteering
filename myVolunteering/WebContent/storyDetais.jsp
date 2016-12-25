@@ -125,10 +125,7 @@
 				</span> <br>
 				<!-- <p>请对活动做出修改</p> -->
 				<div class="my_jumbotron">
-					<h3><%=theStory.getTitle()%></h3>
-					<p>
 						<%=theStory.getContent()%>
-					</p>
 				</div>
 			</div>
 

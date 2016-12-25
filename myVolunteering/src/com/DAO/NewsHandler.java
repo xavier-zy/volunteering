@@ -29,6 +29,7 @@ public class NewsHandler {
 				news.setTitle(rs.getString("title"));
 				news.setContent(rs.getString("content"));
 				news.setPublishTime(rs.getString("publishTime"));
+				news.setTag(rs.getString("tag"));
 			}
 
 		} catch (SQLException e) {
@@ -62,6 +63,7 @@ public class NewsHandler {
 				news.setTitle(rs.getString("title"));
 				news.setContent(rs.getString("content"));
 				news.setPublishTime(rs.getString("publishTime"));
+				news.setTag(rs.getString("tag"));
 				newslist.add(news);
 			}
 
@@ -79,7 +81,7 @@ public class NewsHandler {
 
 		public static int addNews(News news) {
 		int i = 0;
-		String sql = "INSERT INTO news(title,content,publishTime) VALUES(?,?,?)";
+		String sql = "INSERT INTO news(title,content,publishTime,tag) VALUES(?,?,?,?)";
 		
 		DBUtil util = new DBUtil();
 		Connection conn = util.getConnection();
@@ -89,6 +91,7 @@ public class NewsHandler {
 			ps.setString(1, news.getTitle());
 			ps.setString(2, news.getContent());
 			ps.setString(3, news.getPublishTime());
+			ps.setString(4, news.getTag());
 			i = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

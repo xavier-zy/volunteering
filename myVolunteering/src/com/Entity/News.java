@@ -5,7 +5,14 @@ public class News {
 	private String title;
 	private String content;
 	private String publishTime;
+	private String tag;
 	
+	public String getTag() {
+		return tag;
+	}
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
 	public String getTitle() {
 		return title;
 	}

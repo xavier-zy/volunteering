@@ -27,27 +27,19 @@ public class NewsInsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html; charset=utf-8");
-		String m_title =request.getParameter("title");
-		String m_content= request.getParameter("content");
-		String m_publishtime = request.getParameter("publishtime");
+		String tag = request.getParameter("tag");
+		String title =request.getParameter("title");
+		String content= request.getParameter("content");
+		String publishtime = request.getParameter("publishtime");
 		
 		News news = new News();
-		news.setTitle(m_title);
-		news.setContent(m_content);
-		news.setPublishTime(m_publishtime);
-		System.out.println("MMMMYYYHELLO");
+		news.setTag(tag);
+		news.setTitle(title);
+		news.setContent(content);
+		news.setPublishTime(publishtime);
+		
 		NewsHandler.addNews(news);
-		System.out.println("HELLO");
-//		int isSuccess = NewsHandler.addNews(news);
-//		if (isSuccess > 0)
-//		{
-//			JSONObject jsonObject =JSONObject.fromObject(news);
-//			response.getWriter().write(jsonObject.toString());
-//		}
-//		else
-//		{
-//			response.getWriter().write("插入失败");
-//		}
+
 		
 	}
 	

@@ -145,24 +145,23 @@
 			<aside class="col-md-4">
 				<div class="mysidebar">
 					<div class="widget">
-						<h4 class="title" style="font-size: 1.5em; font-weight: 400;">News
+						<h4 class="title" style="font-size: 1.5em; font-weight: 400;">Resources
 							list</h4>
 
 						<div class="content download">
 							<table class="table table-hover">
 								<tr>
-									<td><strong>news</strong></td>
-									<td><strong>time</strong></td>
+									<td ><strong>tag</strong></td>
+									<td><strong>title</strong></td>
 								</tr>
 								<%
 									//if (index < lastPage) {
 									for (int i = 0; i < news.size(); i++) {
 								%>
 								<tr>
-									<td><a
+									<td><span class="badge"><%=news.get(i).getTag()%></span></td>
+									<td style="text-align:left"><a
 										href="newsContent.jsp?id=<%=news.get(i).getNewsId()%>"><%=news.get(i).getTitle()%></a></td>
-									<td><a
-										href="newsContent.jsp?id=<%=news.get(i).getNewsId()%>"><%=news.get(i).getPublishTime()%></a></td>
 								</tr>
 								<%
 									}
@@ -177,7 +176,7 @@
 			<div class="post">
 				<div style="text-align: center">
 					<h3><%=news.get(amount - 1).getTitle()%></h3>
-					<span style="float: center;">published time:&nbsp;<%=news.get(amount - 1).getPublishTime()%>
+					<span style="float: center;"><span class="badge"><%=news.get(amount-1).getTag()%></span>&nbsp;&nbsp; published time:&nbsp;<%=news.get(amount - 1).getPublishTime()%>
 					</span>
 				</div>
 				<div class="my_jumbotron">

@@ -204,11 +204,11 @@ function cancel(id) {
 			id : id
 		},
 		success : function(tip) {
-			alert('取消报名成功！');
+			alert('Success！');
 			location.reload();
 		},
 		error : function(tip) {
-			alert('取消报名失败！');
+			alert('Fail！');
 		}
 	})
 }
@@ -222,37 +222,18 @@ function deleteStory(id) {
 			id : id
 		},
 		success : function(tip) {
-			alert('取消报名成功！');
+			alert('Success！');
 			location.reload();
 		},
 		error : function(tip) {
-			alert('取消报名失败！');
-		}
-	})
-}
-
-function insertMessage(userName) {
-	console.log(userName);
-	$.ajax({
-		url : 'api/messageInsert',
-		data : {
-			userName : userName,
-			writeDate : getNowFormatDate(),
-			content : $('#message').val()
-		},
-		success : function(tip) {
-			alert('留言成功！');
-			location.reload();
-		},
-		error : function(tip) {
-			alert('留言失败！');
+			alert('Fail！');
 		}
 	})
 }
 
 function publishActivity(adminid) {
 	if (adminid == "") {
-		alert('请登录！');
+		alert('please log in as administrator！');
 		location.reload();
 	} else {
 		console.log(adminid);
@@ -281,21 +262,6 @@ function publishActivity(adminid) {
 	}
 }
 
-function test() {
-	$.ajax({
-		url : '/myVolunteering/com.Servlet/test',
-		type : 'post',
-		success : function(tip) {
-			alert('发布成功！');
-			location.reload();
-		},
-		error : function(tip) {
-			alert('发布失败！');
-		}
-	})
-
-}
-
 function addLike(id) {
 	$.ajax({
 		url : 'AddLikeServlet',
@@ -321,11 +287,11 @@ function addStory() {
 			content : UM.getEditor('myEditor').getContent()
 		},
 		success : function(tip) {
-			alert('发布成功！');
+			alert('Success！');
 			// location.reload();
 		},
 		error : function(tip) {
-			alert('发布失败！');
+			alert('Fail！');
 		}
 	})
 }
@@ -335,16 +301,17 @@ function publishNews() {
 	$.ajax({
 		url : 'api/newsInsert',
 		data : {
+			tag: $('#tag').val(),
 			title : $('#title').val(),
 			publishtime : getNowFormatDate(),
 			content : UM.getEditor('myEditor').getContent()
 		},
 		success : function(tip) {
-			alert('发布成功！');
+			alert('Success！');
 			// location.reload();
 		},
 		error : function(tip) {
-			alert('发布失败！');
+			alert('Fail！');
 		}
 	})
 }

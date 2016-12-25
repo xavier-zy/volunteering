@@ -65,18 +65,21 @@
 								</ul></li>
 
 							<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
-							<li>
+							
 								<%
 									if (user == null) {
 								%>
-								<button type="submit" class="btn btn-default">
-									<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
-								</button>
-								<button type="button" class="btn btn-default navbar-btn">
-									<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
-								</button> <%
+								<li>
+									<button type="submit" class="btn btn-link">
+										<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
+									</button>
+									<button type="button" class="btn btn-link">
+										<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
+									</button> 
+								</li>
+<%
  	} else {
- %><li class="dropdown"><a
+ %>							<li class="dropdown"><a
 								href="/myVolunteering/JSPs/myProfile&Events.jsp"
 								class="dropdown-toggle" data-toggle="dropdown"> <%
  	if (user.getLevel().equals("0")) {
@@ -95,7 +98,7 @@
 								</ul></li> <%
  	}
  %>
-							</li>
+							
 						</ul>
 
 					</div>
@@ -108,24 +111,23 @@
 		<aside class="col-md-4">
 			<div class="mysidebar">
 				<div class="widget">
-					<h4 class="title" style="font-size: 1.5em; font-weight: 400;">Events
+					<h4 class="title" style="font-size: 1.5em; font-weight: 400;">Resources
 						list</h4>
 
 					<div class="content download">
 						<table class="table table-hover">
 							<tr>
-								<td><strong>news</strong></td>
-								<td><strong>time</strong></td>
+								<td><strong>tag</strong></td>
+								<td><strong>title</strong></td>
 							</tr>
 							<%
 								//if (index < lastPage) {
 								for (int i = 0; i < news.size(); i++) {
 							%>
 							<tr>
-								<td><a
+								<td><span class="badge"><%=news.get(i).getTag()%></span></td>
+								<td style="text-align:left"><a
 									href="newsContent.jsp?id=<%=news.get(i).getNewsId()%>"><%=news.get(i).getTitle()%></a></td>
-								<td><a
-									href="newsContent.jsp?id=<%=news.get(i).getNewsId()%>"><%=news.get(i).getPublishTime()%></a></td>
 							</tr>
 							<%
 								}
@@ -139,7 +141,7 @@
 		<div class="post">
 				<div style="text-align: center">
 			<h3><%=NewsHandler.getNewsByNewsId(aid).getTitle()%></h3>
-			<span style="float: center;">published time:&nbsp;<%=NewsHandler.getNewsByNewsId(aid).getPublishTime()%>&nbsp;&nbsp;
+			<span style="float: center;"><span class="badge"><%=NewsHandler.getNewsByNewsId(aid).getTag()%></span>&nbsp;&nbsp; published time:&nbsp;<%=NewsHandler.getNewsByNewsId(aid).getPublishTime()%>&nbsp;&nbsp;
 			</span> 
 			</div>
 			<div class="my_jumbotron">
