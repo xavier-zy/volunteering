@@ -33,7 +33,6 @@ public class EventsHandler {
 					event.setState(rs.getInt("state"));
 					event.setIntroduction(rs.getString("introduction"));
 					event.setTitle(rs.getString("title"));
-					event.setIndex2(rs.getInt("index2"));
 				}
 
 			} catch (SQLException e) {
@@ -98,7 +97,7 @@ public class EventsHandler {
 		// 增加一个活动
 		public static int addEvent(Events event) {
 			int i = 0;
-			String sql = "INSERT INTO events(title,introduction,eventDate,state,index2) VALUES(?,?,?,?,?,?)";
+			String sql = "INSERT INTO events(title,introduction,eventDate,state,index2) VALUES(?,?,?,?)";
 			
 			DBUtil util = new DBUtil();
 			Connection conn = util.getConnection();
@@ -109,7 +108,6 @@ public class EventsHandler {
 				ps.setString(2, event.getIntroduction());
 				ps.setString(3, event.getEventDate());
 				ps.setInt(4, event.getState());
-				ps.setInt(5, event.getIndex2());
 				i = ps.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -128,29 +126,6 @@ public class EventsHandler {
 			try {
 				PreparedStatement ps = conn.prepareStatement(sql);
 				ps.setString(1, id);
-				i = ps.executeUpdate();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			return i;
-		}
-
-		// 更新
-		public static int updateEvents(Events event) {
-			int i = 0;
-			String sql = "UPDATE events SET title=?, introduction=?, eventDate=?, state=?, index2=? WHERE eventId=?";
-			
-			DBUtil util = new DBUtil();
-			Connection conn = util.getConnection();
-			
-			try {
-				PreparedStatement ps = conn.prepareStatement(sql);
-				ps.setString(1, event.getTitle());
-				ps.setString(2, event.getIntroduction());
-				ps.setString(3, event.getEventDate());
-				ps.setInt(4, event.getState());
-				ps.setInt(5, event.getIndex2());
-				ps.setInt(6, event.getEventId());
 				i = ps.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();

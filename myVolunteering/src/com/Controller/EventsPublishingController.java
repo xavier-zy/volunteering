@@ -48,7 +48,7 @@ public class EventsPublishingController extends HttpServlet {
 		String title = request.getParameter("title");
 		String introduction = request.getParameter("introduction");
 
-		String sql = "INSERT INTO events(eventId,title,introduction,eventDate,state,index2,adminid) VALUES(22,?,?,?,?,3,100)";
+		String sql = "INSERT INTO events(title,introduction,eventDate,state) VALUES(?,?,?,?)";
 
 		DBUtil util = new DBUtil();
 		Connection conn = util.getConnection();
@@ -60,7 +60,7 @@ public class EventsPublishingController extends HttpServlet {
 			ps.setString(1, title);
 			ps.setString(2, introduction);
 			ps.setString(3, eventDate);
-			ps.setString(4, "2");
+			ps.setString(4, "1");
 			ps.executeUpdate();
 			response.sendRedirect("/myVolunteering/events.jsp");
 		} catch (SQLException e) {

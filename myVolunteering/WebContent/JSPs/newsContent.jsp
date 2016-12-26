@@ -41,15 +41,18 @@
 								class="icon-bar"></span><span class="icon-bar"></span><span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="index.html">Volunteering</a>
+						<a class="navbar-brand" href="/myVolunteering/JSPs/aboutUs.jsp">Volunteering</a>
 					</div>
 
 					<div class="collapse navbar-collapse"
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="/myVolunteering/index.jsp">Home</a></li>
+							<li><a href="/myVolunteering/index.jsp"><span
+									class="glyphicon glyphicon-home"></span> Home</a></li>
 							<li><a href="/myVolunteering/JSPs/events.jsp">Events</a></li>
 							<li class="active"><a href="#">Resources</a></li>
+							<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
+
 
 							<li class="dropdown"><a href="my%20volunteering.html"
 								class="dropdown-toggle" data-toggle="dropdown">MyVolunteering<strong
@@ -65,21 +68,23 @@
 								</ul></li>
 
 							<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
-							
-								<%
-									if (user == null) {
-								%>
-								<li>
-									<button type="submit" class="btn btn-link">
-										<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
-									</button>
-									<button type="button" class="btn btn-link navbar-btn">
-										<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
-									</button> 
-								</li>
-<%
- 	} else {
- %>							<li class="dropdown"><a
+
+							<%
+								if (user == null) {
+							%>
+							<li>
+								<button type="submit" class="btn btn-link">
+									<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
+								</button>
+								|
+								<button type="button" class="btn btn-link navbar-btn">
+									<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
+								</button>
+							</li>
+							<%
+								} else {
+							%>
+							<li class="dropdown"><a
 								href="/myVolunteering/JSPs/myProfile&Events.jsp"
 								class="dropdown-toggle" data-toggle="dropdown"> <%
  	if (user.getLevel().equals("0")) {
@@ -95,64 +100,66 @@
 											<button class="btn btn-link">Log out</button>
 										</form>
 									</li>
-								</ul></li> <%
- 	}
- %>
-							
+								</ul></li>
+							<%
+								}
+							%>
+
 						</ul>
 
 					</div>
 				</nav>
 			</div>
 		</div>
-	
 
-	<div class="row clearfix">
-		<aside class="col-md-4">
-			<div class="mysidebar">
-				<div class="widget">
-					<h4 class="title" style="font-size: 1.5em; font-weight: 400;">Resources
-						list</h4>
 
-					<div class="content download">
-						<table class="table table-hover">
-							<tr>
-								<td><strong>tag</strong></td>
-								<td><strong>title</strong></td>
-							</tr>
-							<%
-								//if (index < lastPage) {
-								for (int i = 0; i < news.size(); i++) {
-							%>
-							<tr>
-								<td><span class="badge"><%=news.get(i).getTag()%></span></td>
-								<td style="text-align:left"><a
-									href="newsContent.jsp?id=<%=news.get(i).getNewsId()%>"><%=news.get(i).getTitle()%></a></td>
-							</tr>
-							<%
-								}
-							%>
-						</table>
+		<div class="row clearfix">
+			<aside class="col-md-4">
+				<div class="mysidebar">
+					<div class="widget">
+						<h4 class="title" style="font-size: 1.5em; font-weight: 400;">Resources
+							list</h4>
+
+						<div class="content download">
+							<table class="table table-hover">
+								<tr>
+									<td><strong>tag</strong></td>
+									<td><strong>title</strong></td>
+								</tr>
+								<%
+									//if (index < lastPage) {
+									for (int i = 0; i < news.size(); i++) {
+								%>
+								<tr>
+									<td><span class="badge"><%=news.get(i).getTag()%></span></td>
+									<td style="text-align: left"><a
+										href="newsContent.jsp?id=<%=news.get(i).getNewsId()%>"><%=news.get(i).getTitle()%></a></td>
+								</tr>
+								<%
+									}
+								%>
+							</table>
+						</div>
 					</div>
-					</div>
-					</div>
-		</aside>
-		<main class="col-md-8 main-content">
-		<div class="post">
+				</div>
+			</aside>
+			<main class="col-md-8 main-content">
+			<div class="post">
 				<div style="text-align: center">
-			<h3><%=NewsHandler.getNewsByNewsId(aid).getTitle()%></h3>
-			<span class="badge"><%=NewsHandler.getNewsByNewsId(aid).getTag()%></span>&nbsp;&nbsp; published time:&nbsp;<%=NewsHandler.getNewsByNewsId(aid).getPublishTime()%>&nbsp;&nbsp;
-			
+					<h3><%=NewsHandler.getNewsByNewsId(aid).getTitle()%></h3>
+					<span class="badge"><%=NewsHandler.getNewsByNewsId(aid).getTag()%></span>&nbsp;&nbsp;
+					published time:&nbsp;<%=NewsHandler.getNewsByNewsId(aid).getPublishTime()%>&nbsp;&nbsp;
+
+				</div>
+				<br>
+				<div class="my_jumbotron post-content ">
+					<p><%=NewsHandler.getNewsByNewsId(aid).getContent()%></p>
+				</div>
 			</div>
-			<br>
-			<div class="my_jumbotron post-content ">
-				<p><%=NewsHandler.getNewsByNewsId(aid).getContent()%></p>
-			</div>
+			</main>
 		</div>
-		</main>
-	</div>
-	
-	<div class="footer">
+
+		<div class="footer">
 			<div class="mypanel">
 				<div class="row">
 					<div class="col-sm-6">Copyright &copy; 2016 T_11 for Java EE
@@ -175,7 +182,7 @@
 
 		</div>
 	</div>
-	
+
 	<script
 		src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script

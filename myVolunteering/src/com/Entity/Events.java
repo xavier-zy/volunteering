@@ -6,7 +6,7 @@ public class Events {
 	private String introduction;
 	private String eventDate;
 	private int state;
-	private int index2;
+//	private int index2;
 	
 	public int getEventId() {
 		return eventId;
@@ -39,12 +39,12 @@ public class Events {
 	public void setState(int state) {
 		this.state = state;
 	}
-	public int getIndex2() {
-		return index2;
-	}
-	public void setIndex2(int index2) {
-		this.index2 = index2;
-	}
+//	public int getIndex2() {
+//		return index2;
+//	}
+//	public void setIndex2(int index2) {
+//		this.index2 = index2;
+//	}
 
 	
 }

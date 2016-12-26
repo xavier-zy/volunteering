@@ -41,13 +41,14 @@
 								class="icon-bar"></span><span class="icon-bar"></span><span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="index.html">Volunteering</a>
+						<a class="navbar-brand" href="/myVolunteering/JSPs/aboutUs.jsp">Volunteering</a>
 					</div>
 
 					<div class="collapse navbar-collapse"
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="/myVolunteering/index.jsp">Home</a></li>
+							<li><a href="/myVolunteering/index.jsp"><span
+									class="glyphicon glyphicon-home"></span> Home</a></li>
 							<li><a href="/myVolunteering/JSPs/events.jsp">Events</a></li>
 							<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
 							<li class="active"><a href="#">Stories</a></li>
@@ -133,7 +134,7 @@
 						<div class="post-content">
 						<%=theStory.getContent()%></div>
 			</div>
-			</div>
+
 
 			<div class="comments_block">
 
@@ -221,7 +222,7 @@
 						<%
 							} else {
 						%>
-						<button class="reply" onclick="pleaseLogin()">Reply</button>
+						<button class="reply" onclick="pleaseLogin()" >Reply</button>
 
 						<%
 							}
@@ -248,7 +249,7 @@
 				%>
 				<form id="form" enctype="multipart/form-data">
 					<textarea name="uploadText" id="uploadText" rows="5" cols="60"
-						placeholder="Your Comment"></textarea>
+						placeholder="Your Comment"></textarea><br>
 					<button type="submit" class="btn btn-success"
 						onclick="addComment('-1',
 								'<%=user.getUserName()%>',
@@ -261,10 +262,11 @@
 
 				<form id="form" enctype="multipart/form-data">
 					<textarea name="uploadText" id="uploadText" rows="5" cols="60"
-						placeholder="Your Comment"></textarea>
+						placeholder="Your Comment"></textarea><br>
+				</form>
 					<button type="submit" class="btn btn-success"
 						onclick="pleaseLogin()">Submit</button>
-				</form>
+				
 				<%
 					}
 				%>

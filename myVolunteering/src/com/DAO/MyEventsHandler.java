@@ -131,7 +131,7 @@ public class MyEventsHandler {
 	public static Map<Integer, Events> getMyEventsByUserId(int userId) throws SQLException {
 		String sql = " SELECT " + SqlStatement.EVENTS + ".eventId," + SqlStatement.EVENTS + ".eventDate," 
 							   + SqlStatement.EVENTS + ".state," + SqlStatement.EVENTS + ".introduction," 
-							   + SqlStatement.EVENTS + ".title," + SqlStatement.EVENTS + ".index2" 
+							   + SqlStatement.EVENTS + ".title"
 						
 				+ " FROM " + SqlStatement.MYEVENTS + "," + SqlStatement.EVENTS 
 				+ " WHERE " + SqlStatement.MYEVENTS + ".userId=" + userId
@@ -151,7 +151,6 @@ public class MyEventsHandler {
 			Events event = new Events();
 			event.setEventDate(rs.getString("eventDate"));
 			event.setEventId(Integer.parseInt(rs.getString("eventId")));
-			event.setIndex2(Integer.parseInt(rs.getString("index2")));
 			event.setIntroduction(rs.getString("introduction"));
 			event.setState(rs.getInt("state"));
 			event.setTitle(rs.getString("title"));

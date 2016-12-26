@@ -34,7 +34,8 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/myVolunteering/index.jsp">Home</a></li>
+						<li><a href="/myVolunteering/index.jsp"><span
+									class="glyphicon glyphicon-home"></span> Home</a></li>
 						<li><a href="/myVolunteering/events.jsp">Events</a></li>
 						<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
 						<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>

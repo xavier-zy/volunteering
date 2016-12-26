@@ -132,22 +132,22 @@
 							</a>
 								<ul class="dropdown-menu">
 									<li>
-										<li class="dropdown"><a
-								href="/myVolunteering/JSPs/myProfile&Events.jsp"
-								class="dropdown-toggle" data-toggle="dropdown"> <%=user.getUserName()%>
-							</a>
-								<ul class="dropdown-menu">
-									<li>
-										<form method="post" action="LogoutController">
-											<button class="btn btn-link">Log out</button>
-										</form>
-									</li>
-								</ul></li>
-									</li>
-								</ul></li>
-							<%
-								}
-							%>
+									<li class="dropdown"><a
+										href="/myVolunteering/JSPs/myProfile&Events.jsp"
+										class="dropdown-toggle" data-toggle="dropdown"> <%=user.getUserName()%>
+									</a>
+										<ul class="dropdown-menu">
+											<li>
+												<form method="post" action="LogoutController">
+													<button class="btn btn-link">Log out</button>
+												</form>
+											</li>
+										</ul></li></li>
+						</ul>
+						</li>
+						<%
+							}
+						%>
 
 						</ul>
 
@@ -182,7 +182,7 @@
 									%>
 									<td>
 										<button type="button" class="btn btn-danger"
-											style="margin-right: 20px;">has enrolled</button>
+											style="margin-right: 20px;">enrolled</button>
 									</td>
 									<%
 										} else {
@@ -230,14 +230,15 @@
 
 			<main class="col-md-8 main-content">
 			<div class="post">
-			<div  style="text-align: center">
-				<h3><%=events.get(amount - 1).getTitle()%></h3>
-				<span style="float: center;">published time:&nbsp;<%=events.get(amount - 1).getEventDate()%>
-				</span>
-				</div><br>
-				<div class="my_jumbotron">
-					<p><%=events.get(amount - 1).getIntroduction()%></p>
+				<div style="text-align: center">
+					<h3><%=events.get(amount - 1).getTitle()%></h3>
+					<span style="float: center;">published time:&nbsp;<%=events.get(amount - 1).getEventDate()%>
+					</span>
 				</div>
+				<br>
+
+				<pre style="white-space: pre-wrap;word-break:break-all;"><%=events.get(amount - 1).getIntroduction()%></pre>
+
 			</div>
 			</main>
 		</div>

@@ -45,7 +45,7 @@
 								class="icon-bar"></span><span class="icon-bar"></span><span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="index.html">Volunteering</a>
+						<a class="navbar-brand" href="/myVolunteering/JSPs/aboutUs.jsp">Volunteering</a>
 					</div>
 
 					<div class="collapse navbar-collapse"

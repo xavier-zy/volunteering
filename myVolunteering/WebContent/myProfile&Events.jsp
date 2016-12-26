@@ -112,12 +112,10 @@
 			<li><a href="#mySetting" data-toggle="pill">Setting</a></li>
 		</ul>
 
-		<div>
 			<div class="tab-content">
 
 				<div class="tab-pane fade in active" id="myProfile">
 					<div class="panel mypanel-default4">
-
 						<input type="hidden" value="<%=user.getUserName()%>"
 							class="form-control input-sm" id="username" name="username">
 						<input type="hidden" value="<%=user.getUserId()%>"
@@ -343,7 +341,9 @@
 
 				<div class="tab-pane fade" id="myEvents">
 					<div class="panel mypanel-default3">
-						<div class="center">
+						<div class="panel-heading" style="margin-bottom: 20px">my events</div>
+							<div class="post-footer"></div>
+							<div class="center">
 							<table class="table table-hover table-bordered">
 								<tr>
 									<td><strong>event date</strong></td>
@@ -380,7 +380,8 @@
 
 				<div class="tab-pane fade" id="mySetting">
 					<div class="panel mypanel-default2">
-						<div class="panel-heading" style="margin-bottom: 20px">Change your password</div>
+						<div class="panel-heading" style="margin-bottom: 20px">change your password</div>
+						<div class="post-footer"></div>
 						<form method="POST" action="/myVolunteering/PasswordController"
 							id="pw-form" style="margin-left: 15px">
 							<div class="form-group">
@@ -407,7 +408,6 @@
 
 
 			</div>
-		</div>
 
 <div class="footer">
 			<div class="mypanel">

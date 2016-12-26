@@ -182,17 +182,18 @@ function enroll(userId, eventId, eventStatus) {
 			eventStatus : eventStatus
 		},
 		success : function(tip) {
-			alert('报名成功！');
+			alert('Success！');
 			location.reload();
 		},
 		error : function(tip) {
-			alert('报名失败！');
+			alert('Fail！');
 		}
 	})
 }
 
 function pleaseLogin() {
 	alert('Please log in first!');
+	location.reload();
 }
 
 function cancel(id) {

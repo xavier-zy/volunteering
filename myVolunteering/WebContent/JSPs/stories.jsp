@@ -11,7 +11,7 @@
 	User user = (User) session.getAttribute("user");
 	ArrayList<Stories> stories = StoriesHandler.getAllStories();
 	int amount = stories.size();
-	String aid= stories.get(amount-1).getStoryId() + "";
+	String aid = stories.get(amount - 1).getStoryId() + "";
 	Stories theStory = StoriesHandler.getStoryByStoryId(aid);
 	ArrayList<Comment> comments = CommentHandler.getCommentsByStoryId(aid);
 
@@ -52,99 +52,105 @@
 			<div class="col-md-12 column">
 
 				<nav class="navbar navbar-default" role="navigation">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span><span
-							class="icon-bar"></span><span class="icon-bar"></span><span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.html">Volunteering</a>
-				</div>
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span><span
+								class="icon-bar"></span><span class="icon-bar"></span><span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/myVolunteering/JSPs/aboutUs.jsp">Volunteering</a>
+					</div>
 
-				<div class="collapse navbar-collapse"
-					id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/myVolunteering/index.jsp"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-						<li><a href="/myVolunteering/events.jsp">Events</a></li>
-						<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
-						<li class="active"><a href="#">Stories</a></li>
-						
+					<div class="collapse navbar-collapse"
+						id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="/myVolunteering/index.jsp"><span
+									class="glyphicon glyphicon-home"></span> Home</a></li>
+							<li><a href="/myVolunteering/events.jsp">Events</a></li>
+							<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
+							<li class="active"><a href="#">Stories</a></li>
 
-						<li class="dropdown"><a href="my%20volunteering.html"
-							class="dropdown-toggle" data-toggle="dropdown">MyVolunteering<strong
-								class="caret"></strong></a>
-							<ul class="dropdown-menu">
-								<li><a href="/myVolunteering/myProfile&Events.jsp">Profile</a>
-								</li>
-								<li class="divider">
-								<li><a href="/myVolunteering/myProfile&Events.jsp">Events</a>
-								</li>
-								<li class="divider">
-								<li><a href="/myVolunteering/JSPs/mySharing.jsp">Sharing</a></li>
-							</ul></li>
 
-						<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
-						<li>
-							<% if (user == null) {%>
-							<button type="submit" class="btn btn-link">
-								<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
-							</button>
-							|
-							<button type="button" class="btn btn-link navbar-btn">
-								<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
-							</button> 
-						</li>
-							<% } else { %>
-							<li class="dropdown">
-	 							<a href="/myVolunteering/JSPs/myProfile&Events.jsp" 
-	 							class="dropdown-toggle" data-toggle="dropdown">
-	 							<%
+							<li class="dropdown"><a href="my%20volunteering.html"
+								class="dropdown-toggle" data-toggle="dropdown">MyVolunteering<strong
+									class="caret"></strong></a>
+								<ul class="dropdown-menu">
+									<li><a href="/myVolunteering/myProfile&Events.jsp">Profile</a>
+									</li>
+									<li class="divider">
+									<li><a href="/myVolunteering/myProfile&Events.jsp">Events</a>
+									</li>
+									<li class="divider">
+									<li><a href="/myVolunteering/JSPs/mySharing.jsp">Sharing</a></li>
+								</ul></li>
+
+							<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
+							<li>
+								<%
+									if (user == null) {
+								%>
+								<button type="submit" class="btn btn-link">
+									<a href="/myVolunteering/JSPs/Login.jsp">Log in</a>
+								</button> |
+								<button type="button" class="btn btn-link navbar-btn">
+									<a href="/myVolunteering/JSPs/Signup.jsp">Sign up</a>
+								</button>
+							</li>
+							<%
+								} else {
+							%>
+							<li class="dropdown"><a
+								href="/myVolunteering/JSPs/myProfile&Events.jsp"
+								class="dropdown-toggle" data-toggle="dropdown"> <%
  	if (user.getLevel().equals("0")) {
  %> <span class="adminname"><%=user.getUserName()%></span> <%
  	} else {
  %> <span class="username"><%=user.getUserName()%></span> <%
  	}
  %>
-	 							</a>
-									<ul class="dropdown-menu">
-										<li>
+							</a>
+								<ul class="dropdown-menu">
+									<li>
 										<form method="post" action="LogoutController">
 											<button class="btn btn-link">Log out</button>
 										</form>
-										</li>
-									</ul>
-							</li>
-							<% } %>
-						
-					</ul>
+									</li>
+								</ul></li>
+							<%
+								}
+							%>
 
-				</div>
+						</ul>
+
+					</div>
 				</nav>
 			</div>
 		</div>
-		
-		
-			<div class="row clearfix">
+
+
+		<div class="row clearfix">
 			<main class="col-md-8 main-content">
 			<div class="post">
-			<div style="text-align: center">
-				<h2><%=theStory.getTitle()%></h2>
-				<span style="float: center;"> Author:&nbsp;<span class="username"><%=UserHandler.getTUserById(theStory.getUserId()).getUserName()%></span>&nbsp;&nbsp;&nbsp;
-					Publish time:&nbsp;<%=theStory.getWrittenTime()%>&nbsp;&nbsp;&nbsp;
+				<div style="text-align: center">
+					<h2><%=theStory.getTitle()%></h2>
+					<span style="float: center;"> Author:&nbsp;<span
+						class="username"><%=UserHandler.getTUserById(theStory.getUserId()).getUserName()%></span>&nbsp;&nbsp;&nbsp;
+						Publish time:&nbsp;<%=theStory.getWrittenTime()%>&nbsp;&nbsp;&nbsp;
 
-					<span class="glyphicon glyphicon-heart"
-					style="color: rgb(255, 60, 64);"></span> <%=theStory.getLike()%>&nbsp;&nbsp;&nbsp;
+						<span class="glyphicon glyphicon-heart"
+						style="color: rgb(255, 60, 64);"></span> <%=theStory.getLike()%>&nbsp;&nbsp;&nbsp;
 
-					<button type="button" class="btn btn-link"
-						onclick="addLike('<%=aid%>')">
-						<span class="glyphicon glyphicon-thumbs-up"
-							style="color: rgb(255, 128, 47);"></span> like the story
-					</button>
-				</span> 
-			</div><br>
-			<div class="post-content">
-						<%=theStory.getContent()%></div>
+						<button type="button" class="btn btn-link"
+							onclick="addLike('<%=aid%>')">
+							<span class="glyphicon glyphicon-thumbs-up"
+								style="color: rgb(255, 128, 47);"></span> like the story
+						</button>
+					</span>
+				</div>
+				<br>
+				<div class="post-content">
+					<%=theStory.getContent()%></div>
 			</div>
 
 			<div class="comments_block">
@@ -177,7 +183,8 @@
 						<form id="form" style="display: none;"
 							enctype="multipart/form-data">
 							<textarea name="uploadText" id="uploadText" rows="5" cols="60"
-								placeholder="Your Comment"></textarea><br>
+								placeholder="Your Comment"></textarea>
+							<br>
 							<button type="submit" class="btn btn-success"
 								onclick="addComment('<%=comments.get(i).getCommentId()%>',
 								'<%=user.getUserName()%>',
@@ -260,7 +267,8 @@
 				%>
 				<form id="form" enctype="multipart/form-data">
 					<textarea name="uploadText" id="uploadText" rows="5" cols="60"
-						placeholder="Your Comment"></textarea><br>
+						placeholder="Your Comment"></textarea>
+					<br>
 					<button type="submit" class="btn btn-success"
 						onclick="addComment('-1',
 								'<%=user.getUserName()%>',
@@ -273,7 +281,8 @@
 
 				<form id="form" enctype="multipart/form-data">
 					<textarea name="uploadText" id="uploadText" rows="5" cols="60"
-						placeholder="Your Comment"></textarea><br>
+						placeholder="Your Comment"></textarea>
+					<br>
 					<button type="submit" class="btn btn-success"
 						onclick="pleaseLogin()">Submit</button>
 				</form>
@@ -291,7 +300,7 @@
 							list</h4>
 						<table class="table table-hover">
 							<tr>
-								<td style="text-align:left"><strong>story title</strong></td>
+								<td style="text-align: left"><strong>story title</strong></td>
 								<td><strong>liked</strong></td>
 								<td></td>
 							</tr>
@@ -302,8 +311,8 @@
 							%>
 							<tr>
 
-								<td style="text-align:left"><%=stories.get(i).getTitle()%></td>
-								<td style="color:rgb(255, 0, 0)"><%=stories.get(i).getLike()%></td>
+								<td style="text-align: left"><%=stories.get(i).getTitle()%></td>
+								<td style="color: rgb(255, 0, 0)"><%=stories.get(i).getLike()%></td>
 								<td><a
 									href="../storyDetais.jsp?id=<%=stories.get(i).getStoryId()%>">more</a>
 								</td>
@@ -352,6 +361,8 @@
 		src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script
 		src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="/myVolunteering/js/main.js"></script>
+
 </body>
 
 </html>

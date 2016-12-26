@@ -53,8 +53,8 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="/myVolunteering/index.jsp"><span
 									class="glyphicon glyphicon-home"></span> Home</a></li>
-							<li><a href="events.html">Events</a></li>
-							<li><a href="resouces.html">Resources</a></li>
+							<li><a href="/myVolunteering/events.jsp">Events</a></li>
+							<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
 							<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
 
 							<li class="dropdown" class="active"><a
@@ -123,7 +123,7 @@
 						<label>content *</label>
 						<div class="form-group">
 							<textarea name="introduction" id="introduction" required
-								class="form-control" rows="8" style="width:70%"></textarea>
+								class="form-control" rows="20" style="width:50%"></textarea>
 						</div>
 						<div class="form-group">
 							<button name="submit" class="btn btn-primary">Publish</button>

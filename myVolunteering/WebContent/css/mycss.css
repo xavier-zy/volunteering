@@ -25,6 +25,8 @@
 	position: relative;
 	color: inherit;
 	background-color: #eee;
+	font-family:monospace;
+	font-size:2em;
 }
 
 .center {
@@ -252,6 +254,7 @@
 .mypanel-default2 {
     width:30%;
     margin-top: 20px;
+    padding:50px;
     background-color:#fff;
 }
 .mypanel-default3 {
@@ -261,8 +264,11 @@
     background-color:#fff;
 }
 .mypanel-default4 {
-    width:80%;
+    width:100%;
+    height:50%;
     margin-top: 20px;
+    margin-bottom: 20px;
+    padding:20px 20px 400px 20px;
     background-color:#fff;
 }
 .myform-group {

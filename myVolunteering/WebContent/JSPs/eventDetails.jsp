@@ -139,9 +139,9 @@
 					<span style="float: center;">published time:&nbsp;<%=EventsHandler.getEventByEventId(aid).getEventDate()%>
 					</span>
 				</div><br>
-				<div class="my_jumbotron">
-					<p><%=EventsHandler.getEventByEventId(aid).getIntroduction()%></p>
-				</div>
+				
+					<pre style="white-space: pre-wrap;word-break:break-all;word-wrap:break-word;"><%=EventsHandler.getEventByEventId(aid).getIntroduction()%></pre>
+				
 			</div>
 			</main>
 		</div>
