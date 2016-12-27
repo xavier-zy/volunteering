@@ -162,11 +162,11 @@ function updateUserInfo() {
 		type : 'post',
 		data : data,
 		success : function(tip) {
-			alert('修改成功！');
+			alert('Success！');
 			location.reload();
 		},
 		error : function(tip) {
-			alert('修改失败，请重新输入！');
+			alert('Fail！');
 		}
 	})
 	console.log(data);
@@ -253,11 +253,11 @@ function publishActivity(adminid) {
 				adminid : adminid
 			},
 			success : function(tip) {
-				alert('发布成功！');
+				alert('Success！');
 				// location.reload();
 			},
 			error : function(tip) {
-				alert('发布失败！');
+				alert('Fail！');
 			}
 		})
 	}

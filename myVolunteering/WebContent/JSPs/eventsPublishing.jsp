@@ -65,7 +65,7 @@
 									<li class="divider">
 									<li class="active"><a href="#">Events publishing</a></li>
 								</ul></li>
-							<li><a href="about%20us.html">About Us</a></li>
+							<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
 							<li>
 							<li class="dropdown"><a
 								href="/myVolunteering/JSPs/myProfile&Events.jsp"
@@ -93,7 +93,7 @@
 			<br>
 			<ul class="nav nav-tabs">
 				<li role="presentation" class="active"><a
-					href="publishActivity.jsp">publish events</a></li>
+					href="#">publish events</a></li>
 				<li role="presentation"><a href="../newsPublishing.jsp">publish
 						resources</a></li>
 

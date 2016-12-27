@@ -267,7 +267,7 @@ public class SqlStatement {
 			Method m = (Method) ob.getClass().getMethod("getUserId");
 			int val = (int) m.invoke(ob);
 			sql += " where UserId=" + val;
-			// System.out.println("sql:"+sql);
+			System.out.println("sql:"+sql);
 			break;
 		case "updateById":
 			sql = "update " + table + " set ";

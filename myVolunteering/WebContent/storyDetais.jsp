@@ -53,14 +53,14 @@
 							<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
 							<li class="active"><a href="#">Stories</a></li>
 
-							<li class="dropdown"><a href="my%20volunteering.html"
+							<li class="dropdown"><a href="/myVolunteering/myProfile&Events.jsp"
 								class="dropdown-toggle" data-toggle="dropdown">MyVolunteering<strong
 									class="caret"></strong></a>
 								<ul class="dropdown-menu">
-									<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Profile</a>
+									<li><a href="/myVolunteering/myProfile&Events.jsp">Profile</a>
 									</li>
 									<li class="divider">
-									<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>
+									<li><a href="/myVolunteering/myProfile&Events.jsp">Events</a>
 									</li>
 									<li class="divider">
 									<li><a href="/myVolunteering/JSPs/mySharing.jsp">Sharing</a></li>

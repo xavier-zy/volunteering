@@ -134,7 +134,13 @@
 									<li>
 									<li class="dropdown"><a
 										href="/myVolunteering/JSPs/myProfile&Events.jsp"
-										class="dropdown-toggle" data-toggle="dropdown"> <%=user.getUserName()%>
+										class="dropdown-toggle" data-toggle="dropdown"> <%
+								 	if (user.getLevel().equals("0")) {
+								 %> <span class="adminname"><%=user.getUserName()%></span> <%
+								 	} else {
+								 %> <span class="username"><%=user.getUserName()%></span> <%
+								 	}
+								 %>
 									</a>
 										<ul class="dropdown-menu">
 											<li>

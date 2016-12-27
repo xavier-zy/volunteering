@@ -9,13 +9,13 @@ public class UserInfo {
 	private String email;
 	private String address;
 	private String signature;
-	private String headImg;
-	public String getHeadImg() {
-		return headImg;
-	}
-	public void setHeadImg(String headImg) {
-		this.headImg = headImg;
-	}
+//	private String headImg;
+//	public String getHeadImg() {
+//		return headImg;
+//	}
+//	public void setHeadImg(String headImg) {
+//		this.headImg = headImg;
+//	}
 	public Integer getUserId() {
 		return userId;
 	}

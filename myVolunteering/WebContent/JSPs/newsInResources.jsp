@@ -125,7 +125,7 @@
 							</a>
 								<ul class="dropdown-menu">
 									<li>
-										<form method="post" action="LogoutController">
+										<form method="post" action="../LogoutController">
 											<button class="btn btn-link">Log out</button>
 										</form>
 									</li>

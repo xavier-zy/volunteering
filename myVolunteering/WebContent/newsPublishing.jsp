@@ -48,8 +48,8 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="/myVolunteering/index.jsp"><span
 									class="glyphicon glyphicon-home"></span> Home</a></li>
-							<li><a href="events.html">Events</a></li>
-							<li><a href="resouces.html">Resources</a></li>
+							<li><a href="/myVolunteering/events.jsp">Events</a></li>
+							<li><a href="/myVolunteering/JSPs/newsInResources.jsp">Resources</a></li>
 							<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
 
 							<li class="dropdown" class="active"><a
@@ -88,7 +88,7 @@
 				<li role="presentation"><a
 					href="/myVolunteering/JSPs/eventsPublishing.jsp">publish events</a></li>
 				<li role="presentation" class="active"><a
-					href="publishNews.jsp">publish resources</a></li>
+					href="#">publish resources</a></li>
 
 			</ul>
 		</div>
