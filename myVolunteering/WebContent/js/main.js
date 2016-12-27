@@ -115,11 +115,11 @@ function insertUserInfo() {
 		url : 'api/TUserInfoInsertServlet',
 		data : data,
 		success : function(tip) {
-			alert('修改成功！');
+			alert('Success！');
 			location.reload();
 		},
 		error : function(tip) {
-			alert('修改失败，请重新输入！');
+			alert('Fail！');
 		}
 	})
 	console.log(data);

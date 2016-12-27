@@ -9,10 +9,12 @@
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	User user = (User) session.getAttribute("user");
-	ArrayList<Stories> stories = StoriesHandler.getAllStories();
+	ArrayList<Stories> stories = new ArrayList();
+	stories = StoriesHandler.getAllStories();
 	int amount = stories.size();
 	String aid = stories.get(amount - 1).getStoryId() + "";
-	Stories theStory = StoriesHandler.getStoryByStoryId(aid);
+	Stories theStory = new Stories();
+	theStory = StoriesHandler.getStoryByStoryId(aid);
 	ArrayList<Comment> comments = CommentHandler.getCommentsByStoryId(aid);
 
 	double lastPage = Math.ceil(amount / 10);
@@ -112,7 +114,7 @@
 							</a>
 								<ul class="dropdown-menu">
 									<li>
-										<form method="post" action="LogoutController">
+										<form method="post" action="/myVolunteering/LogoutController">
 											<button class="btn btn-link">Log out</button>
 										</form>
 									</li>
@@ -296,7 +298,7 @@
 			<aside class="col-md-4">
 				<div class="mysidebar">
 					<div class="widget">
-						<h4 class="title" style="font-size: 1.5em; font-weight: 400;">Events
+						<h4 class="title" style="font-size: 1.5em; font-weight: 400;">Story
 							list</h4>
 						<table class="table table-hover">
 							<tr>

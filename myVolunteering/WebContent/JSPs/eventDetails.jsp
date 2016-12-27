@@ -59,10 +59,10 @@
 								class="dropdown-toggle" data-toggle="dropdown">MyVolunteering<strong
 									class="caret"></strong></a>
 								<ul class="dropdown-menu">
-									<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Profile</a>
+									<li><a href="/myVolunteering/myProfile&Events.jsp">Profile</a>
 									</li>
 									<li class="divider">
-									<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>
+									<li><a href="/myVolunteering/myProfile&Events.jsp">Events</a>
 									</li>
 									<li class="divider">
 									<li><a href="/myVolunteering/JSPs/mySharing.jsp">Sharing</a></li>
@@ -138,7 +138,9 @@
 					<h3><%=EventsHandler.getEventByEventId(aid).getTitle()%></h3>
 					<span style="float: center;">published time:&nbsp;<%=EventsHandler.getEventByEventId(aid).getEventDate()%>
 					</span>
-				</div><br>
+				</div>
+				
+				<br>
 				
 					<pre style="white-space: pre-wrap;word-break:break-all;word-wrap:break-word;"><%=EventsHandler.getEventByEventId(aid).getIntroduction()%></pre>
 				

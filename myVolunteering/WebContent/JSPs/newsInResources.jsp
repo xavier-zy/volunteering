@@ -8,7 +8,8 @@
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	User user = (User) session.getAttribute("user");
-	ArrayList<News> news = NewsHandler.getAllNews();
+	ArrayList<News> news = new ArrayList(); 
+	news = NewsHandler.getAllNews();
 	int amount = news.size();
 	double lastPage = Math.ceil(amount / 10);
 	System.out.println(lastPage);
@@ -71,7 +72,7 @@
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown">Management<strong class="caret"></strong></a>
 								<ul class="dropdown-menu">
-									<li><a href="newsPublishing.jsp">News publishing</a></li>
+									<li><a href="/myVolunteering/newsPublishing.jsp">News publishing</a></li>
 									<li class="divider">
 									<li><a href="/myVolunteering/JSPs/eventsPublishing.jsp">Events
 											publishing</a></li>
@@ -83,7 +84,7 @@
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown">MyVolunteering<strong class="caret"></strong></a>
 								<ul class="dropdown-menu">
-									<li><a href="myProfile&Events.jsp">Profile</a></li>
+									<li><a href="/myVolunteering/myProfile&Events.jsp">Profile</a></li>
 									<li class="divider">
 									<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>
 									</li>
@@ -179,8 +180,9 @@
 					<span class="badge"><%=news.get(amount-1).getTag()%></span>&nbsp;&nbsp; published time:&nbsp;<%=news.get(amount - 1).getPublishTime()%>
 					
 				</div>
+				<div class="post-footer"></div>
 				<br>
-				<div class="my_jumbotron post-content">
+				<div class="post-content">
 					<%=news.get(amount - 1).getContent()%>
 				</div>
 			</div>

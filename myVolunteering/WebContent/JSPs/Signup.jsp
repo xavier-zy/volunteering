@@ -50,11 +50,11 @@
 						<li><a href="/myVolunteering/JSPs/aboutUs.jsp">About Us</a></li>
 						<li>
 							<button type="submit" class="btn btn-link">
-								<a href="#">Log in</a>
+								<a href="Login.jsp">Log in</a>
 							</button>
 							|
 							<button type="button" class="btn btn-link navbar-btn">
-								<a href="Signup.jsp">Sign up</a>
+								<a href="#">Sign up</a>
 							</button>
 						</li>
 					</ul>

@@ -8,7 +8,8 @@
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	User user = (User) session.getAttribute("user");
-	ArrayList<News> news = NewsHandler.getAllNews();
+	ArrayList<News> news = new ArrayList(); 
+	news = NewsHandler.getAllNews();
 	String aid = "";
 	aid = request.getParameter("id");
 %>
@@ -49,19 +50,19 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="/myVolunteering/index.jsp"><span
 									class="glyphicon glyphicon-home"></span> Home</a></li>
-							<li><a href="/myVolunteering/JSPs/events.jsp">Events</a></li>
+							<li><a href="/myVolunteering/events.jsp">Events</a></li>
 							<li class="active"><a href="#">Resources</a></li>
 							<li><a href="/myVolunteering/JSPs/stories.jsp">Stories</a></li>
 
 
-							<li class="dropdown"><a href="my%20volunteering.html"
+							<li class="dropdown"><a 
 								class="dropdown-toggle" data-toggle="dropdown">MyVolunteering<strong
 									class="caret"></strong></a>
 								<ul class="dropdown-menu">
-									<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Profile</a>
+									<li><a href="/myVolunteering/myProfile&Events.jsp">Profile</a>
 									</li>
 									<li class="divider">
-									<li><a href="/myVolunteering/JSPs/myProfile&Events.jsp">Events</a>
+									<li><a href="/myVolunteering/myProfile&Events.jsp">Events</a>
 									</li>
 									<li class="divider">
 									<li><a href="/myVolunteering/JSPs/mySharing.jsp">Sharing</a></li>
@@ -151,8 +152,9 @@
 					published time:&nbsp;<%=NewsHandler.getNewsByNewsId(aid).getPublishTime()%>&nbsp;&nbsp;
 
 				</div>
+				<div class="post-footer"></div>
 				<br>
-				<div class="my_jumbotron post-content ">
+				<div class="post-content ">
 					<p><%=NewsHandler.getNewsByNewsId(aid).getContent()%></p>
 				</div>
 			</div>

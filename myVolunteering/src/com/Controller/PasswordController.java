@@ -58,14 +58,14 @@ public class PasswordController extends HttpServlet {
 		if (!currentPW.equals(user.getPassword())) {
 			System.out
 					.println("ChangePasswordAction:the current Password is wrong!");
-			request.getRequestDispatcher("/JSPs/myProfile&Events.jsp").forward(request,
+			request.getRequestDispatcher("../myProfile&Events.jsp").forward(request,
 					response);
 
 			return;
 		} else if (!newPW1.equals(newPW2)) {
 			System.out
 					.println("ChangePasswordAction:the new Passwords are not the same!");
-			request.getRequestDispatcher("/JSPs/myProfile&Events.jsp").forward(request,
+			request.getRequestDispatcher("../myProfile&Events.jsp").forward(request,
 					response);
 
 			return;
@@ -74,9 +74,10 @@ public class PasswordController extends HttpServlet {
 		user.setPassword(newPW1);
 
 		UserHandler.updateUserPW(user);
-
-		session.removeAttribute("user");
-		session.setAttribute("user", user);
+		response.sendRedirect("/myVolunteering/myProfile&Events.jsp");
+		
+//		session.removeAttribute("user");
+//		session.setAttribute("user", user);
 
 	}
 

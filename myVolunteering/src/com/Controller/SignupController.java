@@ -46,8 +46,8 @@ public class SignupController extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 
-		String email = request.getParameter("name");
-		String name = request.getParameter("email");
+		String email = request.getParameter("email");
+		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 
 		// UserHandler.insertUser(name, password, email);

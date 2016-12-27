@@ -241,6 +241,7 @@
 					<span style="float: center;">published time:&nbsp;<%=events.get(amount - 1).getEventDate()%>
 					</span>
 				</div>
+				
 				<br>
 
 				<pre style="white-space: pre-wrap;word-break:break-all;"><%=events.get(amount - 1).getIntroduction()%></pre>
