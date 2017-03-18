@@ -133,7 +133,7 @@
 		<div class="footer" style="margin-top: 30px">
 			<div class="mypanel">
 				<div class="row">
-					<div class="col-sm-6">Copyright &copy; 2016 T_11 for Java EE
+					<div class="col-sm-6">Copyright &copy; 2017 for Software Engineering
 						final project</div>
 					<div class="col-sm-6" style="text-align: right">
 						<div class="follow-us">

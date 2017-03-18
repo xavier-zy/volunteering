@@ -61,7 +61,7 @@ public class SignupController extends HttpServlet {
 			if (conn != null) {
 				out.println("Success!!!");
 			}
-			String sql = "INSERT INTO user (userId,password,lastlogin,level,userName,email) VALUES (12,?,now(),1,?,?)";
+			String sql = "INSERT INTO user (userId,password,lastlogin,level,userName,email) VALUES (14,?,now(),1,?,?)";
 			PreparedStatement ps;
 
 			ps = conn.prepareStatement(sql);
